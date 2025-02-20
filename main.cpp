@@ -8,6 +8,7 @@
 using namespace std;
 
 // Declaración de la función para dibujar una entidad.
+//panacota
 void dibujarEntidad(int val, glm::mat4& mat);
 
 
