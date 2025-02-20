@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/MotorOpenGL.dir/link.d CMakeFiles/MotorOpenGL.dir/src/main.cpp.o CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o CMakeFiles/MotorOpenGL.dir/src/glad.c.o -o MotorOpenGL  /usr/lib/libglfw.so.3.4 -lassimp /usr/lib/libGLX.so /usr/lib/libOpenGL.so
