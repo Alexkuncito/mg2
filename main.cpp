@@ -7,8 +7,9 @@
 
 using namespace std;
 
-// Declaración de la función para dibujar una entidad
+// Declaración de la función para dibujar una entidad.
 void dibujarEntidad(int val, glm::mat4& mat);
+
 
 void imprimirMatriz(const glm::mat4& mat);
 
