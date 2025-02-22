@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/home/cpc/Escritorio/mg2/include
+C_INCLUDES = -I/home/cpc/Escritorio/motorgrafico/mg2/include
 
 C_FLAGS = 
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/cpc/Escritorio/mg2/include
+CXX_INCLUDES = -I/home/cpc/Escritorio/motorgrafico/mg2/include
 
 CXX_FLAGS = -std=gnu++17
 

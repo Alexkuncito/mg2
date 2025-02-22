@@ -1,6 +1,8 @@
 CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
- /home/cpc/Escritorio/mg2/src/main.cpp /usr/include/stdc-predef.h \
- /home/cpc/Escritorio/mg2/src/arbol.cpp /usr/include/c++/14.2.1/iostream \
+ /home/cpc/Escritorio/motorgrafico/mg2/src/main.cpp \
+ /usr/include/stdc-predef.h \
+ /home/cpc/Escritorio/motorgrafico/mg2/src/arbol.cpp \
+ /usr/include/c++/14.2.1/iostream \
  /usr/include/c++/14.2.1/bits/requires_hosted.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -330,9 +332,10 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/locale_conv.h \
  /usr/include/c++/14.2.1/bits/quoted_string.h \
  /usr/include/c++/14.2.1/sstream /usr/include/c++/14.2.1/bits/sstream.tcc \
- /home/cpc/Escritorio/mg2/include/Window.hpp \
- /home/cpc/Escritorio/mg2/include/glad.h /usr/include/KHR/khrplatform.h \
- /usr/include/GLFW/glfw3.h /home/cpc/Escritorio/mg2/include/Shader.hpp \
+ /home/cpc/Escritorio/motorgrafico/mg2/include/Window.hpp \
+ /home/cpc/Escritorio/motorgrafico/mg2/include/glad.h \
+ /usr/include/KHR/khrplatform.h /usr/include/GLFW/glfw3.h \
+ /home/cpc/Escritorio/motorgrafico/mg2/include/Shader.hpp \
  /usr/include/glm/gtc/type_ptr.hpp /usr/include/glm/gtc/vec1.hpp \
  /usr/include/glm/ext/vector_bool1.hpp \
  /usr/include/glm/ext/vector_bool1_precision.hpp \
@@ -346,4 +349,7 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/glm/ext/vector_uint1_sized.hpp \
  /usr/include/c++/14.2.1/cstring /usr/include/string.h \
  /usr/include/strings.h /usr/include/glm/gtc/type_ptr.inl \
- /home/cpc/Escritorio/mg2/include/Camara.hpp
+ /home/cpc/Escritorio/motorgrafico/mg2/include/Camara.hpp \
+ /home/cpc/Escritorio/motorgrafico/mg2/include/entidad.cpp \
+ /home/cpc/Escritorio/motorgrafico/mg2/include/glad.h \
+ /home/cpc/Escritorio/motorgrafico/mg2/include/Shader.hpp

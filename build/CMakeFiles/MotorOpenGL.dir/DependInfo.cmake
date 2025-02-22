@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/cpc/Escritorio/mg2/src/glad.c" "CMakeFiles/MotorOpenGL.dir/src/glad.c.o" "gcc" "CMakeFiles/MotorOpenGL.dir/src/glad.c.o.d"
-  "/home/cpc/Escritorio/mg2/src/Shader.cpp" "CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o" "gcc" "CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o.d"
-  "/home/cpc/Escritorio/mg2/src/main.cpp" "CMakeFiles/MotorOpenGL.dir/src/main.cpp.o" "gcc" "CMakeFiles/MotorOpenGL.dir/src/main.cpp.o.d"
+  "/home/cpc/Escritorio/motorgrafico/mg2/src/glad.c" "CMakeFiles/MotorOpenGL.dir/src/glad.c.o" "gcc" "CMakeFiles/MotorOpenGL.dir/src/glad.c.o.d"
+  "/home/cpc/Escritorio/motorgrafico/mg2/src/Shader.cpp" "CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o" "gcc" "CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o.d"
+  "/home/cpc/Escritorio/motorgrafico/mg2/src/main.cpp" "CMakeFiles/MotorOpenGL.dir/src/main.cpp.o" "gcc" "CMakeFiles/MotorOpenGL.dir/src/main.cpp.o.d"
   "" "MotorOpenGL" "gcc" "CMakeFiles/MotorOpenGL.dir/link.d"
   )
 

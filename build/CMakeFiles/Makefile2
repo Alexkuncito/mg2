@@ -45,19 +45,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/cmake/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /opt/cmake/bin/cmake -E rm -f
+RM = /usr/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cpc/Escritorio/mg2
+CMAKE_SOURCE_DIR = /home/cpc/Escritorio/motorgrafico/mg2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cpc/Escritorio/mg2/build
+CMAKE_BINARY_DIR = /home/cpc/Escritorio/motorgrafico/mg2/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -85,14 +85,14 @@ clean: CMakeFiles/MotorOpenGL.dir/clean
 CMakeFiles/MotorOpenGL.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MotorOpenGL.dir/build.make CMakeFiles/MotorOpenGL.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MotorOpenGL.dir/build.make CMakeFiles/MotorOpenGL.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cpc/Escritorio/mg2/build/CMakeFiles --progress-num=1,2,3,4 "Built target MotorOpenGL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles --progress-num=1,2,3,4 "Built target MotorOpenGL"
 .PHONY : CMakeFiles/MotorOpenGL.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MotorOpenGL.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cpc/Escritorio/mg2/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MotorOpenGL.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cpc/Escritorio/mg2/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles 0
 .PHONY : CMakeFiles/MotorOpenGL.dir/rule
 
 # Convenience name for target.
@@ -102,7 +102,7 @@ MotorOpenGL: CMakeFiles/MotorOpenGL.dir/rule
 # codegen rule for target.
 CMakeFiles/MotorOpenGL.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MotorOpenGL.dir/build.make CMakeFiles/MotorOpenGL.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cpc/Escritorio/mg2/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target MotorOpenGL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target MotorOpenGL"
 .PHONY : CMakeFiles/MotorOpenGL.dir/codegen
 
 # clean rule for target.

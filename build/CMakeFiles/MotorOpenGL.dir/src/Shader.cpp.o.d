@@ -1,7 +1,9 @@
 CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o: \
- /home/cpc/Escritorio/mg2/src/Shader.cpp /usr/include/stdc-predef.h \
- /home/cpc/Escritorio/mg2/include/Shader.hpp \
- /home/cpc/Escritorio/mg2/include/glad.h /usr/include/KHR/khrplatform.h \
+ /home/cpc/Escritorio/motorgrafico/mg2/src/Shader.cpp \
+ /usr/include/stdc-predef.h \
+ /home/cpc/Escritorio/motorgrafico/mg2/include/Shader.hpp \
+ /home/cpc/Escritorio/motorgrafico/mg2/include/glad.h \
+ /usr/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -19,6 +21,7 @@ CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o: \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
  /usr/include/c++/14.2.1/pstl/pstl_config.h \
  /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
+ /usr/include/c++/14.2.1/bits/version.h \
  /usr/include/c++/14.2.1/ext/type_traits.h /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
@@ -44,8 +47,7 @@ CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o: \
  /usr/include/bits/pthreadtypes-arch.h \
  /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
- /usr/include/bits/stdlib-float.h /usr/include/c++/14.2.1/bits/version.h \
- /usr/include/c++/14.2.1/bits/specfun.h \
+ /usr/include/bits/stdlib-float.h /usr/include/c++/14.2.1/bits/specfun.h \
  /usr/include/c++/14.2.1/bits/stl_algobase.h \
  /usr/include/c++/14.2.1/bits/functexcept.h \
  /usr/include/c++/14.2.1/bits/exception_defines.h \

@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/cmake/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /opt/cmake/bin/cmake -E rm -f
+RM = /usr/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cpc/Escritorio/mg2
+CMAKE_SOURCE_DIR = /home/cpc/Escritorio/motorgrafico/mg2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cpc/Escritorio/mg2/build
+CMAKE_BINARY_DIR = /home/cpc/Escritorio/motorgrafico/mg2/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/MotorOpenGL.dir/depend.make
@@ -73,46 +73,46 @@ CMakeFiles/MotorOpenGL.dir/codegen:
 .PHONY : CMakeFiles/MotorOpenGL.dir/codegen
 
 CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: CMakeFiles/MotorOpenGL.dir/flags.make
-CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: /home/cpc/Escritorio/mg2/src/main.cpp
+CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: /home/cpc/Escritorio/motorgrafico/mg2/src/main.cpp
 CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/cpc/Escritorio/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/main.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/main.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/main.cpp.o -c /home/cpc/Escritorio/mg2/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/main.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/main.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/main.cpp.o -c /home/cpc/Escritorio/motorgrafico/mg2/src/main.cpp
 
 CMakeFiles/MotorOpenGL.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MotorOpenGL.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cpc/Escritorio/mg2/src/main.cpp > CMakeFiles/MotorOpenGL.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cpc/Escritorio/motorgrafico/mg2/src/main.cpp > CMakeFiles/MotorOpenGL.dir/src/main.cpp.i
 
 CMakeFiles/MotorOpenGL.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MotorOpenGL.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cpc/Escritorio/mg2/src/main.cpp -o CMakeFiles/MotorOpenGL.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cpc/Escritorio/motorgrafico/mg2/src/main.cpp -o CMakeFiles/MotorOpenGL.dir/src/main.cpp.s
 
 CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o: CMakeFiles/MotorOpenGL.dir/flags.make
-CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o: /home/cpc/Escritorio/mg2/src/Shader.cpp
+CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o: /home/cpc/Escritorio/motorgrafico/mg2/src/Shader.cpp
 CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/cpc/Escritorio/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o -c /home/cpc/Escritorio/mg2/src/Shader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o -c /home/cpc/Escritorio/motorgrafico/mg2/src/Shader.cpp
 
 CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cpc/Escritorio/mg2/src/Shader.cpp > CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cpc/Escritorio/motorgrafico/mg2/src/Shader.cpp > CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.i
 
 CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cpc/Escritorio/mg2/src/Shader.cpp -o CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cpc/Escritorio/motorgrafico/mg2/src/Shader.cpp -o CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.s
 
 CMakeFiles/MotorOpenGL.dir/src/glad.c.o: CMakeFiles/MotorOpenGL.dir/flags.make
-CMakeFiles/MotorOpenGL.dir/src/glad.c.o: /home/cpc/Escritorio/mg2/src/glad.c
+CMakeFiles/MotorOpenGL.dir/src/glad.c.o: /home/cpc/Escritorio/motorgrafico/mg2/src/glad.c
 CMakeFiles/MotorOpenGL.dir/src/glad.c.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/cpc/Escritorio/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/MotorOpenGL.dir/src/glad.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/glad.c.o -MF CMakeFiles/MotorOpenGL.dir/src/glad.c.o.d -o CMakeFiles/MotorOpenGL.dir/src/glad.c.o -c /home/cpc/Escritorio/mg2/src/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/MotorOpenGL.dir/src/glad.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/glad.c.o -MF CMakeFiles/MotorOpenGL.dir/src/glad.c.o.d -o CMakeFiles/MotorOpenGL.dir/src/glad.c.o -c /home/cpc/Escritorio/motorgrafico/mg2/src/glad.c
 
 CMakeFiles/MotorOpenGL.dir/src/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/MotorOpenGL.dir/src/glad.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cpc/Escritorio/mg2/src/glad.c > CMakeFiles/MotorOpenGL.dir/src/glad.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cpc/Escritorio/motorgrafico/mg2/src/glad.c > CMakeFiles/MotorOpenGL.dir/src/glad.c.i
 
 CMakeFiles/MotorOpenGL.dir/src/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/MotorOpenGL.dir/src/glad.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cpc/Escritorio/mg2/src/glad.c -o CMakeFiles/MotorOpenGL.dir/src/glad.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cpc/Escritorio/motorgrafico/mg2/src/glad.c -o CMakeFiles/MotorOpenGL.dir/src/glad.c.s
 
 # Object files for target MotorOpenGL
 MotorOpenGL_OBJECTS = \
@@ -132,7 +132,7 @@ MotorOpenGL: /usr/lib/libglfw.so.3.4
 MotorOpenGL: /usr/lib/libGLX.so
 MotorOpenGL: /usr/lib/libOpenGL.so
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/cpc/Escritorio/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable MotorOpenGL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable MotorOpenGL"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MotorOpenGL.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -144,6 +144,6 @@ CMakeFiles/MotorOpenGL.dir/clean:
 .PHONY : CMakeFiles/MotorOpenGL.dir/clean
 
 CMakeFiles/MotorOpenGL.dir/depend:
-	cd /home/cpc/Escritorio/mg2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cpc/Escritorio/mg2 /home/cpc/Escritorio/mg2 /home/cpc/Escritorio/mg2/build /home/cpc/Escritorio/mg2/build /home/cpc/Escritorio/mg2/build/CMakeFiles/MotorOpenGL.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/cpc/Escritorio/motorgrafico/mg2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cpc/Escritorio/motorgrafico/mg2 /home/cpc/Escritorio/motorgrafico/mg2 /home/cpc/Escritorio/motorgrafico/mg2/build /home/cpc/Escritorio/motorgrafico/mg2/build /home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles/MotorOpenGL.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/MotorOpenGL.dir/depend
 
