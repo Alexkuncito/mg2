@@ -2,9 +2,15 @@
 #include "Window.hpp"
 #include "Shader.hpp"
 #include "Camara.hpp"
+#include "Fichero.hpp"
+#include "Mesh.hpp"
+#include <vector>
 
-
-Camera camera(glm::vec3(0.0f, 2.0f, 5.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 5.0f, 50.0f);
+Camera camera(
+    glm::vec3(0.0f, 12.0f, 15.0f),
+    glm::vec3(0.0f, 0.0f, -1.0f),
+    glm::vec3(0.0f, 1.0f, 0.0f),
+    5.0f, 50.0f);
 
 void processInput(Window& window, float deltaTime) {
     GLFWwindow* glfwWindow = window.getNativeWindow();
@@ -27,57 +33,13 @@ void processInput(Window& window, float deltaTime) {
         camera.rotateRight(deltaTime);
 }
 
-
 int main() {
-    float vertices[] = {
-        -0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f, -0.5f,
-         0.5f,  0.5f, -0.5f,
-         0.5f,  0.5f, -0.5f,
-        -0.5f,  0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-
-        -0.5f, -0.5f,  0.5f,
-         0.5f, -0.5f,  0.5f,
-         0.5f,  0.5f,  0.5f,
-         0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-        -0.5f, -0.5f,  0.5f,
-
-        -0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-
-         0.5f,  0.5f,  0.5f,
-         0.5f,  0.5f, -0.5f,
-         0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f,  0.5f,
-         0.5f,  0.5f,  0.5f,
-
-        -0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f,  0.5f,
-         0.5f, -0.5f,  0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.5f, -0.5f, -0.5f,
-
-        -0.5f,  0.5f, -0.5f,
-         0.5f,  0.5f, -0.5f,
-         0.5f,  0.5f,  0.5f,
-         0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f, -0.5f,
-    };
-
     Window window(800, 600, "Motor OpenGL 3D");
 
     Shader shader("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
 
-    glm::mat4 projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+    float fov = glm::radians(45.0f);
+    glm::mat4 projection = glm::perspective(fov, 800.0f / 600.0f, 0.1f, 100.0f);
 
     // Creación de nodos
     Nodo* raiz = new Nodo(0);
@@ -113,24 +75,15 @@ int main() {
     cout << "Recorriendo el árbol y dibujando nodos:" << endl;
     raiz->recorrer(glm::mat4(1.0f));
 
-    glEnable(GL_DEPTH_TEST);
+    Fichero fichero("../models/prota.obj");
+    Mesh mesh(fichero);
 
-    unsigned int VAO, VBO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::scale(model, glm::vec3(0.01f));
 
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
-    
     float lastTime = glfwGetTime();
+
+    glEnable(GL_DEPTH_TEST);
     while (!window.shouldClose()) {
         float currentTime = glfwGetTime();
         float deltaTime = currentTime - lastTime;
@@ -140,14 +93,14 @@ int main() {
 
         glm::mat4 view = camera.getViewMatrix();
         shader.use();
+        shader.setMat4("model", model);
         shader.setMat4("view", view);
         shader.setMat4("projection", projection);
 
         glClearColor(51 / 255.0f, 77 / 255.0f, 77 / 255.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        
+        mesh.draw();
 
         window.swapBuffers();
         window.pollEvents();
