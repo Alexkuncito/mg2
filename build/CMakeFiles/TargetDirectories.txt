@@ -1,3 +1,0 @@
-/home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles/MotorOpenGL.dir
-/home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles/edit_cache.dir
-/home/cpc/Escritorio/motorgrafico/mg2/build/CMakeFiles/rebuild_cache.dir
