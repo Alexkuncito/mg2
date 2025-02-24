@@ -4,12 +4,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/quaternion.hpp>
 #include <iomanip>
+#include "entidad.cpp"
 
 using namespace std;
-
-// Declaración de la función para dibujar una entidad.
-//panacota
-void dibujarEntidad(int val, glm::mat4& mat);
 
 
 void imprimirMatriz(const glm::mat4& mat);
@@ -18,7 +15,8 @@ void imprimirMatriz(const glm::mat4& mat);
 // Definición de la estructura Nodo para representar un árbol jerárquico
 struct Nodo {
     private:
-        int dato; // En el futuro, este dato representará una entidad en lugar de un entero
+        MGEntity* entidad; // En el futuro, este entidad representará una entidad en lugar de un entero
+        int id;
         vector<Nodo*> hijos; // Lista de punteros a los nodos hijos
         Nodo* padre; // Puntero al nodo padre
         glm::vec3 traslacion; // Vector de traslación
@@ -29,7 +27,7 @@ struct Nodo {
     
     public:
         // Constructor que inicializa el nodo con valores por defecto
-        explicit Nodo(int valor) : dato(valor), padre(nullptr), traslacion(0.0f), rotacion(0.0f), escalado(1.0f), actTrans(false) {
+        explicit Nodo(MGEntity* valor, int id) : entidad(valor), id(id), padre(nullptr), traslacion(0.0f), rotacion(0.0f), escalado(1.0f), actTrans(false) {
             matrizTrasf = calcularMatriz(); // Calcula la matriz de transformación inicial
         }
 
@@ -48,33 +46,31 @@ struct Nodo {
         }
 
         // Agrega un nodo hijo a la lista de hijos
-        int agregarHijo(Nodo* nodo) {
+        void agregarHijo(Nodo* nodo) {
             nodo->padre = this; // Establece este nodo como padre del nuevo hijo
             hijos.push_back(nodo);
-            return nodo->dato;
+            
         }
 
         // Borra un nodo hijo si existe en la lista
-        int borrarHijo(Nodo* nodo) {
+        void borrarHijo(Nodo* nodo) {
             for (auto it = hijos.begin(); it != hijos.end(); ++it) {
                 if (*it == nodo) {
                     delete *it;
                     hijos.erase(it);
-                    return nodo->dato;
                 }
-            }
-            return -1; // Retorna -1 si el nodo hijo no se encuentra
+            }// Retorna -1 si el nodo hijo no se encuentra
         }
 
         // Establece un nuevo valor de entidad en el nodo
-        bool setEntidad(int val) {
-            dato = val;
+        bool setEntidad(MGEntity* val) {
+            entidad = val;
             return true;
         }
 
         // Obtiene un puntero al valor de la entidad
-        int* getEntidad() {
-            return &dato;
+        MGEntity* getEntidad() {
+            return entidad;
         }
 
         // Devuelve el nodo padre
@@ -99,9 +95,14 @@ struct Nodo {
             if (actTrans) {
                 matrizTrasf = matAcum * calcularMatriz();
             }
-
-            dibujarEntidad(dato, matrizTrasf); // Llama a la función para dibujar el nodo
+            
             imprimirMatriz(matrizTrasf); //Llama a la función para imprimir la matriz de transformación
+            if(entidad != NULL) {
+                entidad->draw(matrizTrasf); // Llama a la función para dibujar el nodo
+                std::cout << id << std::endl;
+
+            }
+
 
             for (Nodo* hijo : hijos) {
                 hijo->recorrer(matrizTrasf);
@@ -174,14 +175,9 @@ void imprimirArbol(Nodo* nodo, int nivel = 0) {
     if (nivel > 0) {
         cout << "+ ";
     }
-    cout << "Nodo " << *(nodo->getEntidad()) << "." << endl;
+    cout << "Nodo " << "UNO" << "." << endl;
 
     for (Nodo* hijo : nodo->getHijos()) {
         imprimirArbol(hijo, nivel + 1);
     }
-}
-
-// Función para simular el dibujo de una entidad
-void dibujarEntidad(int val, glm::mat4& mat) {
-    cout << "Dibujando nodo " << val << " con matriz transformada." << endl;
 }

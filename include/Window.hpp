@@ -17,7 +17,7 @@ class Window {
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-            window = glfwCreateWindow(width, height, title, nullptr, nullptr);
+            window = glfwCreateWindow(width, height, title, NULL, NULL);
             if (!window) {
                 std::cerr << "Error al crear la ventana\n";
                 glfwTerminate();
@@ -32,7 +32,9 @@ class Window {
                 exit(EXIT_FAILURE);
             }
 
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+            glViewport(0, 0, width, height);
+            glfwSetFramebufferSizeCallback(window, ajustar_size_ventana);
+            glClearColor(51 / 255.0f, 77 / 255.0f, 77 / 255.0f, 1.0f);
         }
         ~Window() {
             glfwDestroyWindow(window);
@@ -42,10 +44,13 @@ class Window {
         bool shouldClose() const {return glfwWindowShouldClose(window);}
         void swapBuffers() {glfwSwapBuffers(window);}
         void pollEvents() {glfwPollEvents();}
+         
         GLFWwindow* getNativeWindow() const {return window;}
 
     private:
         GLFWwindow* window;
+
+        static void ajustar_size_ventana(GLFWwindow* window, int width, int height) {glViewport(0, 0, width, height);}
     };
 
 #endif

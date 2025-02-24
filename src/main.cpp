@@ -7,7 +7,7 @@
 #include "Mesh.hpp"
 #include <vector>
 
-Camera camera(
+Camara camara(
     glm::vec3(0.0f, 12.0f, 15.0f),
     glm::vec3(0.0f, 0.0f, -1.0f),
     glm::vec3(0.0f, 1.0f, 0.0f),
@@ -22,21 +22,21 @@ void processInput(Window& window, float deltaTime) {
     GLFWwindow* glfwWindow = window.getNativeWindow();
 
     if (glfwGetKey(glfwWindow, GLFW_KEY_W) == GLFW_PRESS)
-        camera.moveForward(deltaTime);
+        camara.moveForward(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_S) == GLFW_PRESS)
-        camera.moveBackward(deltaTime);
+        camara.moveBackward(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_A) == GLFW_PRESS)
-        camera.moveLeft(deltaTime);
+        camara.moveLeft(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_D) == GLFW_PRESS)
-        camera.moveRight(deltaTime);
+        camara.moveRight(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_UP) == GLFW_PRESS)
-        camera.zoomIn(deltaTime);
+        camara.zoomIn(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_DOWN) == GLFW_PRESS)
-        camera.zoomOut(deltaTime);
+        camara.zoomOut(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_LEFT) == GLFW_PRESS)
-        camera.rotateLeft(deltaTime);
+        camara.rotateLeft(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_RIGHT) == GLFW_PRESS)
-        camera.rotateRight(deltaTime);
+        camara.rotateRight(deltaTime);
 }
 
 int main() {
@@ -47,49 +47,43 @@ int main() {
     float fov = glm::radians(45.0f);
     glm::mat4 projection = glm::perspective(fov, 800.0f / 600.0f, 0.1f, 100.0f);
 
-    // Creación de nodos
-    Nodo* raiz = new Nodo(0);
-    Nodo* hijo1 = new Nodo(1);
-    Nodo* hijo2 = new Nodo(2);
-    Nodo* hijo3 = new Nodo(3);
-    Nodo* hijo4 = new Nodo(4);
-    Nodo* hijo5 = new Nodo(5);
-    Nodo* hijo6 = new Nodo(6);
+    Fichero fichero("../models/prota.obj");
+    Mesh mesh(fichero);
+    MGMesh ent1(&shader, &mesh);
 
+    Fichero fichero2("../models/cubo.obj");
+    Mesh mesh2(fichero2);
+    MGMesh ent2(&shader, &mesh2);
+    MGEntity ent0(&shader);
+    // Creación de nodos
+    Nodo* raiz = new Nodo(&ent0,0);
+    Nodo* hijo1 = new Nodo(&ent1,1);
+    Nodo* hijo2 = new Nodo(&ent2, 2);
     // Construcción de la jerarquía del árbol
     raiz->agregarHijo(hijo1);
     raiz->agregarHijo(hijo2);
-    hijo2->agregarHijo(hijo3);
-    hijo3->agregarHijo(hijo6);
-    hijo2->agregarHijo(hijo4);
-    raiz->agregarHijo(hijo5);
-
     //Aplicar transformaciones
     //raiz->setRotacion(glm::vec3(0.0f, 45.0f, 0.0f));
     //hijo1->setEscalado(glm::vec3(1.5f, 1.5f, 1.5f));
-    hijo2->setTraslacion(glm::vec3(30.0f, 20.0f, 10.0f));
-    hijo3->setEscalado(glm::vec3(0.5f, 0.5f, 0.5f));
-    hijo4->setRotacion(glm::vec3(0.0f, 0.0f, 90.0f));
-    //hijo5->setTraslacion(glm::vec3(2.0f, 2.0f, 2.0f));
-    hijo6->setRotacion(glm::vec3(0.0f, 180.0f, 0.0f));
+    hijo2->setTraslacion(glm::vec3(1.0f, 0.0f, 0.0f));
+    hijo1->setEscalado(glm::vec3(0.005f));
+    hijo2->setEscalado(glm::vec3(0.01f));
     
     // Imprimir estructura del árbol
     cout << "Estructura del árbol:" << endl;
-    imprimirArbol(raiz);
-
-    // Recorrer el árbol y dibujar los nodos
-    cout << "Recorriendo el árbol y dibujando nodos:" << endl;
-    raiz->recorrer(glm::mat4(1.0f));
-
-    Fichero fichero("../models/prota.obj");
-    Mesh mesh(fichero);
+    imprimirArbol(raiz);   
 
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::scale(model, glm::vec3(0.005f));
 
+    glm::mat4 model2 = glm::mat4(1.0f);
+    model2 = glm::scale(model2, glm::vec3(0.005f));
+    model2 = glm::translate(model2, glm::vec3(30.0f, 20.0f, 10.0f));
+
     float lastTime = glfwGetTime();
 
     glEnable(GL_DEPTH_TEST);
+    shader.use();
     while (!window.shouldClose()) {
         float currentTime = glfwGetTime();
         float deltaTime = currentTime - lastTime;
@@ -97,17 +91,19 @@ int main() {
 
         processInput(window, deltaTime);
 
-        glm::mat4 view = camera.getViewMatrix();
-        shader.use();
+        
         luz.aplicar(shader);
-        shader.setMat4("model", model);
+
+        glm::mat4 view = camara.getViewMatrix();
         shader.setMat4("view", view);
         shader.setMat4("projection", projection);
 
-        glClearColor(51 / 255.0f, 77 / 255.0f, 77 / 255.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
-        mesh.draw();
+        // Recorrer el árbol y dibujar los nodos
+        cout << "Recorriendo el árbol y dibujando nodos:" << endl;
+        raiz->recorrer(glm::mat4(1.0f));
+        //ent2.draw(model2);
 
         window.swapBuffers();
         window.pollEvents();

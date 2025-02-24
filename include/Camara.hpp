@@ -1,10 +1,10 @@
-#ifndef CAMERA_HPP
-#define CAMERA_HPP
+#ifndef CAMARA_HPP
+#define CAMARA_HPP
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-class Camera {
+class Camara {
 public:
     glm::vec3 position;
     glm::vec3 front;
@@ -14,8 +14,8 @@ public:
     float yaw;
     float pitch;
 
-    Camera(glm::vec3 startPos, glm::vec3 startFront, glm::vec3 startUp, float startSpeed, float startSensitivity)
-        : position(startPos), front(startFront), up(startUp), speed(startSpeed), sensitivity(startSensitivity), yaw(-90.0f), pitch(-45.0f) {updateCameraVectors();}
+    Camara(glm::vec3 startPos, glm::vec3 startFront, glm::vec3 startUp, float startSpeed, float startSensitivity)
+        : position(startPos), front(startFront), up(startUp), speed(startSpeed), sensitivity(startSensitivity), yaw(-90.0f), pitch(-45.0f) {updateCamaraVectors();}
 
     glm::mat4 getViewMatrix() const {
         return glm::lookAt(position, position + front, up);
@@ -52,16 +52,16 @@ public:
     // Rotar la cámara con flechas izquierda/derecha
     void rotateLeft(float deltaTime) {
         yaw -= sensitivity * deltaTime;
-        updateCameraVectors();
+        updateCamaraVectors();
     }
 
     void rotateRight(float deltaTime) {
         yaw += sensitivity * deltaTime;
-        updateCameraVectors();
+        updateCamaraVectors();
     }
 
 private:
-    void updateCameraVectors() {
+    void updateCamaraVectors() {
         glm::vec3 newFront;
         newFront.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
         newFront.y = sin(glm::radians(pitch));
