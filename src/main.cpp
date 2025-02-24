@@ -2,6 +2,7 @@
 #include "Window.hpp"
 #include "Shader.hpp"
 #include "Camara.hpp"
+#include "Luz.hpp"
 #include "Fichero.hpp"
 #include "Mesh.hpp"
 #include <vector>
@@ -11,6 +12,11 @@ Camera camera(
     glm::vec3(0.0f, 0.0f, -1.0f),
     glm::vec3(0.0f, 1.0f, 0.0f),
     5.0f, 50.0f);
+
+Luz luz(
+    glm::vec3(5.0f, 10.0f, 5.0f),
+    glm::vec3(1.0f, 1.0f, 1.0f),
+    1.0f);
 
 void processInput(Window& window, float deltaTime) {
     GLFWwindow* glfwWindow = window.getNativeWindow();
@@ -79,7 +85,7 @@ int main() {
     Mesh mesh(fichero);
 
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::scale(model, glm::vec3(0.01f));
+    model = glm::scale(model, glm::vec3(0.005f));
 
     float lastTime = glfwGetTime();
 
@@ -93,6 +99,7 @@ int main() {
 
         glm::mat4 view = camera.getViewMatrix();
         shader.use();
+        luz.aplicar(shader);
         shader.setMat4("model", model);
         shader.setMat4("view", view);
         shader.setMat4("projection", projection);
