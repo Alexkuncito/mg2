@@ -4,10 +4,12 @@
 #include <vector>
 #include <glad.h>
 #include "Fichero.hpp"
+#include "Textura.hpp"
+#include <optional>
 
 class Mesh {
 public:
-    Mesh(const Fichero& fichero) {
+    Mesh(const Fichero& fichero, std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt) : textura(textura) {
         std::vector<float> vertices;
         std::vector<unsigned int> indices;
 
@@ -49,8 +51,15 @@ public:
     }
 
     void draw() const {
+        if (textura) {
+            textura->get().bind();
+            std::cout << "HOLAAA" << std::endl;
+        }
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+        if (textura) {
+            textura->get().unbind();
+        }
         GLenum error = glGetError();
         if (error != GL_NO_ERROR) {
             std::cerr << "OpenGL Error: " << error << std::endl;
@@ -60,6 +69,7 @@ public:
 private:
     unsigned int VAO, VBO, EBO;
     size_t indexCount;
+    std::optional<std::reference_wrapper<const Textura>> textura;
 };
 
 #endif

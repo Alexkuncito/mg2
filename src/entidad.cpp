@@ -11,7 +11,7 @@ struct MGEntity
     public:
         MGEntity(Shader* shader) : shader(shader) {}
         virtual void draw(glm::mat4 mat) {
-            std::cout << "NO DEBERIA EXISTIR" << std::endl;
+            
         }
     protected:
         Shader* shader;
@@ -22,7 +22,6 @@ struct MGMesh : MGEntity
     public:
         MGMesh(Shader* shader, Mesh* malla) : MGEntity(shader), malla(malla) {}
         void draw(glm::mat4 mat) override {
-            std::cout << "MESH GANG" << std::endl;
             shader->setMat4("model", mat);
             malla->draw();
         }

@@ -4,6 +4,7 @@
 #include "Camara.hpp"
 #include "Luz.hpp"
 #include "Fichero.hpp"
+#include "Textura.hpp"
 #include "Mesh.hpp"
 #include <vector>
 
@@ -48,7 +49,8 @@ int main() {
     glm::mat4 projection = glm::perspective(fov, 800.0f / 600.0f, 0.1f, 100.0f);
 
     Fichero fichero("../models/prota.obj");
-    Mesh mesh(fichero);
+    Textura textura("../textures/prota.png");
+    Mesh mesh(fichero, textura);
     MGMesh ent1(&shader, &mesh);
 
     Fichero fichero2("../models/cubo.obj");
