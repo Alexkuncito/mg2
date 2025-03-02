@@ -34,6 +34,10 @@ void Shader::use() const {
     glUseProgram(shaderID);
 }
 
+int Shader::getID(){
+    return shaderID;
+}
+
 std::string Shader::loadShaderSource(const std::string& path) {
     std::ifstream file(path);
     if (!file.is_open()) {
@@ -79,6 +83,14 @@ void Shader::setInt(const std::string &name, int value) {
         std::cerr << "Uniform no encontrado: " << name << std::endl;
     }
     glUniform1i(location, value);
+}
+
+void Shader::setFloat(const std::string &name, float value) {
+    GLuint location = glGetUniformLocation(shaderID, name.c_str());
+    if (location == -1) {
+        std::cerr << "Uniform no encontrado: " << name << std::endl;
+    }
+    glUniform1f(location, value);
 }
 
 void Shader::setVec3(const std::string &name, const glm::vec3 &value) const {

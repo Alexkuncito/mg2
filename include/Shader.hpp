@@ -17,7 +17,9 @@ class Shader {
 
         void setMat4(const std::string &name, const glm::mat4 &matrix);
         void setInt(const std::string &name, int value);
+        void setFloat(const std::string &name, float value);
         void setVec3(const std::string &name, const glm::vec3 &value) const;
+        int getID();
 
     private:
         unsigned int shaderID;

@@ -2,6 +2,7 @@
 #define RECURSO_HPP
 
 #include <cstring> // Para strlen y strcpy
+#include <iostream> // Para imprimir en consola
 
 struct Recurso {
 private:
@@ -15,6 +16,7 @@ public:
     const char* GetNombre() const {
         return nombre;
     }
+
     void SetNombre(const char* nuevoNombre) {
         if (nuevoNombre != nombre) {  // Comprobamos si el nuevo nombre es distinto
             if (nombre) {
@@ -28,6 +30,16 @@ public:
             }
         }
     }
+
+    // Función que imprime el nombre
+    void ImprimirNombre() const {
+        if (nombre) {
+            std::cout << "Nombre: " << nombre << std::endl;
+        } else {
+            std::cout << "Nombre no asignado" << std::endl;
+        }
+    }
 };
 
 #endif
+

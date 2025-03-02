@@ -5,11 +5,12 @@
 #include <glad.h>
 #include "Fichero.hpp"
 #include "Textura.hpp"
+#include "Material.hpp"
 #include <optional>
 
 class Mesh {
 public:
-    Mesh(const Fichero& fichero, std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt) : textura(textura) {
+    Mesh(const Fichero& fichero, std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, std::optional<TMaterial> material = std::nullopt) : textura(textura), material(material) {
         std::vector<float> vertices;
         std::vector<unsigned int> indices;
 
@@ -50,10 +51,18 @@ public:
         glDeleteBuffers(1, &EBO);
     }
 
-    void draw() const {
+    void setMat(Shader* s){
+        if (material) {
+            material->SetMaterial(s);
+        } else {
+            std::cerr << "Error: material es nullptr" << std::endl;
+        }
+    }
+
+
+    void draw() const {        
         if (textura) {
             textura->get().bind();
-            std::cout << "HOLAAA" << std::endl;
         }
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
@@ -70,6 +79,7 @@ private:
     unsigned int VAO, VBO, EBO;
     size_t indexCount;
     std::optional<std::reference_wrapper<const Textura>> textura;
+    std::optional<TMaterial> material;
 };
 
 #endif

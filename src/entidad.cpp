@@ -23,6 +23,7 @@ struct MGMesh : MGEntity
         MGMesh(Shader* shader, Mesh* malla) : MGEntity(shader), malla(malla) {}
         void draw(glm::mat4 mat) override {
             shader->setMat4("model", mat);
+            malla->setMat(shader);
             malla->draw();
         }
     private:

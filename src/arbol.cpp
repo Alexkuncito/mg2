@@ -99,8 +99,6 @@ struct Nodo {
             //imprimirMatriz(matrizTrasf); //Llama a la función para imprimir la matriz de transformación
             if(entidad != NULL) {
                 entidad->draw(matrizTrasf); // Llama a la función para dibujar el nodo
-                std::cout << id << std::endl;
-
             }
 
 
@@ -114,10 +112,12 @@ struct Nodo {
             traslacion = vc;
             activTrans();
         }
+
         void setRotacion(glm::vec3 vc) {
             rotacion = vc;
             activTrans();
         }
+        
         void setEscalado(glm::vec3 vc) {
             escalado = vc;
             activTrans();

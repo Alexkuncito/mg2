@@ -6,6 +6,7 @@
 #include "Fichero.hpp"
 #include "Textura.hpp"
 #include "Mesh.hpp"
+#include "Material.hpp"
 #include <vector>
 
 Camara camara(
@@ -50,12 +51,16 @@ int main() {
 
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
-    Mesh mesh(fichero, textura);
+    TMaterial mat({0.24725f, 0.1995f, 0.0745f},{0.75164f, 0.60648f, 0.22648f},{0.628281f, 0.555802f, 0.366065f},32.0f); 
+    Mesh mesh(fichero, textura, mat);
     MGMesh ent1(&shader, &mesh);
 
     Fichero fichero2("../models/cubo.obj");
-    Mesh mesh2(fichero2);
+    Textura textura2("../textures/ladrillo.png");
+    TMaterial mat2({0.1f, 0.0f, 0.0f},{0.6f, 0.0f, 0.0f},{0.7f, 0.6f, 0.6f},32.0f);
+    Mesh mesh2(fichero2, textura2, mat2);
     MGMesh ent2(&shader, &mesh2);
+
     MGEntity ent0(&shader);
     // Creación de nodos
     Nodo* raiz = new Nodo(&ent0,0);
@@ -72,8 +77,8 @@ int main() {
     hijo2->setEscalado(glm::vec3(0.01f));
     
     // Imprimir estructura del árbol
-    cout << "Estructura del árbol:" << endl;
-    imprimirArbol(raiz);   
+    // cout << "Estructura del árbol:" << endl;
+    // imprimirArbol(raiz);   
 
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::scale(model, glm::vec3(0.005f));
@@ -92,8 +97,6 @@ int main() {
         lastTime = currentTime;
 
         processInput(window, deltaTime);
-
-        
         luz.aplicar(shader);
 
         glm::mat4 view = camara.getViewMatrix();
@@ -103,7 +106,7 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         // Recorrer el árbol y dibujar los nodos
-        cout << "Recorriendo el árbol y dibujando nodos:" << endl;
+        //cout << "Recorriendo el árbol y dibujando nodos:" << endl;
         raiz->recorrer(glm::mat4(1.0f));
         //ent2.draw(model2);
 
