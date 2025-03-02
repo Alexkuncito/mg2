@@ -8,7 +8,13 @@ struct Recurso {
 private:
     char* nombre;
 public:
-    Recurso() : nombre(nullptr) {}
+    Recurso(const char* inicialNombre = nullptr) : nombre(nullptr) {
+        if (inicialNombre) {
+            nombre = new char[strlen(inicialNombre) + 1];
+            strcpy(nombre, inicialNombre);
+        }
+    }
+    
     virtual ~Recurso() {
         delete[] nombre;
     }

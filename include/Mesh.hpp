@@ -61,19 +61,27 @@ public:
 
 
     void draw() const {        
-        if (textura) {
-            textura->get().bind();
-        }
-        glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
-        if (textura) {
-            textura->get().unbind();
-        }
-        GLenum error = glGetError();
-        if (error != GL_NO_ERROR) {
-            std::cerr << "OpenGL Error: " << error << std::endl;
-        }
+    if (textura) {
+        textura->get().bind();
+    } else {
+        glBindTexture(GL_TEXTURE_2D, 0); // Desactiva cualquier textura activa
     }
+
+    glBindVertexArray(VAO);
+    glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+
+    if (textura) {
+        textura->get().unbind();
+    } else {
+        glBindTexture(GL_TEXTURE_2D, 0); // Asegurar que ninguna textura quede activa
+    }
+
+    GLenum error = glGetError();
+    if (error != GL_NO_ERROR) {
+        std::cerr << "OpenGL Error: " << error << std::endl;
+    }
+}
+
 
 private:
     unsigned int VAO, VBO, EBO;

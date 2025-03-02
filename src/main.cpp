@@ -7,6 +7,9 @@
 #include "Textura.hpp"
 #include "Mesh.hpp"
 #include "Material.hpp"
+#include "recurso.hpp"
+#include "MaterialRecurso.hpp"
+#include "gestorrecursos.hpp"
 #include <vector>
 
 Camara camara(
@@ -46,19 +49,51 @@ int main() {
 
     Shader shader("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
 
+    TGestorRecursos rec;
+
+    RecursoMaterial materialOro("oro", TMaterial
+    ({0.24725f,0.1995f,0.0745f},{0.75164f,0.60648f,0.22648f},{0.628281f,0.555802f,0.366065f},0.4f));
+
+    rec.add(&materialOro);
+
+    RecursoMaterial materialEsmeralda("esmeralda", TMaterial
+    ({0.0215f, 0.1745f, 0.0215f}, {0.07568f, 0.61424f, 0.07568f}, {0.633f, 0.727811f, 0.633f}, 0.6f));
+
+    rec.add(&materialEsmeralda);
+
+    RecursoMaterial materialJade("jade", TMaterial
+    ({0.135f, 0.2225f, 0.1575f}, {0.54f, 0.89f, 0.63f}, {0.316228f, 0.316228f, 0.316228f}, 0.1f));
+
+    rec.add(&materialJade);
+
+    RecursoMaterial materialObsidiana("obsidiana", TMaterial
+    ({0.05375f, 0.05f, 0.06625f}, {0.18275f, 0.17f, 0.22525f}, {0.332741f, 0.328634f, 0.346435f}, 0.3f));
+
+    rec.add(&materialObsidiana);
+
+    RecursoMaterial materialPerla("perla", TMaterial
+    ({0.25f, 0.20725f, 0.20725f}, {1.0f, 0.829f, 0.829f}, {0.296648f, 0.296648f, 0.296648f}, 0.088f));
+
+    rec.add(&materialPerla);
+
+    RecursoMaterial materialRuby("rubí", TMaterial
+    ({0.1745f, 0.01175f, 0.01175f}, {0.61424f, 0.04136f, 0.04136f}, {0.727811f, 0.626959f, 0.626959f}, 0.6f));
+
+    rec.add(&materialRuby);
+
+    rec.ImprimirRecursos();
+
     float fov = glm::radians(45.0f);
     glm::mat4 projection = glm::perspective(fov, 800.0f / 600.0f, 0.1f, 100.0f);
 
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
-    TMaterial mat({0.24725f, 0.1995f, 0.0745f},{0.75164f, 0.60648f, 0.22648f},{0.628281f, 0.555802f, 0.366065f},32.0f); 
-    Mesh mesh(fichero, textura, mat);
+    Mesh mesh(fichero,nullopt, materialObsidiana.GetMaterial());
     MGMesh ent1(&shader, &mesh);
 
     Fichero fichero2("../models/cubo.obj");
-    Textura textura2("../textures/ladrillo.png");
-    TMaterial mat2({0.1f, 0.0f, 0.0f},{0.6f, 0.0f, 0.0f},{0.7f, 0.6f, 0.6f},32.0f);
-    Mesh mesh2(fichero2, textura2, mat2);
+    //Textura textura2("../textures/ladrillo.png");
+    Mesh mesh2(fichero2, textura, materialJade.GetMaterial());
     MGMesh ent2(&shader, &mesh2);
 
     MGEntity ent0(&shader);
