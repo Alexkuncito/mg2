@@ -11,6 +11,7 @@
 class Shader {
     public:
         Shader(const std::string& vertexPath, const std::string& fragmentPath);
+        Shader() = default;
         ~Shader();
         
         void use() const;
@@ -19,6 +20,26 @@ class Shader {
         void setInt(const std::string &name, int value);
         void setFloat(const std::string &name, float value);
         void setVec3(const std::string &name, const glm::vec3 &value) const;
+        void setVec2(const std::string &name, const glm::vec2 &value) const;
+        void setVec4(const std::string &name, const glm::vec4 &value) const;
+
+        // Shader(const Shader&) = delete;
+
+        // Shader& operator=(const Shader&) = delete;
+
+        // Shader(Shader&& other) noexcept
+        //     : shaderID(other.shaderID) {
+        //     other.shaderID = 0;
+        // }
+
+        // Shader& operator=(Shader&& other) noexcept {
+        //     if (this != &other) {
+        //         glDeleteProgram(shaderID);
+        //         shaderID = other.shaderID;
+        //         other.shaderID = 0;
+        //     }
+        //     return *this;
+        // }
         int getID();
 
     private:

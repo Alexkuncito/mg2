@@ -101,3 +101,18 @@ void Shader::setVec3(const std::string &name, const glm::vec3 &value) const {
     glUniform3fv(location, 1, glm::value_ptr(value));
 }
 
+void Shader::setVec2(const std::string &name, const glm::vec2 &value) const {
+    GLuint location = glGetUniformLocation(shaderID, name.c_str());
+    if (location == -1) {
+        std::cerr << "Uniform no encontrado: " << name << std::endl;
+    }
+    glUniform2fv(location, 1, glm::value_ptr(value));
+}
+
+void Shader::setVec4(const std::string &name, const glm::vec4 &value) const {
+    GLuint location = glGetUniformLocation(shaderID, name.c_str());
+    if (location == -1) {
+        std::cerr << "Uniform no encontrado: " << name << std::endl;
+    }
+    glUniform4fv(location, 1, &value[0]);
+}
