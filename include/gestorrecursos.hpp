@@ -12,9 +12,6 @@ private:
     std::vector<Recurso*> recursos;
 
 public:
-    // Destructor para liberar recursos
-    ~TGestorRecursos();
-
     // Método para obtener un recurso
     Recurso* getRecurso(const char* nombre);
 
@@ -23,6 +20,8 @@ public:
 
     // Para imprimir los recursos en el gestor (para depuración)
     void ImprimirRecursos() const;
+
+    void cargarMateriales();
 };
 
 #endif

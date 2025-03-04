@@ -1,11 +1,6 @@
 #include "gestorrecursos.hpp"
+#include <filesystem>
 
-// Destructor para liberar los recursos del vector
-TGestorRecursos::~TGestorRecursos() {
-    for (auto rec : recursos) {
-        delete rec;
-    }
-}
 
 // Método para obtener un recurso por su nombre
 Recurso* TGestorRecursos::getRecurso(const char* nombre) {
@@ -31,6 +26,36 @@ void TGestorRecursos::ImprimirRecursos() const {
         }
         else {
             std::cout << "Recurso: Desconocido -> " << rec->GetNombre() << std::endl;
+        }
+    }
+}
+
+void TGestorRecursos::cargarMateriales(){
+    namespace fs = std::filesystem;
+    
+    // Ruta donde se encuentran los archivos de materiales
+    std::string ruta = "../material/";
+
+    // Verificar si el directorio existe
+    if (!fs::exists(ruta)) {
+        std::cerr << "Error: El directorio " << ruta << " no existe." << std::endl;
+        return;
+    }
+
+    // Recorrer todos los archivos en el directorio
+    for (const auto& entry : fs::directory_iterator(ruta)) {
+        if (entry.is_regular_file() && entry.path().extension() == ".txt") {  // Asumiendo que los archivos de material tienen extensión .txt
+            // Crear una nueva instancia de RecursoMaterial
+            RecursoMaterial* recursoMaterial = new RecursoMaterial();
+            
+            // Intentar cargar el archivo de material
+            if (recursoMaterial->cargarFichero(entry.path().string())) {
+                // Si el archivo se carga correctamente, agregarlo al gestor de recursos
+                add(recursoMaterial);
+                std::cout << "Material cargado: " << recursoMaterial->GetNombre() << std::endl;
+            } else {
+                delete recursoMaterial;  // Si hubo un error al cargar, liberar la memoria
+            }
         }
     }
 }

@@ -54,8 +54,6 @@ public:
     void setMat(Shader* s){
         if (material) {
             material->SetMaterial(s);
-        } else {
-            std::cerr << "Error: material es nullptr" << std::endl;
         }
     }
 
