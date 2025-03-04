@@ -7,6 +7,7 @@
 
 class Window {
     public:
+        int width, height;
         Window(int width, int height, const char* title) {
             if (!glfwInit()) {
                 std::cerr << "Error inicializando GLFW\n";
@@ -18,6 +19,8 @@ class Window {
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
             window = glfwCreateWindow(width, height, title, NULL, NULL);
+            this->width = width;
+            this->height = height;
             if (!window) {
                 std::cerr << "Error al crear la ventana\n";
                 glfwTerminate();
@@ -35,6 +38,7 @@ class Window {
             glViewport(0, 0, width, height);
             glfwSetFramebufferSizeCallback(window, ajustar_size_ventana);
             glClearColor(51 / 255.0f, 77 / 255.0f, 77 / 255.0f, 1.0f);
+            glfwSetWindowUserPointer(window, this);
         }
         ~Window() {
             glfwDestroyWindow(window);
@@ -44,13 +48,22 @@ class Window {
         bool shouldClose() const {return glfwWindowShouldClose(window);}
         void swapBuffers() {glfwSwapBuffers(window);}
         void pollEvents() {glfwPollEvents();}
-         
         GLFWwindow* getNativeWindow() const {return window;}
 
     private:
         GLFWwindow* window;
 
-        static void ajustar_size_ventana(GLFWwindow* window, int width, int height) {glViewport(0, 0, width, height);}
+        static void ajustar_size_ventana(GLFWwindow* window, int width, int height) {
+            glViewport(0, 0, width, height);
+
+            // Obtener la instancia de Window y actualizar la proyección ortográfica
+            Window* win = static_cast<Window*>(glfwGetWindowUserPointer(window));
+            if (win) {
+                win->width = width;
+                win->height = height;
+            }
+        }
+
     };
 
 #endif
