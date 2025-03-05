@@ -136,6 +136,8 @@ int main() {
 
     //Shader shader3D("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
     init3D();
+    //Shader shader3D("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
+    init3D();
     //Shader shader2d("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
     init2D();
 
@@ -155,6 +157,7 @@ int main() {
     Textura textura("../textures/prota.png");
     Mesh mesh(fichero,nullopt, mat1->returnMaterial());
     MGMesh ent1(shader3D.get(), &mesh);
+    MGMesh ent1(shader3D.get(), &mesh);
 
     Fichero fichero2("../models/cubo.obj");
     //Textura textura2("../textures/ladrillo.png");
@@ -168,6 +171,7 @@ int main() {
     Mesh mesh2(fichero2, textura, materialJade.GetMaterial());
     MGMesh ent2(shader3D.get(), &mesh2);
 
+    MGEntity ent0(shader3D.get());
     MGEntity ent0(shader3D.get());
     // Creación de nodos
     Nodo* raiz = new Nodo(&ent0,0);
@@ -199,14 +203,18 @@ int main() {
     glEnable(GL_DEPTH_TEST);
     while (!window.shouldClose()) {
         shader3D->use();
+        shader3D->use();
         float currentTime = glfwGetTime();
         float deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         processInput(window, deltaTime);
         luz.aplicar(*shader3D);
+        luz.aplicar(*shader3D);
 
         glm::mat4 view = camara.getViewMatrix();
+        shader3D->setMat4("view", view);
+        shader3D->setMat4("projection", projection);
         shader3D->setMat4("view", view);
         shader3D->setMat4("projection", projection);
         
@@ -229,6 +237,8 @@ int main() {
         glBindVertexArray(0);
 
         glEnable(GL_DEPTH_TEST);
+        shader3D->use();
+        shader3D->setMat4("projection", projection);
         shader3D->use();
         shader3D->setMat4("projection", projection);
 
