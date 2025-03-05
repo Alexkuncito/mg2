@@ -153,15 +153,13 @@ int main() {
 
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
-<<<<<<< HEAD
     Mesh mesh(fichero,nullopt, mat1->returnMaterial());
-    MGMesh ent1(&shader3D, &mesh);
+    MGMesh ent1(shader3D.get(), &mesh);
 
     Fichero fichero2("../models/cubo.obj");
     //Textura textura2("../textures/ladrillo.png");
     Mesh mesh2(fichero2, textura);
-    MGMesh ent2(&shader3D, &mesh2);
-=======
+    MGMesh ent2(shader3D.get(), &mesh2);
     Mesh mesh(fichero,nullopt, materialObsidiana.GetMaterial());
     MGMesh ent1(shader3D.get(), &mesh);
 
@@ -169,7 +167,6 @@ int main() {
     //Textura textura2("../textures/ladrillo.png");
     Mesh mesh2(fichero2, textura, materialJade.GetMaterial());
     MGMesh ent2(shader3D.get(), &mesh2);
->>>>>>> 90fb97e (Init3D)
 
     MGEntity ent0(shader3D.get());
     // Creación de nodos
