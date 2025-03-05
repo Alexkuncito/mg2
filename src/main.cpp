@@ -51,7 +51,7 @@ std::unique_ptr<Shader> shader3D;
 std::unique_ptr<Shader> shader2D;
 
 void init2D() {
-     shader2D = std::make_unique<Shader>("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
+    shader2D = std::make_unique<Shader>("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
  }
 
 void init3D() {
@@ -134,8 +134,8 @@ void DrawCircle(float x, float y, float radius, glm::vec4 color) {
 int main() {
     Window window(800, 600, "Motor OpenGL 3D");
 
-    Shader shader3D("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
-    //init3D();
+    //Shader shader3D("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
+    init3D();
     //Shader shader2d("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
     init2D();
 
@@ -153,6 +153,7 @@ int main() {
 
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
+<<<<<<< HEAD
     Mesh mesh(fichero,nullopt, mat1->returnMaterial());
     MGMesh ent1(&shader3D, &mesh);
 
@@ -160,8 +161,17 @@ int main() {
     //Textura textura2("../textures/ladrillo.png");
     Mesh mesh2(fichero2, textura);
     MGMesh ent2(&shader3D, &mesh2);
+=======
+    Mesh mesh(fichero,nullopt, materialObsidiana.GetMaterial());
+    MGMesh ent1(shader3D.get(), &mesh);
 
-    MGEntity ent0(&shader3D);
+    Fichero fichero2("../models/cubo.obj");
+    //Textura textura2("../textures/ladrillo.png");
+    Mesh mesh2(fichero2, textura, materialJade.GetMaterial());
+    MGMesh ent2(shader3D.get(), &mesh2);
+>>>>>>> 90fb97e (Init3D)
+
+    MGEntity ent0(shader3D.get());
     // Creación de nodos
     Nodo* raiz = new Nodo(&ent0,0);
     Nodo* hijo1 = new Nodo(&ent1,1);
@@ -191,17 +201,17 @@ int main() {
 
     glEnable(GL_DEPTH_TEST);
     while (!window.shouldClose()) {
-        shader3D.use();
+        shader3D->use();
         float currentTime = glfwGetTime();
         float deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         processInput(window, deltaTime);
-        luz.aplicar(shader3D);
+        luz.aplicar(*shader3D);
 
         glm::mat4 view = camara.getViewMatrix();
-        shader3D.setMat4("view", view);
-        shader3D.setMat4("projection", projection);
+        shader3D->setMat4("view", view);
+        shader3D->setMat4("projection", projection);
         
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -222,8 +232,8 @@ int main() {
         glBindVertexArray(0);
 
         glEnable(GL_DEPTH_TEST);
-        shader3D.use();
-        shader3D.setMat4("projection", projection);
+        shader3D->use();
+        shader3D->setMat4("projection", projection);
 
         std::cout << glm::to_string(orthoProjection) << std::endl;
 
