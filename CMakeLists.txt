@@ -13,6 +13,7 @@ find_package(assimp REQUIRED)
 add_executable(MotorOpenGL 
     src/main.cpp
     src/Shader.cpp
+    src/Graphics2D.cpp
     src/glad.c
     src/gestorRecursos.cpp
 )
