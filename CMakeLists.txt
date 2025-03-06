@@ -9,6 +9,9 @@ cmake_policy(SET CMP0072 NEW)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(assimp REQUIRED)
+find_package(Freetype REQUIRED)
+include_directories(${FREETYPE_INCLUDE_DIRS})
+link_directories(${FREETYPE_LIBRARY_DIRS})
 
 add_executable(MotorOpenGL 
     src/main.cpp
@@ -19,4 +22,4 @@ add_executable(MotorOpenGL
 )
 
 target_include_directories(MotorOpenGL PUBLIC include)
-target_link_libraries(MotorOpenGL PRIVATE glfw OpenGL::GL assimp)
+target_link_libraries(MotorOpenGL PRIVATE glfw OpenGL::GL assimp ${FREETYPE_LIBRARIES})

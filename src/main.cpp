@@ -65,8 +65,8 @@ int main() {
     //Shader shader3D("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
     init3D();
     //Shader shader2d("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
-    //init2D();
     Graphics2D::init2D();
+    Graphics2D::LoadFont("../fonts/jack-of-gears.regular.ttf", 48);
 
     TGestorRecursos rec;
 
@@ -76,7 +76,6 @@ int main() {
 
     float fov = glm::radians(45.0f);
     glm::mat4 projection = glm::perspective(fov, (float) window.width / (float) window.height, 0.1f, 100.0f);
-    glm::mat4 orthoProjection = glm::ortho(0.0f, (float) window.width, (float) window.height, 0.0f, -1.0f, 1.0f);
 
     RecursoMaterial* mat1 = dynamic_cast<RecursoMaterial*>(rec.getRecurso("Cyanrubber"));
 
@@ -147,14 +146,13 @@ int main() {
         Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
         Graphics2D::DrawRectangle(00.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
         Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+        Graphics2D::RenderText("HolaOpenGL", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 
         glBindVertexArray(0);
 
         glEnable(GL_DEPTH_TEST);
         shader3D->use();
         shader3D->setMat4("projection", projection);
-
-        std::cout << glm::to_string(orthoProjection) << std::endl;
 
         window.swapBuffers();
         window.pollEvents();
