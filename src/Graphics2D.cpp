@@ -11,7 +11,7 @@ glm::mat4 Graphics2D::orthoProjection;
 void Graphics2D::init2D() {
     shader2D = std::make_unique<Shader>("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
     shaderText2D = std::make_unique<Shader>("../shaders/vertex_text2d.glsl", "../shaders/fragment_text2d.glsl");
-    orthoProjection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);
+    orthoProjection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f, -1.0f, 1.0f);
 }
 
 void Graphics2D::DrawRectangle(float x, float y, float width, float height, glm::vec4 color) {
@@ -93,6 +93,7 @@ void Graphics2D::LoadFont(const std::string& fontPath, unsigned int fontSize) {
     FT_Library ft;
     if (FT_Init_FreeType(&ft)) {
         std::cerr << "Error: No se pudo inicializar FreeType" << std::endl;
+        FT_Done_FreeType(ft);
         return;
     }
 
@@ -104,51 +105,88 @@ void Graphics2D::LoadFont(const std::string& fontPath, unsigned int fontSize) {
 
     FT_Set_Pixel_Sizes(face, 0, fontSize);
 
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // Deshabilita el alineamiento de byte
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
     for (unsigned char c = 0; c < 128; c++) {
         if (FT_Load_Char(face, c, FT_LOAD_RENDER)) {
             std::cerr << "Error: No se pudo cargar el carácter " << c << std::endl;
             continue;
         }
+        bool tiene_bitmap = (face->glyph->bitmap.buffer != nullptr && face->glyph->bitmap.width > 0);
+        unsigned int texture= 0;
 
-        unsigned int texture;
-        glGenTextures(1, &texture);
-        glBindTexture(GL_TEXTURE_2D, texture);
-        glTexImage2D(
-            GL_TEXTURE_2D,
-            0,
-            GL_RED,
-            face->glyph->bitmap.width,
-            face->glyph->bitmap.rows,
-            0,
-            GL_RED,
-            GL_UNSIGNED_BYTE,
-            face->glyph->bitmap.buffer
-        );
+        if (tiene_bitmap) {
+            glGenTextures(1, &texture);
+            glBindTexture(GL_TEXTURE_2D, texture);
+            glTexImage2D(
+                GL_TEXTURE_2D,
+                0,
+                GL_RED,
+                face->glyph->bitmap.width,
+                face->glyph->bitmap.rows,
+                0,
+                GL_RED,
+                GL_UNSIGNED_BYTE,
+                face->glyph->bitmap.buffer
+            );
+            int width, height;
+            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
+            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &height);
+            std::cout << "Textura generada: [" << c << "] - Tamaño: " << width << "x" << height << std::endl;
+            
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        }
 
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        if (c == ' '  && face->glyph->advance.x == 0) {
+            face->glyph->advance.x = 10 << 6;
 
-        Character character = {
-            texture,
-            glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
-            glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
-            static_cast<unsigned int>(face->glyph->advance.x)
-        };
-        Characters.insert(std::pair<char, Character>(c, character));
+        }
+        
+            Character character = {
+                texture,
+                glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
+                glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
+                static_cast<unsigned int>(face->glyph->advance.x)
+            };
+            Characters.insert(std::pair<char, Character>(c, character));
+        
     }
 
     FT_Done_Face(face);
+
     FT_Done_FreeType(ft);
+
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6 * 4, nullptr, GL_DYNAMIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void Graphics2D::RenderText(std::string text, float x, float y, float scale, glm::vec3 color) {
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+    GLenum error;
+    error = glGetError();
+    std::cout << "Error antes de usar shaderText2D: " << error << std::endl;
+
     shaderText2D->use();
+    shaderText2D->setInt("text", 0);
     shaderText2D->setMat4("projection", orthoProjection);
     shaderText2D->setVec3("textColor", color);
+
+    error = glGetError();
+    std::cout << "Error después de usar shaderText2D: " << error << std::endl;
     
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
@@ -180,7 +218,17 @@ void Graphics2D::RenderText(std::string text, float x, float y, float scale, glm
         }
 
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        std::cout << "Dibujando carácter: " << c 
+          << " - x: " << xpos << ", y: " << ypos
+          << ", w: " << w << ", h: " << h << std::endl;
+
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, ch.TextureID);
+        GLint tex;
+        glGetIntegerv(GL_TEXTURE_BINDING_2D, &tex);
+        std::cout << "Textura activa para " << c << ": " << tex << std::endl;
+
         glDrawArrays(GL_TRIANGLES, 0, 6);
 
         x += (ch.Advance >> 6) * scale; 

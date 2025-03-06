@@ -146,7 +146,7 @@ int main() {
         Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
         Graphics2D::DrawRectangle(00.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
         Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-        Graphics2D::RenderText("HolaOpenGL", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+        Graphics2D::RenderText("Hola Alex", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 
         glBindVertexArray(0);
 
