@@ -1,17 +1,18 @@
 #include "Graphics2D.hpp"
 #include <GLFW/glfw3.h>
 #include <cmath>
+#include <memory>
 
-//extern std::unique_ptr<Shader> shader2D;
+std::unique_ptr<Shader> Graphics2D::shader2D = nullptr;
 
-// void Graphics2D::init2D() {
-//     shader2D = std::make_unique<Shader>("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
-//     glm::mat4 orthoProjection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);
-//     shader2D->setMat4("projection", orthoProjection);
-// }
+void Graphics2D::init2D() {
+    shader2D = std::make_unique<Shader>("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
+}
 
-void Graphics2D::DrawRectangle(float x, float y, float width, float height, glm::vec4 color, Shader* shader2D) {
+void Graphics2D::DrawRectangle(float x, float y, float width, float height, glm::vec4 color) {
     shader2D->use();
+    glm::mat4 orthoProjection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);
+    shader2D->setMat4("projection", orthoProjection);
     shader2D->setVec4("color", color);
 
     float vertices[] = {
@@ -46,8 +47,10 @@ void Graphics2D::DrawRectangle(float x, float y, float width, float height, glm:
     glDeleteBuffers(1, &EBO);
 }
 
-void Graphics2D::DrawCircle(float x, float y, float radius, glm::vec4 color, Shader* shader2D) {
+void Graphics2D::DrawCircle(float x, float y, float radius, glm::vec4 color) {
     shader2D->use();
+    glm::mat4 orthoProjection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);
+    shader2D->setMat4("projection", orthoProjection);
     shader2D->setVec4("color", color);
     
     const int numSegments = 50;

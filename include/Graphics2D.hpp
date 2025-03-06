@@ -7,9 +7,11 @@
 
 class Graphics2D {
 public:
-    //static void init2D();
-    static void DrawRectangle(float x, float y, float width, float height, glm::vec4 color,Shader* shader2D);
-    static void DrawCircle(float x, float y, float radius, glm::vec4 color, Shader* shader2D);
+    static void init2D();
+    static void DrawRectangle(float x, float y, float width, float height, glm::vec4 color);
+    static void DrawCircle(float x, float y, float radius, glm::vec4 color);
+private:
+    static std::unique_ptr<Shader> shader2D;
 };
 
 #endif // GRAPHICS2D_HPP

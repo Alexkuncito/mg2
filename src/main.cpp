@@ -65,7 +65,8 @@ int main() {
     //Shader shader3D("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
     init3D();
     //Shader shader2d("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
-    init2D();
+    //init2D();
+    Graphics2D::init2D();
 
     TGestorRecursos rec;
 
@@ -140,12 +141,12 @@ int main() {
 
         glDisable(GL_DEPTH_TEST);
 
-        shader2D->use();
-        shader2D->setMat4("projection", orthoProjection);
+        //shader2D->use();
+        //shader2D->setMat4("projection", orthoProjection);
         
-        Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), shader2D.get());
-        Graphics2D::DrawRectangle(00.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), shader2D.get());
-        Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), shader2D.get());
+        Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+        Graphics2D::DrawRectangle(00.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+        Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
 
         glBindVertexArray(0);
 
