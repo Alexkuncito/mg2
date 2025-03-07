@@ -16,6 +16,7 @@ link_directories(${FREETYPE_LIBRARY_DIRS})
 add_executable(MotorOpenGL 
     src/main.cpp
     src/Shader.cpp
+    src/Textura.cpp
     src/Graphics2D.cpp
     src/glad.c
     src/gestorRecursos.cpp

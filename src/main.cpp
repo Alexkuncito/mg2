@@ -78,6 +78,7 @@ int main() {
     glm::mat4 projection = glm::perspective(fov, (float) window.width / (float) window.height, 0.1f, 100.0f);
 
     RecursoMaterial* mat1 = dynamic_cast<RecursoMaterial*>(rec.getRecurso("Cyanrubber"));
+    Textura textura2D("../textures/enemigo.png");
 
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
@@ -85,7 +86,6 @@ int main() {
     MGMesh ent1(shader3D.get(), &mesh);
 
     Fichero fichero2("../models/cubo.obj");
-    //Textura textura2("../textures/ladrillo.png");
     Mesh mesh2(fichero2, textura);
     MGMesh ent2(shader3D.get(), &mesh2);
 
@@ -144,9 +144,10 @@ int main() {
         //shader2D->setMat4("projection", orthoProjection);
         
         Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-        Graphics2D::DrawRectangle(00.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+        Graphics2D::DrawRectangle(0.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
         Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-        Graphics2D::RenderText("Hola Alex", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+        Graphics2D::DrawText("Hola Alex", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+        Graphics2D::DrawTexture(400.0f, 200.0f, 100.0f, 100.0f, textura2D);
 
         glBindVertexArray(0);
 
