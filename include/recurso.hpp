@@ -24,18 +24,15 @@ public:
     }
 
     void SetNombre(const char* nuevoNombre) {
-        if (nuevoNombre != nombre) {  // Comprobamos si el nuevo nombre es distinto
-            if (nombre) {
-                delete[] nombre; // Liberamos la memoria anterior
-            }
-            if (nuevoNombre) {
-                nombre = new char[strlen(nuevoNombre) + 1]; // +1 para el carácter nulo '\0'
-                strcpy(nombre, nuevoNombre);
-            } else {
-                nombre = nullptr;
-            }
+        delete[] nombre;
+        if (nuevoNombre) {
+            nombre = new char[strlen(nuevoNombre) + 1];
+            strcpy(nombre, nuevoNombre);
+        } else {
+            nombre = new char[1]{'\0'}; // Asignar un string vacío en lugar de nullptr
         }
     }
+
 
     // Función que imprime el nombre
     void ImprimirNombre() const {

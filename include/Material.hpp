@@ -20,7 +20,7 @@ struct TMaterial{
         ~TMaterial() {}
 
         
-        void SetMaterial(Shader* shader) {
+    void SetMaterial(Shader* shader) {
         if (!shader) {
             std::cerr << "Error: Shader es nullptr en SetMaterial()" << std::endl;
             return;
@@ -28,21 +28,16 @@ struct TMaterial{
 
         shader->use(); // Asegurar que el shader está activo
 
-        if (glGetUniformLocation(shader->getID(), "material.ambient") == -1){
-        std::cerr << "Error: Uniform 'material.ambient' no encontrado en el shader" << std::endl;
+        GLint locAmbient = glGetUniformLocation(shader->getID(), "material.ambient");
+        GLint locDiffuse = glGetUniformLocation(shader->getID(), "material.diffuse");
+        GLint locSpecular = glGetUniformLocation(shader->getID(), "material.specular");
+        GLint locShininess = glGetUniformLocation(shader->getID(), "material.shininess");
+
+        if (locAmbient == -1 || locDiffuse == -1 || locSpecular == -1 || locShininess == -1) {
+            std::cerr << "Error: Uniformes del material no encontrados en el shader" << std::endl;
+            return;
         }
 
-        if (glGetUniformLocation(shader->getID(), "material.diffuse") == -1) {
-        std::cerr << "Error: Uniform 'material.diffuse' no encontrado en el shader" << std::endl;
-        }
-        if (glGetUniformLocation(shader->getID(), "material.specular") == -1) {
-            std::cerr << "Error: Uniform 'material.specular' no encontrado en el shader" << std::endl;
-        }
-        if (glGetUniformLocation(shader->getID(), "material.shininess") == -1) {
-            std::cerr << "Error: Uniform 'material.shininess' no encontrado en el shader" << std::endl;
-        }
-        
-        // Si todo está bien, asignar valores
         shader->setVec3("material.ambient", ambient);
         shader->setVec3("material.diffuse", diffuse);
         shader->setVec3("material.specular", specular);
