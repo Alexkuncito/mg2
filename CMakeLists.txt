@@ -18,6 +18,7 @@ add_executable(MotorOpenGL
     src/Shader.cpp
     src/Textura.cpp
     src/Graphics2D.cpp
+    src/Graphics3D.cpp
     src/glad.c
     src/gestorRecursos.cpp
 )

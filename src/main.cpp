@@ -7,6 +7,7 @@
 #include "Fichero.hpp"
 #include "Textura.hpp"
 #include "Graphics2D.hpp"
+#include "Graphics3D.hpp"
 #include "Mesh.hpp"
 #include "Material.hpp"
 #include "recurso.hpp"
@@ -138,11 +139,13 @@ int main() {
         raiz->recorrer(glm::mat4(1.0f));
         //ent2.draw(model2);
 
-        glDisable(GL_DEPTH_TEST);
+        model = glm::translate(glm::mat4(1.0f), glm::vec3(1.5f, 0.0f, 0.0f));
+        shader3D->setMat4("model", model);
+        Graphics3D::DrawCube(10.0f, 0.0f, 0.0f, 5.0f, 5.0f, 5.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), shader3D.get());
 
+        glDisable(GL_DEPTH_TEST);
         //shader2D->use();
         //shader2D->setMat4("projection", orthoProjection);
-        
         Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
         Graphics2D::DrawRectangle(0.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
         Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));

@@ -9,6 +9,7 @@ uniform vec3 luzPos;
 uniform vec3 luzColor;
 uniform vec3 viewPos;
 uniform sampler2D textura;
+uniform vec4 color; // Color proporcionado
 
 struct Material {
     vec3 ambient;
@@ -31,7 +32,7 @@ void main() {
     vec4 texColor = texture(textura, TexCoord);
     
     if (texColor.a < 0.1) {
-        discard;
+        texColor = vec4(0.0); // Si no tiene textura (totalmente transparente), usar un color por defecto
     }
 
     // Usar valores por defecto si el material no está definido correctamente
@@ -52,7 +53,17 @@ void main() {
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), mat.shininess);
     vec3 specular = luzColor * (spec * mat.specular);
 
-    // Color final con textura
-    vec3 resultado = (ambient + diffuse + specular) * texColor.rgb;
-    FragColor = vec4(resultado, texColor.a);
+    // Si el objeto no tiene textura, aplicar el color como aditivo con la iluminación
+    vec3 finalColor = texColor.rgb;
+
+    // Si no tiene textura (es transparente o negro), usamos el color proporcionado
+    if (texColor.rgb == vec3(0.0)) {
+        finalColor = color.rgb + (ambient + diffuse + specular); // Aditivo
+    } else {
+        // Si tiene textura, aplicamos la textura con la iluminación
+        finalColor = (ambient + diffuse + specular) * texColor.rgb;
+    }
+
+    // Color final
+    FragColor = vec4(finalColor, texColor.a);
 }
