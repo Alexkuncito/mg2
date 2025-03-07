@@ -9,7 +9,7 @@ uniform vec3 luzPos;
 uniform vec3 luzColor;
 uniform vec3 viewPos;
 uniform sampler2D textura;
-uniform vec4 color; // Color proporcionado
+uniform vec4 color;
 
 struct Material {
     vec3 ambient;
@@ -32,7 +32,7 @@ void main() {
     vec4 texColor = texture(textura, TexCoord);
     
     if (texColor.a < 0.1) {
-        texColor = vec4(0.0); // Si no tiene textura (totalmente transparente), usar un color por defecto
+        discard;
     }
 
     // Usar valores por defecto si el material no está definido correctamente
