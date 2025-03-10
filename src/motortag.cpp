@@ -83,6 +83,7 @@ void TMotorTAG::activarLuz(int v){
         }
     }
 }
+
 void TMotorTAG::desActivarCamara(int v){
     if (v >= 0 && v < regCamaras.size()) {
         MGCamara* camara = dynamic_cast<MGCamara*>(regCamaras[v]->getEntidad());
@@ -91,6 +92,7 @@ void TMotorTAG::desActivarCamara(int v){
         }
     }
 }
+
 void TMotorTAG::desActivarLuz(int v){
     if (v >= 0 && v < regLuces.size()) {
         MGLuz* luz = dynamic_cast<MGLuz*>(regLuces[v]->getEntidad());
