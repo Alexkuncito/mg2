@@ -59,3 +59,25 @@ void TGestorRecursos::cargarMateriales(){
         }
     }
 }
+
+RecursoMalla* TGestorRecursos::getRecursoMalla(const Fichero& fichero, std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt,std::optional<TMaterial> material = std::nullopt){
+    for (auto rec : recursos) {
+        // Intentamos hacer cast a RecursoMalla
+        RecursoMalla* recursoMalla = dynamic_cast<RecursoMalla*>(rec);
+        if (recursoMalla) {
+            // Comparamos por referencia al fichero (puedes adaptar si quieres comparar rutas)
+            if (&(recursoMalla->getFichero()) == &fichero) {
+                return recursoMalla;  // Encontrado
+            }
+        }
+    }
+
+    // Si no se encontró, creamos uno nuevo
+    RecursoMalla* nuevaMalla = new RecursoMalla(fichero, textura, material);
+    
+    // Añadimos al gestor
+    add(nuevaMalla);
+
+    // Devolvemos la referencia al nuevo recurso
+    return nuevaMalla;
+}

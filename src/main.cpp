@@ -1,5 +1,5 @@
 #define GLM_ENABLE_EXPERIMENTAL
-#include "arbol.cpp"
+#include "arbol.hpp"
 #include "Window.hpp"
 #include "Shader.hpp"
 #include "Camara.hpp"
@@ -90,14 +90,22 @@ int main() {
     Mesh mesh2(fichero2, textura);
     MGMesh ent2(shader3D.get(), &mesh2);
 
+    MGCamara ent3(shader3D.get(), &camara);
+    MGLuz ent4(shader3D.get(), &luz);
+
     MGEntity ent0(shader3D.get());
     // Creación de nodos
     Nodo* raiz = new Nodo(&ent0,0);
     Nodo* hijo1 = new Nodo(&ent1,1);
     Nodo* hijo2 = new Nodo(&ent2, 2);
+    Nodo* camara = new Nodo(&ent3, 3);
+    Nodo* luze = new Nodo(&ent4, 4);;
     // Construcción de la jerarquía del árbol
     raiz->agregarHijo(hijo1);
     raiz->agregarHijo(hijo2);
+    raiz->agregarHijo(camara);
+    raiz->agregarHijo(luze);
+
     //Aplicar transformaciones
     //raiz->setRotacion(glm::vec3(0.0f, 45.0f, 0.0f));
     //hijo1->setEscalado(glm::vec3(1.5f, 1.5f, 1.5f));
@@ -126,10 +134,10 @@ int main() {
         lastTime = currentTime;
 
         processInput(window, deltaTime);
-        luz.aplicar(*shader3D);
+        //luz.aplicar(*shader3D);
 
-        glm::mat4 view = camara.getViewMatrix();
-        shader3D->setMat4("view", view);
+        // glm::mat4 view = camara.getViewMatrix();
+        // shader3D->setMat4("view", view);
         shader3D->setMat4("projection", projection);
         
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

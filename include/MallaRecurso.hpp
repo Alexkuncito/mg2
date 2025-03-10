@@ -22,6 +22,14 @@ struct RecursoMalla : public Recurso {
     void AplicarMaterial(Shader* shader) {
         malla.setMat(shader);
     }
+
+    Mesh returnMalla(){
+        return malla;
+    }
+
+    const Fichero& getFichero() const {
+        return malla.getFichero();
+    }
 };
 
 #endif

@@ -7,14 +7,17 @@
 #include "Textura.hpp"
 #include "Material.hpp"
 #include <optional>
+#include <iostream> // Asegura que std::cerr esté disponible
 
 class Mesh {
 public:
-    Mesh(const Fichero& fichero, std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, std::optional<TMaterial> material = std::nullopt) : textura(textura), material(material) {
+    Mesh(const Fichero& fichero, std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, std::optional<TMaterial> material = std::nullopt)
+        : fichero(fichero), textura(textura), material(material) {  // Copiamos el fichero
+
         std::vector<float> vertices;
         std::vector<unsigned int> indices;
 
-        if (!fichero.obtenerDatos(vertices, indices)) {
+        if (!this->fichero.obtenerDatos(vertices, indices)) {  // Usamos this->fichero
             std::cerr << "Error: No se pudieron obtener los datos del fichero." << std::endl;
             return;
         }
@@ -51,41 +54,44 @@ public:
         glDeleteBuffers(1, &EBO);
     }
 
-    void setMat(Shader* s){
+    void setMat(Shader* s) {
         if (material) {
             material->SetMaterial(s);
         }
     }
 
+    void draw() const {
+        if (textura) {
+            textura->get().bind();
+        } else {
+            glBindTexture(GL_TEXTURE_2D, 0); // Desactiva cualquier textura activa
+        }
 
-    void draw() const {        
-    if (textura) {
-        textura->get().bind();
-    } else {
-        glBindTexture(GL_TEXTURE_2D, 0); // Desactiva cualquier textura activa
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+
+        if (textura) {
+            textura->get().unbind();
+        } else {
+            glBindTexture(GL_TEXTURE_2D, 0); // Asegurar que ninguna textura quede activa
+        }
+
+        GLenum error = glGetError();
+        if (error != GL_NO_ERROR) {
+            std::cerr << "OpenGL Error: " << error << std::endl;
+        }
     }
 
-    glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
-
-    if (textura) {
-        textura->get().unbind();
-    } else {
-        glBindTexture(GL_TEXTURE_2D, 0); // Asegurar que ninguna textura quede activa
+    const Fichero& getFichero() const {
+        return fichero;
     }
-
-    GLenum error = glGetError();
-    if (error != GL_NO_ERROR) {
-        std::cerr << "OpenGL Error: " << error << std::endl;
-    }
-}
-
 
 private:
     unsigned int VAO, VBO, EBO;
     size_t indexCount;
     std::optional<std::reference_wrapper<const Textura>> textura;
     std::optional<TMaterial> material;
+    Fichero fichero;  // Miembro añadido
 };
 
 #endif

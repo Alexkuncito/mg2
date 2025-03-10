@@ -1,174 +1,133 @@
+#include "arbol.hpp"
 #include <iostream>
-#include <vector>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/quaternion.hpp>
 #include <iomanip>
-#include "entidad.cpp"
 
-using namespace std;
+// Implementación de la clase Nodo
+Nodo::Nodo(MGEntity* valor, int id) : entidad(valor), id(id), padre(nullptr), traslacion(0.0f), rotacion(0.0f), escalado(1.0f), actTrans(false) {
+    matrizTrasf = calcularMatriz();
+}
 
+Nodo::~Nodo() {
+    for (Nodo* hijo : hijos) {
+        delete hijo;
+    }
+    hijos.clear();
+}
 
-void imprimirMatriz(const glm::mat4& mat);
+glm::mat4 Nodo::calcularMatriz() {
+    actTrans = false;
+    return trasladar(traslacion) * rotar(rotacion) * escalar(escalado);
+}
 
+void Nodo::agregarHijo(Nodo* nodo) {
+    nodo->padre = this;
+    hijos.push_back(nodo);
+}
 
-// Definición de la estructura Nodo para representar un árbol jerárquico
-struct Nodo {
-    private:
-        MGEntity* entidad; // En el futuro, este entidad representará una entidad en lugar de un entero
-        int id;
-        vector<Nodo*> hijos; // Lista de punteros a los nodos hijos
-        Nodo* padre; // Puntero al nodo padre
-        glm::vec3 traslacion; // Vector de traslación
-        glm::vec3 rotacion; // Vector de rotación
-        glm::vec3 escalado; // Vector de escalado
-        glm::mat4 matrizTrasf; // Matriz de transformación acumulada
-        bool actTrans; // Bandera para indicar si la transformación ha cambiado
-    
-    public:
-        // Constructor que inicializa el nodo con valores por defecto
-        explicit Nodo(MGEntity* valor, int id) : entidad(valor), id(id), padre(nullptr), traslacion(0.0f), rotacion(0.0f), escalado(1.0f), actTrans(false) {
-            matrizTrasf = calcularMatriz(); // Calcula la matriz de transformación inicial
+void Nodo::borrarHijo(Nodo* nodo) {
+    for (auto it = hijos.begin(); it != hijos.end(); ++it) {
+        if (*it == nodo) {
+            delete *it;
+            hijos.erase(it);
         }
+    }
+}
 
-        // Destructor para eliminar los nodos hijos y liberar memoria
-        ~Nodo() {
-            for (Nodo* hijo : hijos) {
-                delete hijo;
-            }
-            hijos.clear();
-        }
+bool Nodo::setEntidad(MGEntity* val) {
+    entidad = val;
+    return true;
+}
 
-        // Método para calcular la matriz de transformación combinando traslación, rotación y escalado
-        glm::mat4 calcularMatriz() {
-            actTrans = false;
-            return trasladar(traslacion) * rotar(rotacion) * escalar(escalado);
-        }
+MGEntity* Nodo::getEntidad() {
+    return entidad;
+}
 
-        // Agrega un nodo hijo a la lista de hijos
-        void agregarHijo(Nodo* nodo) {
-            nodo->padre = this; // Establece este nodo como padre del nuevo hijo
-            hijos.push_back(nodo);
-            
-        }
+Nodo* Nodo::getPadre() {
+    return padre;
+}
 
-        // Borra un nodo hijo si existe en la lista
-        void borrarHijo(Nodo* nodo) {
-            for (auto it = hijos.begin(); it != hijos.end(); ++it) {
-                if (*it == nodo) {
-                    delete *it;
-                    hijos.erase(it);
-                }
-            }// Retorna -1 si el nodo hijo no se encuentra
-        }
+vector<Nodo*> Nodo::getHijos() {
+    return hijos;
+}
 
-        // Establece un nuevo valor de entidad en el nodo
-        bool setEntidad(MGEntity* val) {
-            entidad = val;
-            return true;
-        }
+void Nodo::activTrans() {
+    actTrans = true;
+    for (Nodo* hijo : hijos) {
+        hijo->activTrans();
+    }
+}
 
-        // Obtiene un puntero al valor de la entidad
-        MGEntity* getEntidad() {
-            return entidad;
-        }
+void Nodo::recorrer(glm::mat4 matAcum) {
+    if (actTrans) {
+        matrizTrasf = matAcum * calcularMatriz();
+    }
 
-        // Devuelve el nodo padre
-        Nodo* getPadre() {
-            return padre;
-        }
+    if(entidad != NULL) {
+        entidad->draw(matrizTrasf); // Llama a la función para dibujar el nodo
+    }
 
-        // Devuelve la lista de hijos
-        vector<Nodo*> getHijos() {
-            return hijos;
-        }
+    for (Nodo* hijo : hijos) {
+        hijo->recorrer(matrizTrasf);
+    }
+}
 
-        void activTrans(){
-            actTrans = true;
-            for (Nodo* hijo : hijos) {
-                hijo->activTrans();
-            }
-        }
+void Nodo::setTraslacion(glm::vec3 vc) {
+    traslacion = vc;
+    activTrans();
+}
 
-        // Recorre el árbol y aplica transformaciones acumuladas
-        void recorrer(glm::mat4 matAcum) {
-            if (actTrans) {
-                matrizTrasf = matAcum * calcularMatriz();
-            }
-            
-            //imprimirMatriz(matrizTrasf); //Llama a la función para imprimir la matriz de transformación
-            if(entidad != NULL) {
-                entidad->draw(matrizTrasf); // Llama a la función para dibujar el nodo
-            }
+void Nodo::setRotacion(glm::vec3 vc) {
+    rotacion = vc;
+    activTrans();
+}
 
+void Nodo::setEscalado(glm::vec3 vc) {
+    escalado = vc;
+    activTrans();
+}
 
-            for (Nodo* hijo : hijos) {
-                hijo->recorrer(matrizTrasf);
-            }
-        }
+glm::mat4 Nodo::trasladar(glm::vec3 vc) {
+    return glm::translate(glm::mat4(1.0f), vc);
+}
 
-        // Métodos para modificar transformaciones y marcar cambios
-        void setTraslacion(glm::vec3 vc) {
-            traslacion = vc;
-            activTrans();
-        }
+glm::mat4 Nodo::rotar(glm::vec3 vc) {
+    glm::quat rotX = glm::angleAxis(glm::radians(vc.x), glm::vec3(1, 0, 0));
+    glm::quat rotY = glm::angleAxis(glm::radians(vc.y), glm::vec3(0, 1, 0));
+    glm::quat rotZ = glm::angleAxis(glm::radians(vc.z), glm::vec3(0, 0, 1));
+    glm::quat rotFinal = rotZ * rotY * rotX;
+    return glm::mat4_cast(rotFinal) * glm::mat4(1.0f);
+}
 
-        void setRotacion(glm::vec3 vc) {
-            rotacion = vc;
-            activTrans();
-        }
-        
-        void setEscalado(glm::vec3 vc) {
-            escalado = vc;
-            activTrans();
-        }
+glm::mat4 Nodo::escalar(glm::vec3 vc) {
+    return glm::scale(glm::mat4(1.0f), vc);
+}
 
-        // Métodos para calcular transformaciones individuales
-        glm::mat4 trasladar(glm::vec3 vc) {
-            return glm::translate(glm::mat4(1.0f), vc);
-        }
+glm::vec3 Nodo::getTraslacion() { return traslacion; }
+glm::vec3 Nodo::getRotacion() { return rotacion; }
+glm::vec3 Nodo::getEscalado() { return escalado; }
 
-        glm::mat4 rotar(glm::vec3 vc) {
-            glm::quat rotX = glm::angleAxis(glm::radians(vc.x), glm::vec3(1, 0, 0));
-            glm::quat rotY = glm::angleAxis(glm::radians(vc.y), glm::vec3(0, 1, 0));
-            glm::quat rotZ = glm::angleAxis(glm::radians(vc.z), glm::vec3(0, 0, 1));
-            glm::quat rotFinal = rotZ * rotY * rotX;
-            return glm::mat4_cast(rotFinal) * glm::mat4(1.0f);
-        }
+void Nodo::setMatrizTransf(glm::mat4 mat) {
+    matrizTrasf = mat;
+}
 
-        glm::mat4 escalar(glm::vec3 vc) {
-            return glm::scale(glm::mat4(1.0f), vc);
-        }
+glm::mat4 Nodo::getMatrizTransf() {
+    return matrizTrasf;
+}
 
-        // Métodos para obtener valores de transformación
-        glm::vec3 getTraslacion() { return traslacion; }
-        glm::vec3 getRotacion() { return rotacion; }
-        glm::vec3 getEscalado() { return escalado; }
-
-        // Métodos para obtener y establecer la matriz de transformación
-        void setMatrizTransf(glm::mat4 mat) {
-            matrizTrasf = mat;
-        }
-        glm::mat4 getMatrizTransf() {
-            return matrizTrasf;
-        }
-};
-
-// Función para imprimir matrices en formato visual
+// Funciones globales
 void imprimirMatriz(const glm::mat4& mat) {
-    cout << fixed << setprecision(6); // Formato de punto fijo con 6 decimales
+    cout << fixed << setprecision(6);
     for (int i = 0; i < 4; ++i) {
         cout << "| ";
         for (int j = 0; j < 4; ++j) {
-            cout << setw(12) << mat[i][j] << " | "; // Espaciado uniforme
+            cout << setw(12) << mat[i][j] << " | ";
         }
         cout << endl;
     }
     cout << endl;
 }
 
-// Función para imprimir la estructura del árbol
-void imprimirArbol(Nodo* nodo, int nivel = 0) {
+void imprimirArbol(Nodo* nodo, int nivel) {
     for (int i = 0; i < nivel; ++i) {
         cout << "   ";
     }
