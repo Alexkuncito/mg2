@@ -469,6 +469,7 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/sstream.tcc \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/gestorrecursos.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MaterialRecurso.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MallaRecurso.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/string_cast.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/../gtc/type_precision.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/../gtc/type_precision.inl \

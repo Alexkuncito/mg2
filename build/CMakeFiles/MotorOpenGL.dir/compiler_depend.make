@@ -2677,9 +2677,13 @@ CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o: /home/cpc/Escritorio/Carpeta\ nuev
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
 
 CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: /home/cpc/Escritorio/Carpeta\ nueva/mg2/src/gestorRecursos.cpp \
+  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Fichero.hpp \
+  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MallaRecurso.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Material.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MaterialRecurso.hpp \
+  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Mesh.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Shader.hpp \
+  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Textura.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/gestorrecursos.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glad.h \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/common.hpp \
@@ -2881,6 +2885,36 @@ CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: /home/cpc/Escritorio/Carpet
   /usr/include/asm-generic/errno.h \
   /usr/include/asm/errno.h \
   /usr/include/assert.h \
+  /usr/include/assimp/Compiler/poppack1.h \
+  /usr/include/assimp/Compiler/pushpack1.h \
+  /usr/include/assimp/Importer.hpp \
+  /usr/include/assimp/MathFunctions.h \
+  /usr/include/assimp/aabb.h \
+  /usr/include/assimp/anim.h \
+  /usr/include/assimp/camera.h \
+  /usr/include/assimp/color4.h \
+  /usr/include/assimp/color4.inl \
+  /usr/include/assimp/config.h \
+  /usr/include/assimp/defs.h \
+  /usr/include/assimp/light.h \
+  /usr/include/assimp/material.h \
+  /usr/include/assimp/material.inl \
+  /usr/include/assimp/matrix3x3.h \
+  /usr/include/assimp/matrix3x3.inl \
+  /usr/include/assimp/matrix4x4.h \
+  /usr/include/assimp/matrix4x4.inl \
+  /usr/include/assimp/mesh.h \
+  /usr/include/assimp/metadata.h \
+  /usr/include/assimp/postprocess.h \
+  /usr/include/assimp/quaternion.h \
+  /usr/include/assimp/quaternion.inl \
+  /usr/include/assimp/scene.h \
+  /usr/include/assimp/texture.h \
+  /usr/include/assimp/types.h \
+  /usr/include/assimp/vector2.h \
+  /usr/include/assimp/vector2.inl \
+  /usr/include/assimp/vector3.h \
+  /usr/include/assimp/vector3.inl \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
   /usr/include/bits/cpu-set.h \
@@ -2956,9 +2990,11 @@ CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: /home/cpc/Escritorio/Carpet
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
   /usr/include/bits/xopen_lim.h \
+  /usr/include/c++/14.2.1/algorithm \
   /usr/include/c++/14.2.1/array \
   /usr/include/c++/14.2.1/backward/binders.h \
   /usr/include/c++/14.2.1/bit \
+  /usr/include/c++/14.2.1/bits/algorithmfwd.h \
   /usr/include/c++/14.2.1/bits/alloc_traits.h \
   /usr/include/c++/14.2.1/bits/allocated_ptr.h \
   /usr/include/c++/14.2.1/bits/allocator.h \
@@ -3022,22 +3058,27 @@ CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: /home/cpc/Escritorio/Carpet
   /usr/include/c++/14.2.1/bits/sstream.tcc \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/std_function.h \
+  /usr/include/c++/14.2.1/bits/stl_algo.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
   /usr/include/c++/14.2.1/bits/stl_bvector.h \
   /usr/include/c++/14.2.1/bits/stl_construct.h \
   /usr/include/c++/14.2.1/bits/stl_function.h \
+  /usr/include/c++/14.2.1/bits/stl_heap.h \
   /usr/include/c++/14.2.1/bits/stl_iterator.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_types.h \
   /usr/include/c++/14.2.1/bits/stl_pair.h \
+  /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
   /usr/include/c++/14.2.1/bits/stl_uninitialized.h \
   /usr/include/c++/14.2.1/bits/stl_vector.h \
   /usr/include/c++/14.2.1/bits/streambuf.tcc \
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
+  /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/14.2.1/bits/unique_ptr.h \
   /usr/include/c++/14.2.1/bits/unordered_map.h \
+  /usr/include/c++/14.2.1/bits/unordered_set.h \
   /usr/include/c++/14.2.1/bits/uses_allocator.h \
   /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/14.2.1/bits/utility.h \
@@ -3083,7 +3124,10 @@ CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: /home/cpc/Escritorio/Carpet
   /usr/include/c++/14.2.1/limits \
   /usr/include/c++/14.2.1/locale \
   /usr/include/c++/14.2.1/new \
+  /usr/include/c++/14.2.1/optional \
   /usr/include/c++/14.2.1/ostream \
+  /usr/include/c++/14.2.1/pstl/execution_defs.h \
+  /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
   /usr/include/c++/14.2.1/pstl/pstl_config.h \
   /usr/include/c++/14.2.1/ratio \
   /usr/include/c++/14.2.1/sstream \
@@ -3108,6 +3152,7 @@ CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: /home/cpc/Escritorio/Carpet
   /usr/include/c++/14.2.1/type_traits \
   /usr/include/c++/14.2.1/typeinfo \
   /usr/include/c++/14.2.1/unordered_map \
+  /usr/include/c++/14.2.1/unordered_set \
   /usr/include/c++/14.2.1/vector \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
@@ -3234,6 +3279,7 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: /home/cpc/Escritorio/Carpeta\ nueva/m
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Graphics2D.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Graphics3D.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Luz.hpp \
+  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MallaRecurso.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Material.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MaterialRecurso.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Mesh.hpp \
@@ -3784,6 +3830,7 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: /home/cpc/Escritorio/Carpeta\ nue
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Camara.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Fichero.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Luz.hpp \
+  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MallaRecurso.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Material.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MaterialRecurso.hpp \
   /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Mesh.hpp \
@@ -4524,6 +4571,8 @@ MotorOpenGL: /usr/lib/libc.so \
 /usr/include/c++/14.2.1/bits/stl_uninitialized.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h:
+
+/home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MallaRecurso.hpp:
 
 /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/vec2.hpp:
 

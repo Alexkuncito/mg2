@@ -16,11 +16,6 @@ public:
     // Método para obtener un recurso
     Recurso* getRecurso(const char* nombre);
 
-
-    RecursoMalla* getRecursoMalla(const Fichero& fichero, 
-                 std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, 
-                 std::optional<TMaterial> material = std::nullopt);
-
     // Método para añadir un recurso al gestor
     void add(Recurso* recurso);
 

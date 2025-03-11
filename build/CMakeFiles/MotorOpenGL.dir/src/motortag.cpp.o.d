@@ -397,8 +397,7 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/14.2.1/bits/fstream.tcc /usr/include/c++/14.2.1/sstream \
  /usr/include/c++/14.2.1/bits/sstream.tcc \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/arbol.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/entidad.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MallaRecurso.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Mesh.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Fichero.hpp \
  /usr/include/assimp/Importer.hpp /usr/include/assimp/types.h \
@@ -427,5 +426,7 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
  /usr/include/assimp/metadata.h /usr/include/assimp/postprocess.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Textura.hpp \
  /usr/include/c++/14.2.1/optional \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/arbol.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/entidad.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Camara.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Luz.hpp

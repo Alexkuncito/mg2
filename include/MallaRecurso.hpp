@@ -26,10 +26,6 @@ struct RecursoMalla : public Recurso {
     Mesh returnMalla(){
         return malla;
     }
-
-    const Fichero& getFichero() const {
-        return malla.getFichero();
-    }
 };
 
 #endif

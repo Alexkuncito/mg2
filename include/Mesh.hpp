@@ -12,12 +12,12 @@
 class Mesh {
 public:
     Mesh(const Fichero& fichero, std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, std::optional<TMaterial> material = std::nullopt)
-        : fichero(fichero), textura(textura), material(material) {  // Copiamos el fichero
+        : textura(textura), material(material) {  // Copiamos el fichero
 
         std::vector<float> vertices;
         std::vector<unsigned int> indices;
 
-        if (!this->fichero.obtenerDatos(vertices, indices)) {  // Usamos this->fichero
+        if (!fichero.obtenerDatos(vertices, indices)) { 
             std::cerr << "Error: No se pudieron obtener los datos del fichero." << std::endl;
             return;
         }
@@ -82,16 +82,12 @@ public:
         }
     }
 
-    const Fichero& getFichero() const {
-        return fichero;
-    }
 
 private:
     unsigned int VAO, VBO, EBO;
     size_t indexCount;
     std::optional<std::reference_wrapper<const Textura>> textura;
     std::optional<TMaterial> material;
-    Fichero fichero;  // Miembro añadido
 };
 
 #endif

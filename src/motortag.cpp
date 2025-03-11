@@ -29,15 +29,6 @@ MGLuz* TMotorTAG::crearLuz(Shader* shader, Luz* luz){
     return nuevaLuz;
 }
 
-MGMesh* TMotorTAG::crearMalla(Shader* shader, const Fichero& fichero, 
-                 std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, 
-                 std::optional<TMaterial> material = std::nullopt){
-    
-    Mesh* recmll = new Mesh(gestorRecursos->getRecursoMalla(fichero, textura, material)->returnMalla());
-    MGMesh* nuevaMalla = new MGMesh(shader, recmll);
-    return nuevaMalla;
-}
-
 
 void TMotorTAG::deleteCamara(MGCamara* cam) {
     if (cam != nullptr) {
