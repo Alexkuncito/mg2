@@ -11,8 +11,9 @@
 
 class Fichero {
 public:
-    Fichero(const std::string& ruta) {
-        cargarMallasAssimp(ruta);
+    Fichero(const std::string& rutad) {
+        ruta = rutad;
+        cargarMallasAssimp(rutad);
     }
 
     bool obtenerDatos(std::vector<float>& outVertices, std::vector<unsigned int>& outIndices) const {
@@ -22,7 +23,12 @@ public:
         return true;
     }
 
+    const std::string& getRuta() const {
+        return ruta;
+    }
+
 private:
+    std::string ruta;
     std::vector<float> vertices;       
     std::vector<unsigned int> indices;
     unsigned int indexOffset = 0; 
@@ -77,6 +83,8 @@ private:
             indexOffset += mesh->mNumVertices;
         }
     }
+
+    
 };
 
 #endif

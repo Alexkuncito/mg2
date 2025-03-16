@@ -13,6 +13,8 @@
 #include "recurso.hpp"
 #include "MaterialRecurso.hpp"
 #include "gestorrecursos.hpp"
+#include "TexturaRecurso.hpp"
+#include "motortag.hpp"
 #include <vector>
 #include <glm/gtx/string_cast.hpp>
 #include <memory>
@@ -28,94 +30,117 @@ Luz luz(
     glm::vec3(1.0f, 1.0f, 1.0f),
     1.0f);
 
-void processInput(Window& window, float deltaTime) {
+void processInput(Window& window, float deltaTime, TMotorTAG& mtg) {
     GLFWwindow* glfwWindow = window.getNativeWindow();
+    
+    // Obtener la cámara activa del árbol de MTG
+    std::shared_ptr<Camara> camaraActiva = mtg.getCamaraActiva();
+    if (!camaraActiva) return;
 
     if (glfwGetKey(glfwWindow, GLFW_KEY_W) == GLFW_PRESS)
-        camara.moveForward(deltaTime);
+        camaraActiva->moveForward(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_S) == GLFW_PRESS)
-        camara.moveBackward(deltaTime);
+        camaraActiva->moveBackward(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_A) == GLFW_PRESS)
-        camara.moveLeft(deltaTime);
+        camaraActiva->moveLeft(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_D) == GLFW_PRESS)
-        camara.moveRight(deltaTime);
+        camaraActiva->moveRight(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_UP) == GLFW_PRESS)
-        camara.zoomIn(deltaTime);
+        camaraActiva->zoomIn(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_DOWN) == GLFW_PRESS)
-        camara.zoomOut(deltaTime);
+        camaraActiva->zoomOut(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_LEFT) == GLFW_PRESS)
-        camara.rotateLeft(deltaTime);
+        camaraActiva->rotateLeft(deltaTime);
     if (glfwGetKey(glfwWindow, GLFW_KEY_RIGHT) == GLFW_PRESS)
-        camara.rotateRight(deltaTime);
+        camaraActiva->rotateRight(deltaTime);
 }
 
-std::unique_ptr<Shader> shader3D;
-std::unique_ptr<Shader> shader2D;
+
+std::shared_ptr<Shader> shader3D;
+std::shared_ptr<Shader> shader2D;
 
 void init2D() {
-    shader2D = std::make_unique<Shader>("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
- }
+    shader2D = std::make_shared<Shader>("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
+}
 
 void init3D() {
-    shader3D = std::make_unique<Shader>("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
+    shader3D = std::make_shared<Shader>("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
 }
 
 int main() {
     Window window(800, 600, "Motor OpenGL 3D");
 
-    //Shader shader3D("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
     init3D();
-    //Shader shader2d("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
     Graphics2D::init2D();
     Graphics2D::LoadFont("../fonts/jack-of-gears.regular.ttf", 48);
 
+    TMotorTAG mtg(shader3D);
     TGestorRecursos rec;
-
     rec.cargarMateriales();
+
+    float fov = glm::radians(45.0f);
+    glm::mat4 projection = glm::perspective(fov, (float)window.width / (float)window.height, 0.1f, 100.0f);
+
+    RecursoMaterial* mat1 = dynamic_cast<RecursoMaterial*>(rec.getRecurso("../material/materialJade.txt"));
+    Textura textura2D("../textures/enemigo.png");
 
     rec.ImprimirRecursos();
 
-    float fov = glm::radians(45.0f);
-    glm::mat4 projection = glm::perspective(fov, (float) window.width / (float) window.height, 0.1f, 100.0f);
 
-    RecursoMaterial* mat1 = dynamic_cast<RecursoMaterial*>(rec.getRecurso("Cyanrubber"));
-    Textura textura2D("../textures/enemigo.png");
 
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
-    Mesh mesh(fichero,nullopt, mat1->returnMaterial());
-    MGMesh ent1(shader3D.get(), &mesh);
+    Mesh mesh(fichero, nullopt, mat1->returnMaterial());
+
+    // Uso de shared_ptr para las entidades
+    std::shared_ptr<MGEntity> entMALLA1 = std::make_shared<MGMesh>(shader3D, std::make_shared<Mesh>(mesh));
 
     Fichero fichero2("../models/cubo.obj");
     Mesh mesh2(fichero2, textura);
-    MGMesh ent2(shader3D.get(), &mesh2);
+    std::shared_ptr<MGEntity> entMALLA2 = std::make_shared<MGMesh>(std::make_shared<Shader>(*shader3D), std::make_shared<Mesh>(mesh2));
 
-    MGCamara ent3(shader3D.get(), &camara);
-    MGLuz ent4(shader3D.get(), &luz);
 
-    MGEntity ent0(shader3D.get());
-    // Creación de nodos
-    Nodo* raiz = new Nodo(&ent0,0);
-    Nodo* hijo1 = new Nodo(&ent1,1);
-    Nodo* hijo2 = new Nodo(&ent2, 2);
-    Nodo* camara = new Nodo(&ent3, 3);
-    Nodo* luze = new Nodo(&ent4, 4);;
+    std::shared_ptr<MGEntity> entCAMARA = std::make_shared<MGCamara>(shader3D, std::make_shared<Camara>(camara));
+    std::shared_ptr<MGEntity> entLUZ = std::make_shared<MGLuz>(shader3D, std::make_shared<Luz>(luz));
+
+    std::shared_ptr<MGEntity> entVACIA = std::make_shared<MGEntity>(shader3D);
+
+    // Creación de nodos con shared_ptr
+    std::shared_ptr<Nodo> raiz = std::make_shared<Nodo>(entVACIA, 0);
+    std::shared_ptr<Nodo> hijo1 = std::make_shared<Nodo>(entMALLA1, 1);
+    std::shared_ptr<Nodo> hijo2 = std::make_shared<Nodo>(entMALLA2, 2);
+    std::shared_ptr<Nodo> camaraNodo = std::make_shared<Nodo>(entCAMARA, 3);
+    std::shared_ptr<Nodo> luzNodo = std::make_shared<Nodo>(entLUZ, 4);
+
+    glm::vec3 tras{0.0f, 0.0f, 0.0f};
+    glm::vec3 esc{1.0f, 1.0f, 1.0f};
+    glm::vec3 rot{0.0f, 0.0f, 0.0f};
+
+
+    std::shared_ptr<Nodo> nodomalla1 = mtg.crearNodo(mtg.getRaiz(),entMALLA1,tras,esc,rot);
+    nodomalla1.get()->setEscalado(glm::vec3(0.01f));
+    nodomalla1.get()->setRotacion(glm::vec3(0.0f, 90.0f,0.0f));
+
+    std::shared_ptr<Nodo> nodomalla2 = mtg.crearNodo(mtg.getRaiz(),entMALLA2,tras,esc,rot);
+    nodomalla2.get()->setEscalado(glm::vec3(0.01f));
+
+    std::shared_ptr<Nodo> nodocamara = mtg.crearNodo(mtg.getRaiz(),entCAMARA,tras,esc,rot);
+    std::shared_ptr<Nodo> nodoluz = mtg.crearNodo(mtg.getRaiz(),entLUZ,tras,esc,rot);
+
+    int nCamara = mtg.registrarCamara(nodocamara);
+
+    int nLuz = mtg.registrarLuz(nodoluz);
+
     // Construcción de la jerarquía del árbol
     raiz->agregarHijo(hijo1);
     raiz->agregarHijo(hijo2);
-    raiz->agregarHijo(camara);
-    raiz->agregarHijo(luze);
+    raiz->agregarHijo(camaraNodo);
+    raiz->agregarHijo(luzNodo);
 
-    //Aplicar transformaciones
-    //raiz->setRotacion(glm::vec3(0.0f, 45.0f, 0.0f));
-    //hijo1->setEscalado(glm::vec3(1.5f, 1.5f, 1.5f));
+    // Aplicar transformaciones
     hijo2->setTraslacion(glm::vec3(1.0f, 0.0f, 0.0f));
     hijo1->setEscalado(glm::vec3(0.005f));
     hijo2->setEscalado(glm::vec3(0.01f));
-    
-    // Imprimir estructura del árbol
-    // cout << "Estructura del árbol:" << endl;
-    // imprimirArbol(raiz);   
 
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::scale(model, glm::vec3(0.005f));
@@ -127,33 +152,34 @@ int main() {
     float lastTime = glfwGetTime();
 
     glEnable(GL_DEPTH_TEST);
+
+    // imprimirArbol(raiz,0);
+
+    
     while (!window.shouldClose()) {
         shader3D->use();
         float currentTime = glfwGetTime();
         float deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
-        processInput(window, deltaTime);
-        //luz.aplicar(*shader3D);
+        processInput(window, deltaTime, mtg);
 
-        // glm::mat4 view = camara.getViewMatrix();
-        // shader3D->setMat4("view", view);
         shader3D->setMat4("projection", projection);
-        
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
         // Recorrer el árbol y dibujar los nodos    
-        //cout << "Recorriendo el árbol y dibujando nodos:" << endl;
         raiz->recorrer(glm::mat4(1.0f));
-        //ent2.draw(model2);
+
 
         model = glm::translate(glm::mat4(1.0f), glm::vec3(1.5f, 0.0f, 0.0f));
         shader3D->setMat4("model", model);
         Graphics3D::DrawCube(10.0f, 0.0f, 0.0f, 5.0f, 5.0f, 5.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), shader3D.get());
 
+        mtg.dibujarEscena();
+
         glDisable(GL_DEPTH_TEST);
-        //shader2D->use();
-        //shader2D->setMat4("projection", orthoProjection);
+
         Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
         Graphics2D::DrawRectangle(0.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
         Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
@@ -161,8 +187,7 @@ int main() {
         Graphics2D::DrawTexture(400.0f, 200.0f, 100.0f, 100.0f, textura2D);
 
         glBindVertexArray(0);
-
-        glEnable(GL_DEPTH_TEST);
+        
         shader3D->use();
         shader3D->setMat4("projection", projection);
 
@@ -170,7 +195,5 @@ int main() {
         window.pollEvents();
     }
 
-    // Liberar memoria
-    delete raiz;
     return 0;
 }

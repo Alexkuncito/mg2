@@ -3,6 +3,7 @@
 
 #include "recurso.hpp"
 #include "Shader.hpp"
+#include <string>
 
 struct RecursoShader : public Recurso {
 private:
@@ -10,8 +11,8 @@ private:
 
 public:
     // Constructor con nombre y rutas de los shaders
-    RecursoShader(const char* nombre, const std::string& rutaVertex, const std::string& rutaFragment)
-        : Recurso(nombre), shader(rutaVertex, rutaFragment) {}
+    RecursoShader(const std::string& rutaVertex, const std::string& rutaFragment)
+        : Recurso(rutaVertex), shader(rutaVertex, rutaFragment) {}
 
     // Activa el shader
     void Usar() const {

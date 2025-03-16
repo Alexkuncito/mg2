@@ -3,15 +3,9 @@
 #include <iomanip>
 
 // Implementación de la clase Nodo
-Nodo::Nodo(MGEntity* valor, int id) : entidad(valor), id(id), padre(nullptr), traslacion(0.0f), rotacion(0.0f), escalado(1.0f), actTrans(false) {
+Nodo::Nodo(std::shared_ptr<MGEntity> valor, int id) 
+    : entidad(valor), id(id), traslacion(0.0f), rotacion(0.0f), escalado(1.0f), actTrans(true) {
     matrizTrasf = calcularMatriz();
-}
-
-Nodo::~Nodo() {
-    for (Nodo* hijo : hijos) {
-        delete hijo;
-    }
-    hijos.clear();
 }
 
 glm::mat4 Nodo::calcularMatriz() {
@@ -19,54 +13,55 @@ glm::mat4 Nodo::calcularMatriz() {
     return trasladar(traslacion) * rotar(rotacion) * escalar(escalado);
 }
 
-void Nodo::agregarHijo(Nodo* nodo) {
-    nodo->padre = this;
+void Nodo::agregarHijo(std::shared_ptr<Nodo> nodo) {
+    nodo->padre = shared_from_this();
     hijos.push_back(nodo);
 }
 
-void Nodo::borrarHijo(Nodo* nodo) {
-    for (auto it = hijos.begin(); it != hijos.end(); ++it) {
-        if (*it == nodo) {
-            delete *it;
-            hijos.erase(it);
-        }
-    }
+
+void Nodo::borrarHijo(std::shared_ptr<Nodo> nodo) {
+    hijos.erase(std::remove(hijos.begin(), hijos.end(), nodo), hijos.end());
 }
 
-bool Nodo::setEntidad(MGEntity* val) {
+bool Nodo::setEntidad(std::shared_ptr<MGEntity> val) {
     entidad = val;
     return true;
 }
 
-MGEntity* Nodo::getEntidad() {
+std::shared_ptr<MGEntity> Nodo::getEntidad() {
     return entidad;
 }
 
-Nodo* Nodo::getPadre() {
-    return padre;
+std::shared_ptr<Nodo> Nodo::getPadre() {
+    return padre.lock(); // Convierte weak_ptr a shared_ptr
 }
 
-vector<Nodo*> Nodo::getHijos() {
+std::vector<std::shared_ptr<Nodo>> Nodo::getHijos() {
     return hijos;
 }
 
 void Nodo::activTrans() {
     actTrans = true;
-    for (Nodo* hijo : hijos) {
+    for (auto& hijo : hijos) {
         hijo->activTrans();
     }
 }
 
 void Nodo::recorrer(glm::mat4 matAcum) {
+    std::cout << "ENTRA JODER" << std::endl;
+
     if (actTrans) {
         matrizTrasf = matAcum * calcularMatriz();
     }
-
-    if(entidad != NULL) {
-        entidad->draw(matrizTrasf); // Llama a la función para dibujar el nodo
+    
+    if (entidad) {
+        entidad->draw(matrizTrasf);
     }
-
-    for (Nodo* hijo : hijos) {
+    else {
+        std::cout << "no se ve coño" << std::endl;
+    }
+    
+    for (auto& hijo : hijos) {
         hijo->recorrer(matrizTrasf);
     }
 }
@@ -116,27 +111,28 @@ glm::mat4 Nodo::getMatrizTransf() {
 
 // Funciones globales
 void imprimirMatriz(const glm::mat4& mat) {
-    cout << fixed << setprecision(6);
+    std::cout << std::fixed << std::setprecision(6);
     for (int i = 0; i < 4; ++i) {
-        cout << "| ";
+        std::cout << "| ";
         for (int j = 0; j < 4; ++j) {
-            cout << setw(12) << mat[i][j] << " | ";
+            std::cout << std::setw(12) << mat[i][j] << " | ";
         }
-        cout << endl;
+        std::cout << std::endl;
     }
-    cout << endl;
+    std::cout << std::endl;
 }
 
-void imprimirArbol(Nodo* nodo, int nivel) {
+void imprimirArbol(std::shared_ptr<Nodo> nodo, int nivel) {
     for (int i = 0; i < nivel; ++i) {
-        cout << "   ";
+        std::cout << "   ";
     }
     if (nivel > 0) {
-        cout << "+ ";
+        std::cout << "+ ";
     }
-    cout << "Nodo " << "UNO" << "." << endl;
+    std::cout << "Nodo " << nodo->getId() << "." << std::endl;
 
-    for (Nodo* hijo : nodo->getHijos()) {
+    for (auto& hijo : nodo->getHijos()) {
         imprimirArbol(hijo, nivel + 1);
     }
 }
+

@@ -12,12 +12,17 @@ private:
     TMaterial mat;
 
 public:
-    // Constructor por defecto
-    RecursoMaterial() : mat(glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(0.0f), 0.0f) {}
+    // Constructor con valores por defecto
+    RecursoMaterial() : Recurso(""), mat(glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(0.0f), 0.0f) {}
 
     // Constructor con valores
     RecursoMaterial(const glm::vec3& a, const glm::vec3& d, const glm::vec3& sp, float sh) 
-        : mat(a, d, sp, sh) {}
+        : Recurso(""), mat(a, d, sp, sh) {}
+
+    // Constructor con ruta de fichero
+    RecursoMaterial(const std::string& rutaFichero) : Recurso(rutaFichero), mat(glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(0.0f), 0.0f) {
+        cargarFichero(rutaFichero);
+    }
 
     // Retorna una copia del material
     TMaterial returnMaterial() const {
@@ -32,15 +37,7 @@ public:
             return false;
         }
 
-        // Obtener nombre del archivo y validar formato
-        std::string nombreArchivo = rutaFichero.substr(rutaFichero.find_last_of("/") + 1);
-        if (nombreArchivo.substr(0, 8) != "material" || nombreArchivo.find(".") == std::string::npos) {
-            std::cerr << "Error: Formato de nombre de archivo incorrecto." << std::endl;
-            return false;
-        }
-
-        size_t pos = nombreArchivo.find(".");
-        SetNombre(nombreArchivo.substr(8, pos - 8).c_str()); 
+        crearNombre(rutaFichero);
 
         // Leer propiedades del material
         glm::vec3 ambient, diffuse, specular;
@@ -72,4 +69,3 @@ public:
 };
 
 #endif
-

@@ -3,14 +3,18 @@
 
 
 // Método para obtener un recurso por su nombre
-Recurso* TGestorRecursos::getRecurso(const char* nombre) {
+Recurso* TGestorRecursos::getRecurso(const std::string& ruta) {
+    // Generar el nombre del recurso a partir de la ruta
+    std::string nombreGenerado = Recurso(ruta).crearNombre(ruta); // Crear el nombre del recurso basado en la ruta
+
     // Buscar el recurso en el vector
     for (auto rec : recursos) {
-        if (strcmp(rec->GetNombre(), nombre) == 0) {
+        // Comparar el nombre generado con el nombre del recurso almacenado
+        if (strcmp(rec->GetNombre(), nombreGenerado.c_str()) == 0) {
             return rec;  // Si lo encontramos, lo retornamos
         }
     }
-    return nullptr;
+    return nullptr; // Si no lo encontramos, retornamos nullptr
 }
 
 // Método para añadir un recurso al gestor

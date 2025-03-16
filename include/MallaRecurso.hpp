@@ -2,16 +2,21 @@
 #define RECURSOMALLA_HPP
 
 #include "recurso.hpp"
+#include "Fichero.hpp"
 #include "Mesh.hpp"
+#include <optional>
 
 struct RecursoMalla : public Recurso {
-    private:
-        Mesh malla;
-    public:
-        RecursoMalla(const Fichero& fichero, 
+private:
+    Mesh malla;
+
+public:
+    // Constructor de RecursoMalla que obtiene la ruta de Fichero y pasa a Recurso
+    RecursoMalla(const Fichero& fichero, 
                  std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, 
-                 std::optional<TMaterial> material = std::nullopt) 
-        : malla(fichero, textura, material) {}
+                 std::optional<TMaterial> material = std::nullopt)
+        : Recurso(fichero.getRuta()),
+          malla(fichero, textura, material) {}
 
     // Función para dibujar la malla
     void Dibujar() const {
@@ -23,7 +28,7 @@ struct RecursoMalla : public Recurso {
         malla.setMat(shader);
     }
 
-    Mesh returnMalla(){
+    Mesh returnMalla() {
         return malla;
     }
 };

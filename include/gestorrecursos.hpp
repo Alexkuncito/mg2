@@ -14,7 +14,7 @@ private:
 
 public:
     // Método para obtener un recurso
-    Recurso* getRecurso(const char* nombre);
+    Recurso* getRecurso(const std::string& ruta);
 
     // Método para añadir un recurso al gestor
     void add(Recurso* recurso);

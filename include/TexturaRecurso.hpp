@@ -10,8 +10,9 @@ private:
 
 public:
     // Constructor con nombre y ruta de textura
-    RecursoTextura(const char* nombre, const std::string& rutaTextura)
-        : Recurso(nombre), textura(rutaTextura) {}
+    RecursoTextura(const std::string& rutaTextura)
+    : Recurso(rutaTextura), textura(rutaTextura) {}
+
 
     // Enlaza la textura para su uso
     void Activar() const {
