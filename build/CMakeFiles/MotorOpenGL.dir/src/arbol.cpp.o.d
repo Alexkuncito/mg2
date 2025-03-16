@@ -1,5 +1,5 @@
-CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/src/main.cpp \
+CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o: \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/src/arbol.cpp \
  /usr/include/stdc-predef.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/arbol.hpp \
  /usr/include/c++/14.2.1/vector \
@@ -431,70 +431,13 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/optional \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Camara.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Luz.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Window.hpp \
- /usr/include/GLFW/glfw3.h \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Shader.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Camara.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Luz.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Fichero.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Graphics2D.hpp \
- /usr/include/c++/14.2.1/map /usr/include/c++/14.2.1/bits/stl_tree.h \
- /usr/include/c++/14.2.1/bits/stl_map.h \
- /usr/include/c++/14.2.1/bits/stl_multimap.h \
- /usr/include/freetype2/ft2build.h \
- /usr/include/freetype2/freetype/config/ftheader.h \
- /usr/include/freetype2/freetype/freetype.h \
- /usr/include/freetype2/ft2build.h \
- /usr/include/freetype2/freetype/config/ftconfig.h \
- /usr/include/freetype2/freetype/config/ftoption.h \
- /usr/include/freetype2/freetype/config/ftstdlib.h \
- /usr/include/c++/14.2.1/stdlib.h /usr/include/setjmp.h \
- /usr/include/freetype2/freetype/config/integer-types.h \
- /usr/include/freetype2/freetype/config/public-macros.h \
- /usr/include/freetype2/freetype/config/mac-support.h \
- /usr/include/freetype2/freetype/fttypes.h \
- /usr/include/freetype2/freetype/ftsystem.h \
- /usr/include/freetype2/freetype/ftimage.h \
- /usr/include/freetype2/freetype/fterrors.h \
- /usr/include/freetype2/freetype/ftmoderr.h \
- /usr/include/freetype2/freetype/fterrdef.h \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Graphics3D.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Mesh.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Material.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/recurso.hpp \
- /usr/include/c++/14.2.1/filesystem /usr/include/c++/14.2.1/bits/fs_fwd.h \
- /usr/include/c++/14.2.1/bits/chrono.h /usr/include/c++/14.2.1/ratio \
- /usr/include/c++/14.2.1/ctime \
- /usr/include/c++/14.2.1/bits/parse_numbers.h \
- /usr/include/c++/14.2.1/bits/fs_path.h /usr/include/c++/14.2.1/locale \
+ /usr/include/c++/14.2.1/iomanip /usr/include/c++/14.2.1/locale \
  /usr/include/c++/14.2.1/bits/locale_facets_nonio.h \
+ /usr/include/c++/14.2.1/ctime \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/time_members.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/messages_members.h \
  /usr/include/libintl.h /usr/include/c++/14.2.1/bits/codecvt.h \
  /usr/include/c++/14.2.1/bits/locale_facets_nonio.tcc \
  /usr/include/c++/14.2.1/bits/locale_conv.h \
- /usr/include/c++/14.2.1/iomanip \
  /usr/include/c++/14.2.1/bits/quoted_string.h \
- /usr/include/c++/14.2.1/sstream /usr/include/c++/14.2.1/bits/sstream.tcc \
- /usr/include/c++/14.2.1/codecvt /usr/include/c++/14.2.1/bits/fs_dir.h \
- /usr/include/c++/14.2.1/bits/fs_ops.h \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MaterialRecurso.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/recurso.hpp \
- /usr/include/c++/14.2.1/fstream \
- /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
- /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
- /usr/include/c++/14.2.1/bits/fstream.tcc \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/gestorrecursos.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MaterialRecurso.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MallaRecurso.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/TexturaRecurso.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/motortag.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/gestorrecursos.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/arbol.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/string_cast.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/../gtc/type_precision.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/../gtc/type_precision.inl \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/../gtx/dual_quaternion.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/../gtx/dual_quaternion.inl \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/string_cast.inl \
- /usr/include/c++/14.2.1/cstdarg
+ /usr/include/c++/14.2.1/sstream /usr/include/c++/14.2.1/bits/sstream.tcc
