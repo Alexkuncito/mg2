@@ -81,30 +81,45 @@ int main() {
     float fov = glm::radians(45.0f);
     glm::mat4 projection = glm::perspective(fov, (float)window.width / (float)window.height, 0.1f, 100.0f);
 
-    RecursoMaterial* mat1 = dynamic_cast<RecursoMaterial*>(rec.getRecurso("../material/materialJade.txt"));
     Textura textura2D("../textures/enemigo.png");
 
-    rec.ImprimirRecursos();
-
+    //rec.ImprimirRecursos();
 
 
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
-    Mesh mesh(fichero, nullopt, mat1->returnMaterial());
+
+    std::shared_ptr<RecursoMaterial> mat1 = std::dynamic_pointer_cast<RecursoMaterial>(rec.getRecurso("../material/materialGold.txt"));
+    TMaterial* rawMaterial = mat1->returnMaterial().get();
+    TMaterial& prueba = *rawMaterial;
+    TMaterial pruebaconv = prueba;
+
+    std::shared_ptr<RecursoMaterial> mat2 = std::dynamic_pointer_cast<RecursoMaterial>(rec.getRecurso("../material/materialPearl.txt"));
+    TMaterial* rawMaterial2 = mat2->returnMaterial().get();
+    TMaterial& prueba2 = *rawMaterial2;
+    TMaterial pruebaconv2 = prueba2;
+
+
+    Mesh mesh(fichero, nullopt, prueba);
 
     // Uso de shared_ptr para las entidades
-    std::shared_ptr<MGEntity> entMALLA1 = std::make_shared<MGMesh>(shader3D, std::make_shared<Mesh>(mesh));
 
     Fichero fichero2("../models/cubo.obj");
-    Mesh mesh2(fichero2, textura);
-    std::shared_ptr<MGEntity> entMALLA2 = std::make_shared<MGMesh>(std::make_shared<Shader>(*shader3D), std::make_shared<Mesh>(mesh2));
+    Mesh mesh2(fichero2, textura, prueba2);
+
+    //std::shared_ptr<MGMesh> entMALLA1 = std::make_shared<MGMesh>(shader3D, std::make_shared<Mesh>(mesh));
+    std::shared_ptr<MGMesh> entMALLA1 = mtg.crearMalla(shader3D, fichero, nullopt, pruebaconv);
+
+    
+    //std::shared_ptr<MGEntity> entMALLA2 = std::make_shared<MGMesh>(std::make_shared<Shader>(*shader3D), std::make_shared<Mesh>(mesh2));
+    std::shared_ptr<MGEntity> entMALLA2 = mtg.crearMalla(shader3D, fichero2, nullopt, pruebaconv2);
 
 
     std::shared_ptr<MGEntity> entCAMARA = std::make_shared<MGCamara>(shader3D, std::make_shared<Camara>(camara));
     std::shared_ptr<MGEntity> entLUZ = std::make_shared<MGLuz>(shader3D, std::make_shared<Luz>(luz));
-
     std::shared_ptr<MGEntity> entVACIA = std::make_shared<MGEntity>(shader3D);
 
+    //std::shared_ptr<MGEntity> entMALLA1gr = mtg.crearMalla();
     // Creación de nodos con shared_ptr
     std::shared_ptr<Nodo> raiz = std::make_shared<Nodo>(entVACIA, 0);
     std::shared_ptr<Nodo> hijo1 = std::make_shared<Nodo>(entMALLA1, 1);
@@ -154,7 +169,7 @@ int main() {
     glEnable(GL_DEPTH_TEST);
 
     // imprimirArbol(raiz,0);
-
+    mtg.pinta();
     
     while (!window.shouldClose()) {
         shader3D->use();

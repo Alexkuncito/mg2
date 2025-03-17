@@ -99,3 +99,25 @@ void TMotorTAG::dibujarEscena() {
     }
 }
 
+
+std::shared_ptr<MGMesh> TMotorTAG::crearMalla(std::shared_ptr<Shader> shader, const Fichero& fichero, 
+                                              std::optional<std::reference_wrapper<const Textura>> textura, 
+                                              std::optional<TMaterial> material) {
+    
+    std::shared_ptr<Recurso> recurso = gestorRecursos.get()->getRecurso(fichero.getRuta());
+    std::shared_ptr<RecursoMalla> recursoMalla = std::dynamic_pointer_cast<RecursoMalla>(recurso);
+
+    if (!recursoMalla) {
+        recursoMalla = std::make_shared<RecursoMalla>(fichero, textura, material);
+        gestorRecursos.get()->add(recursoMalla);
+    }
+
+    std::shared_ptr<Mesh> mallaMesh = recursoMalla->returnMalla();
+
+    std::shared_ptr<MGMesh> malla = std::make_shared<MGMesh>(shader, mallaMesh);
+
+    return malla;
+}
+
+
+

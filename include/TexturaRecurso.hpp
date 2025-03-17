@@ -24,9 +24,8 @@ public:
         textura.unbind();
     }
 
-    // Devuelve una referencia a la textura
-    const Textura& ObtenerTextura() const {
-        return textura;
+    std::shared_ptr<Textura> returnTextura() {
+        return std::make_shared<Textura>(textura);
     }
 };
 

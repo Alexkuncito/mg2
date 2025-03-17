@@ -66,6 +66,10 @@ public:
         mat = TMaterial(ambient, diffuse, specular, shininess);
         return true;
     }
+
+    std::shared_ptr<TMaterial> returnMaterial() {
+        return std::make_shared<TMaterial>(mat);
+    }
 };
 
 #endif

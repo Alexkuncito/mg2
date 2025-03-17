@@ -24,6 +24,10 @@ public:
         return shader;
     }
 
+    std::shared_ptr<Shader> returnShader() {
+        return std::make_shared<Shader>(shader);
+    }
+    
     // Obtiene una referencia constante al shader
     const Shader& ObtenerShader() const {
         return shader;

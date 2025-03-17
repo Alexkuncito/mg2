@@ -54,6 +54,8 @@ struct TMotorTAG{
 
         void dibujarEscena();
 
+        void pinta(){gestorRecursos.get()->ImprimirRecursos();}
+
 
         std::shared_ptr<Nodo> getRaiz(){return escena;};
 
