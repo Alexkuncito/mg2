@@ -21,6 +21,8 @@ void Graphics2D::DrawRectangle(float x, float y, float width, float height, glm:
     shader2D->setMat4("projection", orthoProjection);
     shader2D->setVec4("color", color);
 
+    glDisable(GL_DEPTH_TEST);
+
     float vertices[] = {
         x, y, 0.0f,         // Top-left
         x + width, y, 0.0f, // Top-right
@@ -57,7 +59,9 @@ void Graphics2D::DrawCircle(float x, float y, float radius, glm::vec4 color) {
     shader2D->use();
     shader2D->setMat4("projection", orthoProjection);
     shader2D->setVec4("color", color);
-    
+
+    glDisable(GL_DEPTH_TEST);
+
     const int numSegments = 50;
     float vertices[numSegments * 3];
 
@@ -175,6 +179,7 @@ void Graphics2D::LoadFont(const std::string& fontPath, unsigned int fontSize) {
 }
 
 void Graphics2D::DrawText(std::string text, float x, float y, float scale, glm::vec3 color) {
+    glDisable(GL_DEPTH_TEST);
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
@@ -243,6 +248,8 @@ void Graphics2D::DrawText(std::string text, float x, float y, float scale, glm::
 void Graphics2D::DrawTexture(float x, float y, float width, float height, const Textura& texture) {
     shaderTexture2D->use();
     shaderTexture2D->setMat4("projection", orthoProjection);
+
+    glDisable(GL_DEPTH_TEST);
     
     float vertices[] = {
         x, y, 0.0f, 0.0f, 1.0f, // Top-left

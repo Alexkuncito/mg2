@@ -15,7 +15,7 @@ struct TMotorTAG{
         std::vector<std::shared_ptr<Nodo>> regLuces;    // Usar shared_ptr en lugar de Nodo*
 
     public:
-        TMotorTAG(std::shared_ptr<Shader> shader) {
+        TMotorTAG(std::shared_ptr<Shader> shader) {     //Cambiar para que tome el shader ese
             
             std::shared_ptr<MGEntity> entVACIA = std::make_shared<MGEntity>(shader);
 

@@ -30,6 +30,7 @@ Luz luz(
     glm::vec3(1.0f, 1.0f, 1.0f),
     1.0f);
 
+//Esto en motor TAG
 void processInput(Window& window, float deltaTime, TMotorTAG& mtg) {
     GLFWwindow* glfwWindow = window.getNativeWindow();
     
@@ -55,37 +56,37 @@ void processInput(Window& window, float deltaTime, TMotorTAG& mtg) {
         camaraActiva->rotateRight(deltaTime);
 }
 
-
+//Esto en motor TAG o Graphics3D
 std::shared_ptr<Shader> shader3D;
-std::shared_ptr<Shader> shader2D;
 
-void init2D() {
-    shader2D = std::make_shared<Shader>("../shaders/vertex_2d.glsl", "../shaders/fragment_2d.glsl");
-}
-
+//Esto en motor TAG o Graphics3D
 void init3D() {
     shader3D = std::make_shared<Shader>("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
 }
 
 int main() {
+    //Esto en motor TAG como crearVentana(ancho, alto, nombre)
     Window window(800, 600, "Motor OpenGL 3D");
 
     init3D();
+
+    //Esto en motor TAG como init2D
     Graphics2D::init2D();
+
+    //Esto en motor TAG como cargarFuente(fuente, tamaño)
     Graphics2D::LoadFont("../fonts/jack-of-gears.regular.ttf", 48);
 
+    //INSANE hay que ver que cambiar y como
     TMotorTAG mtg(shader3D);
     TGestorRecursos rec;
     rec.cargarMateriales();
 
+    //Esto en motor TAG como setProyeccion(fov)
     float fov = glm::radians(45.0f);
     glm::mat4 projection = glm::perspective(fov, (float)window.width / (float)window.height, 0.1f, 100.0f);
 
+    //Todo el manejo este de cosas en el motor TAG para cargar y crear meshes y todo ese rollo
     Textura textura2D("../textures/enemigo.png");
-
-    //rec.ImprimirRecursos();
-
-
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
 
@@ -102,13 +103,11 @@ int main() {
 
     Mesh mesh(fichero, nullopt, prueba);
 
-    // Uso de shared_ptr para las entidades
-
     Fichero fichero2("../models/cubo.obj");
     Mesh mesh2(fichero2, textura, prueba2);
 
     //std::shared_ptr<MGMesh> entMALLA1 = std::make_shared<MGMesh>(shader3D, std::make_shared<Mesh>(mesh));
-    std::shared_ptr<MGMesh> entMALLA1 = mtg.crearMalla(shader3D, fichero, nullopt, pruebaconv);
+    std::shared_ptr<MGMesh> entMALLA1 = mtg.crearMalla(shader3D, fichero, textura);
 
     
     //std::shared_ptr<MGEntity> entMALLA2 = std::make_shared<MGMesh>(std::make_shared<Shader>(*shader3D), std::make_shared<Mesh>(mesh2));
@@ -172,42 +171,37 @@ int main() {
     mtg.pinta();
     
     while (!window.shouldClose()) {
-        shader3D->use();
+        //No se como pasar esto al motor TAG (todo lo de el window.shouldClose() y lo de abajo)
+        window.swapBuffers();
+        window.pollEvents();
+
         float currentTime = glfwGetTime();
         float deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         processInput(window, deltaTime, mtg);
 
+        //Esto se deberá hacer cada vez que se quiera pintar algo 3D
+        shader3D->use();
+        glEnable(GL_DEPTH_TEST);
+        glDepthFunc(GL_LESS);
         shader3D->setMat4("projection", projection);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        mtg.dibujarEscena();
 
-
-        // Recorrer el árbol y dibujar los nodos    
-        raiz->recorrer(glm::mat4(1.0f));
-
-
-        model = glm::translate(glm::mat4(1.0f), glm::vec3(1.5f, 0.0f, 0.0f));
+        //Esto se tiene que hacer en el motor TAG de alguna manera no tengo ni idea
+        model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
         shader3D->setMat4("model", model);
         Graphics3D::DrawCube(10.0f, 0.0f, 0.0f, 5.0f, 5.0f, 5.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), shader3D.get());
 
-        mtg.dibujarEscena();
-
-        glDisable(GL_DEPTH_TEST);
-
+        //Cada uno de estos tendrán sus funciones equivalentes en el motor TAG
         Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
         Graphics2D::DrawRectangle(0.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
         Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
         Graphics2D::DrawText("Hola Alex", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
         Graphics2D::DrawTexture(400.0f, 200.0f, 100.0f, 100.0f, textura2D);
 
-        glBindVertexArray(0);
         
-        shader3D->use();
-        shader3D->setMat4("projection", projection);
-
-        window.swapBuffers();
-        window.pollEvents();
     }
 
     return 0;
