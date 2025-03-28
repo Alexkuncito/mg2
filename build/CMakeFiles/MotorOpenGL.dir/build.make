@@ -156,38 +156,10 @@ CMakeFiles/MotorOpenGL.dir/src/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/MotorOpenGL.dir/src/glad.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/cpc/Escritorio/Carpeta nueva/mg2/src/glad.c" -o CMakeFiles/MotorOpenGL.dir/src/glad.c.s
 
-CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: CMakeFiles/MotorOpenGL.dir/flags.make
-CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: /home/cpc/Escritorio/Carpeta\ nueva/mg2/src/gestorRecursos.cpp
-CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/cpc/Escritorio/Carpeta nueva/mg2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o -c "/home/cpc/Escritorio/Carpeta nueva/mg2/src/gestorRecursos.cpp"
-
-CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/cpc/Escritorio/Carpeta nueva/mg2/src/gestorRecursos.cpp" > CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.i
-
-CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/cpc/Escritorio/Carpeta nueva/mg2/src/gestorRecursos.cpp" -o CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.s
-
-CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: CMakeFiles/MotorOpenGL.dir/flags.make
-CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: /home/cpc/Escritorio/Carpeta\ nueva/mg2/src/motortag.cpp
-CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/cpc/Escritorio/Carpeta nueva/mg2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o -c "/home/cpc/Escritorio/Carpeta nueva/mg2/src/motortag.cpp"
-
-CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/cpc/Escritorio/Carpeta nueva/mg2/src/motortag.cpp" > CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.i
-
-CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/cpc/Escritorio/Carpeta nueva/mg2/src/motortag.cpp" -o CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.s
-
 CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o: CMakeFiles/MotorOpenGL.dir/flags.make
 CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o: /home/cpc/Escritorio/Carpeta\ nueva/mg2/src/arbol.cpp
 CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/cpc/Escritorio/Carpeta nueva/mg2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/cpc/Escritorio/Carpeta nueva/mg2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o -c "/home/cpc/Escritorio/Carpeta nueva/mg2/src/arbol.cpp"
 
 CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.i: cmake_force
@@ -201,7 +173,7 @@ CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.s: cmake_force
 CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o: CMakeFiles/MotorOpenGL.dir/flags.make
 CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o: /home/cpc/Escritorio/Carpeta\ nueva/mg2/src/entidad.cpp
 CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/cpc/Escritorio/Carpeta nueva/mg2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/cpc/Escritorio/Carpeta nueva/mg2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o -c "/home/cpc/Escritorio/Carpeta nueva/mg2/src/entidad.cpp"
 
 CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.i: cmake_force
@@ -212,6 +184,34 @@ CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/cpc/Escritorio/Carpeta nueva/mg2/src/entidad.cpp" -o CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.s
 
+CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: CMakeFiles/MotorOpenGL.dir/flags.make
+CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: /home/cpc/Escritorio/Carpeta\ nueva/mg2/src/gestorRecursos.cpp
+CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/cpc/Escritorio/Carpeta nueva/mg2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o -c "/home/cpc/Escritorio/Carpeta nueva/mg2/src/gestorRecursos.cpp"
+
+CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/cpc/Escritorio/Carpeta nueva/mg2/src/gestorRecursos.cpp" > CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.i
+
+CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/cpc/Escritorio/Carpeta nueva/mg2/src/gestorRecursos.cpp" -o CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.s
+
+CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: CMakeFiles/MotorOpenGL.dir/flags.make
+CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: /home/cpc/Escritorio/Carpeta\ nueva/mg2/src/motortag.cpp
+CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/cpc/Escritorio/Carpeta nueva/mg2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o -c "/home/cpc/Escritorio/Carpeta nueva/mg2/src/motortag.cpp"
+
+CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/cpc/Escritorio/Carpeta nueva/mg2/src/motortag.cpp" > CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.i
+
+CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/cpc/Escritorio/Carpeta nueva/mg2/src/motortag.cpp" -o CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.s
+
 # Object files for target MotorOpenGL
 MotorOpenGL_OBJECTS = \
 "CMakeFiles/MotorOpenGL.dir/src/main.cpp.o" \
@@ -220,10 +220,10 @@ MotorOpenGL_OBJECTS = \
 "CMakeFiles/MotorOpenGL.dir/src/Graphics2D.cpp.o" \
 "CMakeFiles/MotorOpenGL.dir/src/Graphics3D.cpp.o" \
 "CMakeFiles/MotorOpenGL.dir/src/glad.c.o" \
-"CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o" \
-"CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o" \
 "CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o" \
-"CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o"
+"CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o" \
+"CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o" \
+"CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o"
 
 # External object files for target MotorOpenGL
 MotorOpenGL_EXTERNAL_OBJECTS =
@@ -234,10 +234,10 @@ MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/Textura.cpp.o
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/Graphics2D.cpp.o
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/Graphics3D.cpp.o
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/glad.c.o
-MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o
-MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/entidad.cpp.o
+MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o
+MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/build.make
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
 MotorOpenGL: /usr/lib/libglfw.so.3.4

@@ -431,6 +431,7 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/optional \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Camara.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Luz.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/entidad.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Window.hpp \
  /usr/include/GLFW/glfw3.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Shader.hpp \

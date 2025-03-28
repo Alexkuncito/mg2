@@ -3,8 +3,8 @@
 #include <iomanip>
 
 // Implementación de la clase Nodo
-Nodo::Nodo(std::shared_ptr<MGEntity> valor, int id) 
-    : entidad(valor), id(id), traslacion(0.0f), rotacion(0.0f), escalado(1.0f), actTrans(true) {
+Nodo::Nodo(MGEntity* valor) 
+    : entidad(valor), padre(nullptr), traslacion(0.0f), rotacion(0.0f), escalado(0.005f), actTrans(true) {
     matrizTrasf = calcularMatriz();
 }
 
@@ -13,30 +13,31 @@ glm::mat4 Nodo::calcularMatriz() {
     return trasladar(traslacion) * rotar(rotacion) * escalar(escalado);
 }
 
-void Nodo::agregarHijo(std::shared_ptr<Nodo> nodo) {
-    nodo->padre = shared_from_this();
+void Nodo::agregarHijo(Nodo* nodo) {
+    nodo->padre = this;
     hijos.push_back(nodo);
 }
 
 
-void Nodo::borrarHijo(std::shared_ptr<Nodo> nodo) {
+void Nodo::borrarHijo(Nodo* nodo) {
     hijos.erase(std::remove(hijos.begin(), hijos.end(), nodo), hijos.end());
 }
 
-bool Nodo::setEntidad(std::shared_ptr<MGEntity> val) {
+
+bool Nodo::setEntidad(MGEntity* val) {
     entidad = val;
     return true;
 }
 
-std::shared_ptr<MGEntity> Nodo::getEntidad() {
+MGEntity* Nodo::getEntidad() {
     return entidad;
 }
 
-std::shared_ptr<Nodo> Nodo::getPadre() {
-    return padre.lock(); // Convierte weak_ptr a shared_ptr
+Nodo* Nodo::getPadre() {
+    return padre; // Convierte weak_ptr a shared_ptr
 }
 
-std::vector<std::shared_ptr<Nodo>> Nodo::getHijos() {
+std::vector<Nodo*> Nodo::getHijos() {
     return hijos;
 }
 
@@ -48,17 +49,12 @@ void Nodo::activTrans() {
 }
 
 void Nodo::recorrer(glm::mat4 matAcum) {
-    std::cout << "ENTRA JODER" << std::endl;
-
     if (actTrans) {
         matrizTrasf = matAcum * calcularMatriz();
     }
     
     if (entidad) {
         entidad->draw(matrizTrasf);
-    }
-    else {
-        std::cout << "no se ve coño" << std::endl;
     }
     
     for (auto& hijo : hijos) {
@@ -122,17 +118,40 @@ void imprimirMatriz(const glm::mat4& mat) {
     std::cout << std::endl;
 }
 
-void imprimirArbol(std::shared_ptr<Nodo> nodo, int nivel) {
+void imprimirArbol(Nodo* nodo, int nivel) {
+    if (!nodo) {  // Si el nodo es nulo, salimos para evitar el error
+        std::cout << "Error: Nodo inválido en nivel " << nivel << std::endl;
+        return;
+    }
+
     for (int i = 0; i < nivel; ++i) {
         std::cout << "   ";
     }
     if (nivel > 0) {
         std::cout << "+ ";
     }
-    std::cout << "Nodo " << nodo->getId() << "." << std::endl;
 
-    for (auto& hijo : nodo->getHijos()) {
+    // Verificar que getEntidad() no sea nullptr
+    MGEntity* entidad = nodo->getEntidad();
+    if (!entidad) {
+        std::cout << "Nodo sin entidad en nivel " << nivel << std::endl;
+    } else {
+        std::cout << "Nodo: " << entidad->getTipo() << "." << std::endl;
+    }
+
+    // Verificar los hijos
+    auto hijos = nodo->getHijos();
+    if (hijos.empty()) {
+        std::cout << "   (sin hijos)" << std::endl;
+    }
+
+    for (auto* hijo : hijos) {
+        if (!hijo) {
+            std::cout << "Advertencia: nodo hijo nulo en nivel " << nivel << std::endl;
+            continue;
+        }
         imprimirArbol(hijo, nivel + 1);
     }
 }
+
 

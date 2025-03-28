@@ -8,43 +8,38 @@
 
 struct TMotorTAG{
     private:
-        std::shared_ptr<Nodo> escena;  // Usar shared_ptr en lugar de Nodo*
-        std::shared_ptr<TGestorRecursos> gestorRecursos;  // Usar shared_ptr en lugar de TGestorRecursos*
+        TGestorRecursos gestorRecursos;
 
-        std::vector<std::shared_ptr<Nodo>> regCamaras;  // Usar shared_ptr en lugar de Nodo*
-        std::vector<std::shared_ptr<Nodo>> regLuces;    // Usar shared_ptr en lugar de Nodo*
+        std::unordered_map<int, std::unique_ptr<Nodo>> gnodos;
+
+        Nodo* escena;
+        int cantnode;
+
+        std::vector<Nodo*> regCamaras;
+        std::vector<Nodo*> regLuces;
 
     public:
-        TMotorTAG(std::shared_ptr<Shader> shader) {     //Cambiar para que tome el shader ese
-            
-            std::shared_ptr<MGEntity> entVACIA = std::make_shared<MGEntity>(shader);
-
-            // Crear el nodo raíz
-            escena = std::make_shared<Nodo>(entVACIA, 0);
-
-            // Inicializamos el gestor de recursos
-            gestorRecursos = std::make_shared<TGestorRecursos>();
-
-            // Inicializamos las cámaras y luces
-            regCamaras = std::vector<std::shared_ptr<Nodo>>();
-            regLuces = std::vector<std::shared_ptr<Nodo>>();
+        TMotorTAG(Shader* shader) : cantnode(0), escena(nullptr){     //Cambiar para que tome el shader ese
+            gnodos[cantnode] = make_unique<Nodo>();
+            escena = gnodos[cantnode].get();
+            cantnode+=1;
         }
 
 
         // Cambiar los parámetros para que usen shared_ptr
-        std::shared_ptr<Nodo> crearNodo(std::shared_ptr<Nodo> padre, std::shared_ptr<MGEntity> ent, glm::vec3 traslacion, glm::vec3 escalado, glm::vec3  rotacion);
-        std::shared_ptr<MGCamara> crearCamara(std::shared_ptr<Shader> shader, std::shared_ptr<Camara> camara);
-        std::shared_ptr<MGLuz> crearLuz(std::shared_ptr<Shader> shader, std::shared_ptr<Luz> luz);
-        std::shared_ptr<MGMesh> crearMalla(std::shared_ptr<Shader> shader, const Fichero& fichero, 
+        Nodo* crearNodo(Nodo* padre, MGEntity* ent, glm::vec3 traslacion, glm::vec3 escalado, glm::vec3  rotacion);
+        MGCamara crearCamara(Shader* shader, Camara* camara);
+        MGLuz crearLuz(Shader* shader, Luz* luz);
+        MGMesh crearMalla(Shader* shader, const Fichero& fichero, 
         std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, 
         std::optional<TMaterial> material = std::nullopt);
 
-        void deleteCamara(std::shared_ptr<MGCamara> cam);
-        void deleteLuz(std::shared_ptr<MGLuz> luz);
-        void deleteMalla(std::shared_ptr<MGMesh> mall);
+        void deleteCamara(MGCamara* cam);
+        void deleteLuz(MGLuz* luz);
+        void deleteMalla(MGMesh* mall);
 
-        int registrarCamara(std::shared_ptr<Nodo> cam);
-        int registrarLuz(std::shared_ptr<Nodo> luz);
+        int registrarCamara(Nodo* cam);
+        int registrarLuz(Nodo* luz);
 
         void activarCamara(int v);
         void activarLuz(int v);
@@ -54,34 +49,36 @@ struct TMotorTAG{
 
         void dibujarEscena();
 
-        void pinta(){gestorRecursos.get()->ImprimirRecursos();}
+        void pinta(){
+            gestorRecursos.ImprimirRecursos();
+            if (escena) {
+                imprimirArbol(escena, 0);
+            } else {
+                std::cout << "Error: escena es nullptr" << std::endl;
+            }
+        }
 
 
-        std::shared_ptr<Nodo> getRaiz(){return escena;};
+        Nodo* getRaiz(){return escena;};
 
-    std::shared_ptr<Camara> getCamaraActiva() {
-    if (!regCamaras.empty()) {
-        std::shared_ptr<Nodo> nodoCamara = regCamaras[0];
-        std::shared_ptr<MGEntity> entidad = nodoCamara->getEntidad();
-        
-        // Imprime el tipo de entidad para depuración
-        std::cout << "Tipo de entidad: " << typeid(*entidad).name() << std::endl;
-        
-        // Intenta hacer la conversión de la entidad a MGCamara
-        std::shared_ptr<MGCamara> mgCamara = std::dynamic_pointer_cast<MGCamara>(entidad);
-        
-        if (mgCamara) {
-            // Si la conversión es exitosa, devuelve la cámara
-            return mgCamara->getCamera();
+    Camara* getCamaraActiva() {
+        if (!regCamaras.empty()) {
+            Nodo* nodoCamara = regCamaras[0];
+            MGEntity* entidad = nodoCamara->getEntidad();
+            
+            MGCamara* mgCamara = dynamic_cast<MGCamara*>(entidad);
+            
+            if (mgCamara) {
+                return mgCamara->getCamera();
+            } else {
+                std::cout << "No se pudo convertir la entidad a MGCamara" << std::endl;
+                return nullptr;
+            }
         } else {
-            std::cout << "No se pudo convertir la entidad a MGCamara" << std::endl;
+            std::cout << "No detecta cámaras" << std::endl;
             return nullptr;
         }
-    } else {
-        std::cout << "No detecta cámaras" << std::endl;
-        return nullptr;
     }
-}
 
 };
 

@@ -117,10 +117,8 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/recurso.hpp \
- /usr/include/c++/14.2.1/cstring /usr/include/string.h \
- /usr/include/strings.h /usr/include/c++/14.2.1/iostream \
- /usr/include/c++/14.2.1/ostream /usr/include/c++/14.2.1/ios \
- /usr/include/c++/14.2.1/bits/char_traits.h \
+ /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/ostream \
+ /usr/include/c++/14.2.1/ios /usr/include/c++/14.2.1/bits/char_traits.h \
  /usr/include/c++/14.2.1/bits/localefwd.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
  /usr/include/c++/14.2.1/clocale /usr/include/locale.h \
@@ -421,6 +419,8 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/../gtc/../ext/vector_int1_sized.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
+ /usr/include/c++/14.2.1/cstring /usr/include/string.h \
+ /usr/include/strings.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/type_ptr.inl \
  /usr/include/c++/14.2.1/fstream \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \

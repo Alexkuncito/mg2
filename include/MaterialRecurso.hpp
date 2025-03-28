@@ -67,8 +67,8 @@ public:
         return true;
     }
 
-    std::shared_ptr<TMaterial> returnMaterial() {
-        return std::make_shared<TMaterial>(mat);
+    TMaterial* returnMaterial() {
+        return &mat;
     }
 };
 

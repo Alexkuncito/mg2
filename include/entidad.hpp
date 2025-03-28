@@ -15,36 +15,41 @@ struct MGEntity
 {
 public:
     MGEntity() {};
-    MGEntity(std::shared_ptr<Shader> shader);  // Declaración del constructor
+    MGEntity(Shader* shader);  // Declaración del constructor
     virtual void draw(glm::mat4 mat);
-    MGEntity(const std::shared_ptr<MGEntity>& other) : shader(other->shader) {}
+    MGEntity(const MGEntity& other) : shader(other.shader) {}
+    virtual std::string getTipo() const { return "ESTANDAR"; }
 
 protected:
-    std::shared_ptr<Shader> shader; // Cambio a shared_ptr
+    Shader* shader; // Cambio a shared_ptr
 };
 
 // Clase derivada para representar una malla
 struct MGMesh : public MGEntity
 {
 public:
-    MGMesh(std::shared_ptr<Shader> shader, std::shared_ptr<Mesh> malla); // Cambio a shared_ptr
+    MGMesh(Shader* shader, Mesh* malla); // Cambio a shared_ptr
     void draw(glm::mat4 mat) override;
+    virtual std::string getTipo() const { return "MESH"; }
+
 private:
-    std::shared_ptr<Mesh> malla; // Cambio a shared_ptr
+    Mesh* malla; // Cambio a shared_ptr
 };
 
 // Clase derivada para representar una cámara
 struct MGCamara : public MGEntity
 {
 public:
-    MGCamara(std::shared_ptr<Shader> shader, std::shared_ptr<Camara> camara); // Cambio a shared_ptr
+    MGCamara(Shader* shader, Camara* camara); // Cambio a shared_ptr
     void draw(glm::mat4 mat) override;
     void activar() { activa = true; }
     void desactivar() { activa = false; }
     bool esActiva() {return activa; }
-    std::shared_ptr<Camara> getCamera() {return camara;}
+    Camara* getCamera() {return camara;}
+    virtual std::string getTipo() const { return "CAMARA"; }
+
 private:
-    std::shared_ptr<Camara> camara; // Cambio a shared_ptr
+    Camara* camara; // Cambio a shared_ptr
     bool activa = false;
 };
 
@@ -52,13 +57,15 @@ private:
 struct MGLuz : public MGEntity
 {
 public:
-    MGLuz(std::shared_ptr<Shader> shader, std::shared_ptr<Luz> luz); // Cambio a shared_ptr
+    MGLuz(Shader* shader, Luz* luz);
     void draw(glm::mat4 mat) override;
     void activar() { activa = true; }
     void desactivar() { activa = false; }
     bool esActiva() {return activa; }
+    virtual std::string getTipo() const { return "LUZ"; }
+
 private:
-    std::shared_ptr<Luz> luz; // Cambio a shared_ptr
+    Luz* luz;
     bool activa = false;
 };
 

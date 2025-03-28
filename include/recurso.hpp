@@ -1,7 +1,6 @@
 #ifndef RECURSO_HPP
 #define RECURSO_HPP
 
-#include <cstring> // Para strlen y strcpy
 #include <iostream> // Para imprimir en consola
 #include <filesystem>
 
@@ -9,28 +8,22 @@ namespace fs = std::filesystem;
 
 struct Recurso {
 private:
-    char* nombre;
+    std::string nombre;
 public:
-    Recurso(const std::string& ruta) : nombre(nullptr) {
+    Recurso() : nombre("") {}
+
+    Recurso(const std::string& ruta) {
         crearNombre(ruta);
     }
-    
-    virtual ~Recurso() {
-        delete[] nombre;
-    }
 
-    const char* GetNombre() const {
+    virtual ~Recurso() = default;
+
+    const std::string& GetNombre() const {
         return nombre;
     }
 
-    void SetNombre(const char* nuevoNombre) {
-        delete[] nombre;
-        if (nuevoNombre) {
-            nombre = new char[strlen(nuevoNombre) + 1];
-            strcpy(nombre, nuevoNombre);
-        } else {
-            nombre = new char[1]{'\0'}; // Asignar un string vacío en lugar de nullptr
-        }
+    void SetNombre(const std::string& nuevoNombre) {
+        nombre = nuevoNombre;
     }
 
     std::string crearNombre(const std::string& ruta) {
@@ -45,14 +38,13 @@ public:
         std::cout << "Nombre del archivo sin extensión: " << nombreArchivo << std::endl;
         std::cout << "Nombre generado: " << nuevoNombre << std::endl;
 
-        SetNombre(nuevoNombre.c_str());
+        SetNombre(nuevoNombre);
         return nuevoNombre;
     }
 
-
     // Función que imprime el nombre
     void ImprimirNombre() const {
-        if (nombre) {
+        if (!nombre.empty()) {
             std::cout << "Nombre: " << nombre << std::endl;
         } else {
             std::cout << "Nombre no asignado" << std::endl;

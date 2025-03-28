@@ -79,6 +79,7 @@
         "variant": "cpp",
         "unordered_set": "cpp",
         "any": "cpp",
-        "codecvt": "cpp"
+        "codecvt": "cpp",
+        "*.ipp": "cpp"
     }
 }

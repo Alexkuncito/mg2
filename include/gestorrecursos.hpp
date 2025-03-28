@@ -8,17 +8,17 @@
 #include "MallaRecurso.hpp"
 #include <cstring>
 #include <iostream>
+#include <unordered_map>
 
 class TGestorRecursos {
 private:
-    std::vector<std::shared_ptr<Recurso>> recursos;
-
+    std::unordered_map<std::string, std::unique_ptr<Recurso>> recursos;
 public:
     // Método para obtener un recurso
-    std::shared_ptr<Recurso> getRecurso(const std::string& ruta);
+    Recurso* getRecurso(const std::string& ruta);
 
-    // Método para añadir un recurso al gestor
-    void add(std::shared_ptr<Recurso> recurso);
+    // En gestorrecursos.hpp
+    void add(std::unique_ptr<Recurso> recurso);
 
     // Para imprimir los recursos en el gestor (para depuración)
     void ImprimirRecursos() const;

@@ -20,10 +20,10 @@ add_executable(MotorOpenGL
     src/Graphics2D.cpp
     src/Graphics3D.cpp
     src/glad.c
-    src/gestorRecursos.cpp
-    src/motortag.cpp
     src/arbol.cpp
     src/entidad.cpp
+    src/gestorRecursos.cpp
+    src/motortag.cpp
 )
 
 target_include_directories(MotorOpenGL PUBLIC include)

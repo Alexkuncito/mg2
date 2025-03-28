@@ -10,12 +10,11 @@
 
 using namespace std;
 
-class Nodo : public std::enable_shared_from_this<Nodo>{
+class Nodo{
     private:
-        shared_ptr<MGEntity> entidad;
-        int id;
-        vector<shared_ptr<Nodo>> hijos;
-        weak_ptr<Nodo> padre; // weak_ptr para evitar ciclos de referencia
+        MGEntity* entidad;
+        vector<Nodo*> hijos;
+        Nodo* padre; // weak_ptr para evitar ciclos de referencia
         glm::vec3 traslacion=glm::vec3(0.0f);
         glm::vec3 rotacion=glm::vec3(0.0f);
         glm::vec3 escalado=glm::vec3(0.005f);
@@ -23,16 +22,18 @@ class Nodo : public std::enable_shared_from_this<Nodo>{
         bool actTrans;
     
     public:
-        explicit Nodo(shared_ptr<MGEntity> valor, int id);
+        explicit Nodo(MGEntity* valor);
+        Nodo() : entidad(nullptr), padre(nullptr), matrizTrasf(1.0f), actTrans(false) {} // Constructor por defecto
+
         ~Nodo() = default; // No se necesita destructor explícito con smart pointers
 
         glm::mat4 calcularMatriz();
-        void agregarHijo(shared_ptr<Nodo> nodo);
-        void borrarHijo(shared_ptr<Nodo> nodo);
-        bool setEntidad(shared_ptr<MGEntity> val);
-        shared_ptr<MGEntity> getEntidad();
-        shared_ptr<Nodo> getPadre();
-        vector<shared_ptr<Nodo>> getHijos();
+        void agregarHijo(Nodo* nodo);
+        void borrarHijo(Nodo* nodo);
+        bool setEntidad(MGEntity* val);
+        MGEntity* getEntidad();
+        Nodo* getPadre();
+        vector<Nodo*> getHijos();
         void activTrans();
         void recorrer(glm::mat4 matAcum);
         void setTraslacion(glm::vec3 vc);
@@ -46,14 +47,10 @@ class Nodo : public std::enable_shared_from_this<Nodo>{
         glm::vec3 getEscalado();
         void setMatrizTransf(glm::mat4 mat);
         glm::mat4 getMatrizTransf();
-        int getId() const {
-            return id;
-        }
-
 };
 
 // Funciones globales
 void imprimirMatriz(const glm::mat4& mat);
-void imprimirArbol(shared_ptr<Nodo> nodo, int nivel = 0);
+void imprimirArbol(Nodo* nodo, int nivel = 0);
 
 #endif

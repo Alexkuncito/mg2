@@ -24,8 +24,8 @@ public:
         textura.unbind();
     }
 
-    std::shared_ptr<Textura> returnTextura() {
-        return std::make_shared<Textura>(textura);
+    Textura* returnTextura() {
+        return &textura;
     }
 };
 

@@ -28,8 +28,8 @@ public:
         malla.setMat(shader);
     }
 
-    std::shared_ptr<Mesh> returnMalla() {
-        return std::make_shared<Mesh>(malla);
+    Mesh* returnMalla() {
+        return &malla;
     }
 };
 
