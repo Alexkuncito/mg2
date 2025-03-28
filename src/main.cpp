@@ -204,9 +204,9 @@ int main() {
 
         // entCAMARA->draw(glm::mat4(1.0f));
         // entLUZ->draw(glm::mat4(1.0f));
-
         // entMALLA1->draw(glm::mat4(1.0f));
         // entMALLA2->draw(glm::mat4(1.0f));
+
         //raiz->recorrer(glm::mat4(1.0f));
 
         //Esto se tiene que hacer en el motor TAG de alguna manera no tengo ni idea
@@ -215,11 +215,11 @@ int main() {
         Graphics3D::DrawCube(10.0f, 0.0f, 0.0f, 5.0f, 5.0f, 5.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), shader3D.get());
 
         // //Cada uno de estos tendrán sus funciones equivalentes en el motor TAG
-        // Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-        // Graphics2D::DrawRectangle(0.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
-        // Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-        // Graphics2D::DrawText("Hola Alex", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
-        // Graphics2D::DrawTexture(400.0f, 200.0f, 100.0f, 100.0f, textura2D);
+        Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+        Graphics2D::DrawRectangle(0.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+        Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+        Graphics2D::DrawText("Hola Alex", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+        Graphics2D::DrawTexture(400.0f, 200.0f, 100.0f, 100.0f, textura2D);
     }
 
     return 0;
