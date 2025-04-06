@@ -119,5 +119,24 @@ MGMesh TMotorTAG::crearMalla(Shader* shader, const Fichero& fichero,
     return malla;
 }
 
+void TMotorTAG::init3D(){
+    Recurso* recurso = gestorRecursos.getRecurso("Shader3D");
+    RecursoShader* recursoShader = dynamic_cast<RecursoShader*>(recurso);
 
+    if(!recursoShader){
+        std::unique_ptr<RecursoShader> rsh = std::make_unique<RecursoShader>("Shader3D","../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
+        recursoShader =rsh.get();
+        gestorRecursos.add(std::move(rsh));
+    }
+}
 
+Shader* TMotorTAG::getShader3D(){
+    Recurso* recurso = gestorRecursos.getRecurso("Shader3D");
+    RecursoShader* recursoShader = dynamic_cast<RecursoShader*>(recurso);
+    if(recursoShader){
+        return recursoShader->returnShader();
+    }
+    else{
+        return nullptr;
+    }
+}

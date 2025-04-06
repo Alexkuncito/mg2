@@ -451,4 +451,6 @@ CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: \
  /usr/include/assimp/metadata.h /usr/include/assimp/postprocess.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Mesh.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Textura.hpp \
- /usr/include/c++/14.2.1/optional
+ /usr/include/c++/14.2.1/optional \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/ShaderRecurso.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/TexturaRecurso.hpp

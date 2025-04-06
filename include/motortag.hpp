@@ -19,7 +19,7 @@ struct TMotorTAG{
         std::vector<Nodo*> regLuces;
 
     public:
-        TMotorTAG(Shader* shader) : cantnode(0), escena(nullptr){     //Cambiar para que tome el shader ese
+        TMotorTAG() : cantnode(0), escena(nullptr){     //Cambiar para que tome el shader ese
             gnodos[cantnode] = make_unique<Nodo>();
             escena = gnodos[cantnode].get();
             cantnode+=1;
@@ -80,6 +80,8 @@ struct TMotorTAG{
         }
     }
 
+    void init3D();
+    Shader* getShader3D();
 };
 
 #endif

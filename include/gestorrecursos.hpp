@@ -6,6 +6,8 @@
 #include "recurso.hpp" 
 #include "MaterialRecurso.hpp"
 #include "MallaRecurso.hpp"
+#include "ShaderRecurso.hpp"
+#include "TexturaRecurso.hpp"
 #include <cstring>
 #include <iostream>
 #include <unordered_map>

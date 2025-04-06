@@ -488,6 +488,8 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/gestorrecursos.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MaterialRecurso.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MallaRecurso.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/ShaderRecurso.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/TexturaRecurso.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/TexturaRecurso.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/motortag.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/gestorrecursos.hpp \

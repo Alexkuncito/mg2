@@ -453,6 +453,8 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Mesh.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Textura.hpp \
  /usr/include/c++/14.2.1/optional \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/ShaderRecurso.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/TexturaRecurso.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/arbol.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/entidad.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Camara.hpp \

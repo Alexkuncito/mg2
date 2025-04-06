@@ -11,8 +11,8 @@ private:
 
 public:
     // Constructor con nombre y rutas de los shaders
-    RecursoShader(const std::string& rutaVertex, const std::string& rutaFragment)
-        : Recurso(rutaVertex), shader(rutaVertex, rutaFragment) {}
+    RecursoShader(const std::string& nombreUnico, const std::string& rutaVertex, const std::string& rutaFragment)
+        : Recurso(nombreUnico), shader(rutaVertex, rutaFragment) {}
 
     // Activa el shader
     void Usar() const {

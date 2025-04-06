@@ -56,19 +56,9 @@ void processInput(Window& window, float deltaTime, TMotorTAG& mtg) { //TMotorTAG
         camaraActiva->rotateRight(deltaTime);
 }
 
-//Esto en motor TAG o Graphics3D
-std::unique_ptr<Shader> shader3D;
-
-//Esto en motor TAG o Graphics3D
-void init3D() {
-    shader3D = std::make_unique<Shader>("../shaders/vertex_shader.glsl", "../shaders/fragment_shader.glsl");
-}
-
 int main() {
     //Esto en motor TAG como crearVentana(ancho, alto, nombre)
     Window window(800, 600, "Motor OpenGL 3D");
-
-    init3D();
 
     //Esto en motor TAG como init2D
     Graphics2D::init2D();
@@ -78,10 +68,8 @@ int main() {
 
     //INSANE hay que ver que cambiar y como
     
-    TMotorTAG mtg(shader3D.get());
-    TGestorRecursos rec;
-    rec.cargarMateriales();
-    rec.ImprimirRecursos();
+    TMotorTAG mtg;
+    mtg.init3D();
 
     //Esto en motor TAG como setProyeccion(fov)
     float fov = glm::radians(45.0f);
@@ -91,43 +79,15 @@ int main() {
     Textura textura2D("../textures/enemigo.png");
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
-
-    Recurso* recurso = rec.getRecurso("../material/materialGold.txt");
-    RecursoMaterial* mat1 = dynamic_cast<RecursoMaterial*>(recurso);
-    TMaterial* matr1 = mat1->returnMaterial();
-    
-
-    Recurso* recurso2 = rec.getRecurso("../material/materialJade.txt");
-    RecursoMaterial* mat2 = dynamic_cast<RecursoMaterial*>(recurso2);
-    TMaterial* matr2 = mat2->returnMaterial();
-
-    Mesh mesh(fichero, nullopt, *matr1);
-
     Fichero fichero2("../models/cubo.obj");
-    Mesh mesh2(fichero2, nullopt, *matr2);
+    
+    MGMesh entMALLA1 = mtg.crearMalla(mtg.getShader3D(), fichero);
+    MGMesh entMALLA2 = mtg.crearMalla(mtg.getShader3D(), fichero2);
 
-    //std::unique_ptr<MGEntity> entMALLA1 = std::make_unique<MGMesh>(shader3D.get(), &mesh);
-    MGMesh entMALLA1 = mtg.crearMalla(shader3D.get(), fichero, nullopt, *matr1);
+    MGCamara entCAMARA = mtg.crearCamara(mtg.getShader3D(), &camara);
+    MGLuz entLUZ = mtg.crearLuz(mtg.getShader3D(), &luz);
 
-    //std::shared_ptr<MGEntity> entMALLA2 = std::make_shared<MGMesh>(std::make_shared<Shader>(*shader3D), std::make_shared<Mesh>(mesh2));
-    //std::shared_ptr<MGEntity> entMALLA2 = mtg.crearMalla(shader3D, fichero2, nullopt, pruebaconv2);
-
-    //std::unique_ptr<MGEntity> entMALLA2 = std::make_unique<MGMesh>(shader3D.get(), &mesh2);
-    MGMesh entMALLA2 = mtg.crearMalla(shader3D.get(), fichero2, nullopt, *matr2);
-
-
-    // std::shared_ptr<MGEntity> entCAMARA = std::make_shared<MGCamara>(shader3D, std::make_shared<Camara>(camara));
-    // std::shared_ptr<MGEntity> entLUZ = std::make_shared<MGLuz>(shader3D, std::make_shared<Luz>(luz));
-    // std::shared_ptr<MGEntity> entVACIA = std::make_shared<MGEntity>(shader3D);
-
-    //std::unique_ptr<MGEntity> entCAMARA = std::make_unique<MGCamara>(shader3D.get(), &camara);
-    //std::unique_ptr<MGEntity> entLUZ = std::make_unique<MGLuz>(shader3D.get(), &luz);
-    //std::unique_ptr<MGEntity> entVACIA = std::make_unique<MGEntity>(shader3D.get());
-
-    MGCamara entCAMARA = mtg.crearCamara(shader3D.get(), &camara);
-    MGLuz entLUZ = mtg.crearLuz(shader3D.get(), &luz);
-
-    std::unique_ptr<MGEntity> entVACIA = std::make_unique<MGEntity>(shader3D.get());
+    std::unique_ptr<MGEntity> entVACIA = std::make_unique<MGEntity>(mtg.getShader3D());
 
 
 
@@ -195,24 +155,17 @@ int main() {
         processInput(window, deltaTime, mtg);
 
         //Esto se deberá hacer cada vez que se quiera pintar algo 3D
-        shader3D->use();
+        mtg.getShader3D()->use();
         glEnable(GL_DEPTH_TEST);
         glDepthFunc(GL_LESS);
-        shader3D->setMat4("projection", projection);
+        mtg.getShader3D()->setMat4("projection", projection);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         mtg.dibujarEscena();
 
-        // entCAMARA->draw(glm::mat4(1.0f));
-        // entLUZ->draw(glm::mat4(1.0f));
-        // entMALLA1->draw(glm::mat4(1.0f));
-        // entMALLA2->draw(glm::mat4(1.0f));
-
-        //raiz->recorrer(glm::mat4(1.0f));
-
         //Esto se tiene que hacer en el motor TAG de alguna manera no tengo ni idea
         model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
-        shader3D->setMat4("model", model);
-        Graphics3D::DrawCube(10.0f, 0.0f, 0.0f, 5.0f, 5.0f, 5.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), shader3D.get());
+        mtg.getShader3D()->setMat4("model", model);
+        Graphics3D::DrawCube(10.0f, 0.0f, 0.0f, 5.0f, 5.0f, 5.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), mtg.getShader3D());
 
         // //Cada uno de estos tendrán sus funciones equivalentes en el motor TAG
         Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
