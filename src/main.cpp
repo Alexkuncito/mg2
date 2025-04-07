@@ -32,9 +32,12 @@ Luz luz(
     1.0f);
 
 //Esto en motor TAG
-void processInput(Window& window, float deltaTime, TMotorTAG& mtg) { //TMotorTAG& mtg
-    GLFWwindow* glfwWindow = window.getNativeWindow();
+void processInput(Window* window, float deltaTime, TMotorTAG& mtg) { //TMotorTAG& mtg
+    GLFWwindow* glfwWindow = window->getNativeWindow();
     
+    if (glfwGetKey(glfwWindow, GLFW_KEY_O) == GLFW_PRESS)
+        window->close();
+        
     // Obtener la cámara activa del árbol de MTG
     Camara* camaraActiva = mtg.getCamaraActiva();
     if (!camaraActiva) return;
@@ -57,31 +60,19 @@ void processInput(Window& window, float deltaTime, TMotorTAG& mtg) { //TMotorTAG
 }
 
 int main() {
-    //Esto en motor TAG como crearVentana(ancho, alto, nombre)
-    Window window(800, 600, "Motor OpenGL 3D");
-
-    //Esto en motor TAG como init2D
-    Graphics2D::init2D();
-
-    //Esto en motor TAG como cargarFuente(fuente, tamaño)
-    Graphics2D::LoadFont("../fonts/jack-of-gears.regular.ttf", 48);
-
-    //INSANE hay que ver que cambiar y como
-    
     TMotorTAG mtg;
+    mtg.initWindow(800, 600, "Motor OpenGL 3D");
+
+    Graphics2D::init2D();
+    Graphics2D::LoadFont("../fonts/jack-of-gears.regular.ttf", 48);
     mtg.init3D();
 
-    //Esto en motor TAG como setProyeccion(fov)
-    float fov = glm::radians(45.0f);
-    glm::mat4 projection = glm::perspective(fov, (float)window.width / (float)window.height, 0.1f, 100.0f);
-
-    //Todo el manejo este de cosas en el motor TAG para cargar y crear meshes y todo ese rollo
     Textura textura2D("../textures/enemigo.png");
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
     Fichero fichero2("../models/cubo.obj");
     
-    MGMesh entMALLA1 = mtg.crearMalla(mtg.getShader3D(), fichero);
+    MGMesh entMALLA1 = mtg.crearMalla(mtg.getShader3D(), fichero, textura);
     MGMesh entMALLA2 = mtg.crearMalla(mtg.getShader3D(), fichero2);
 
     MGCamara entCAMARA = mtg.crearCamara(mtg.getShader3D(), &camara);
@@ -89,23 +80,14 @@ int main() {
 
     std::unique_ptr<MGEntity> entVACIA = std::make_unique<MGEntity>(mtg.getShader3D());
 
-
-
-    //std::shared_ptr<MGEntity> entMALLA1gr = mtg.crearMalla();
-    // Creación de nodos con shared_ptr
-    std::unique_ptr<Nodo> raiz = std::make_unique<Nodo>(entVACIA.get());
-    std::unique_ptr<Nodo> hijo1 = std::make_unique<Nodo>(&entMALLA1);
-    std::unique_ptr<Nodo> hijo2 = std::make_unique<Nodo>(&entMALLA2);
-    std::unique_ptr<Nodo> camaraNodo = std::make_unique<Nodo>(&entCAMARA);
-    std::unique_ptr<Nodo> luzNodo = std::make_unique<Nodo>(&entLUZ);
-
     glm::vec3 tras{0.0f, 0.0f, 0.0f};
     glm::vec3 esc{1.0f, 1.0f, 1.0f};
     glm::vec3 rot{0.0f, 0.0f, 0.0f};
 
 
     Nodo* nodomalla1 = mtg.crearNodo(mtg.getRaiz(),&entMALLA1,tras,esc,rot);
-    nodomalla1->setEscalado(glm::vec3(0.01f));
+    nodomalla1->setEscalado(glm::vec3(5.0f));
+    nodomalla1->setTraslacion(glm::vec3(0.0f, 0.0f,9.0f));
     nodomalla1->setRotacion(glm::vec3(0.0f, 90.0f,0.0f));
 
     Nodo* nodomalla2 = mtg.crearNodo(mtg.getRaiz(),&entMALLA2,tras,esc,rot);
@@ -118,56 +100,26 @@ int main() {
 
     int nLuz = mtg.registrarLuz(nodoluz);
 
-    // Construcción de la jerarquía del árbol
-    raiz->agregarHijo(hijo1.get());
-    raiz->agregarHijo(hijo2.get());
-    raiz->agregarHijo(camaraNodo.get());
-    raiz->agregarHijo(luzNodo.get());
-
-    // Aplicar transformaciones
-    hijo2->setTraslacion(glm::vec3(1.0f, 0.0f, 0.0f));
-    hijo1->setEscalado(glm::vec3(2.0f));
-    hijo2->setEscalado(glm::vec3(2.0f));
-
-    glm::mat4 model = glm::mat4(1.0f);
-    model = glm::scale(model, glm::vec3(0.005f));
-
-    glm::mat4 model2 = glm::mat4(1.0f);
-    model2 = glm::scale(model2, glm::vec3(0.005f));
-    model2 = glm::translate(model2, glm::vec3(30.0f, 20.0f, 10.0f));
-
     float lastTime = glfwGetTime();
 
     glEnable(GL_DEPTH_TEST);
 
-    imprimirArbol(raiz.get(),0);
     mtg.pinta();
     
-    while (!window.shouldClose()) {
-        //No se como pasar esto al motor TAG (todo lo de el window.shouldClose() y lo de abajo)
-        window.swapBuffers();
-        window.pollEvents();
+    while (!mtg.getWindow()->shouldClose()) {
+        mtg.getWindow()->swapBuffers();
+        mtg.getWindow()->pollEvents();
 
         float currentTime = glfwGetTime();
         float deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
-        processInput(window, deltaTime, mtg);
-
-        //Esto se deberá hacer cada vez que se quiera pintar algo 3D
-        mtg.getShader3D()->use();
-        glEnable(GL_DEPTH_TEST);
-        glDepthFunc(GL_LESS);
-        mtg.getShader3D()->setMat4("projection", projection);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        processInput(mtg.getWindow(), deltaTime, mtg);
+        mtg.init3D();
         mtg.dibujarEscena();
+        mtg.DrawCube(10.0f, 0.0f, 0.0f, 5.0f, 5.0f, 5.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), mtg.getShader3D());
+        mtg.end3D();
 
-        //Esto se tiene que hacer en el motor TAG de alguna manera no tengo ni idea
-        model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
-        mtg.getShader3D()->setMat4("model", model);
-        Graphics3D::DrawCube(10.0f, 0.0f, 0.0f, 5.0f, 5.0f, 5.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), mtg.getShader3D());
-
-        // //Cada uno de estos tendrán sus funciones equivalentes en el motor TAG
         Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
         Graphics2D::DrawRectangle(0.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
         Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));

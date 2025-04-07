@@ -3,6 +3,10 @@
 
 #include "gestorrecursos.hpp"
 #include "arbol.hpp"
+#include "Window.hpp"
+#include "Graphics2D.hpp"
+#include "Graphics3D.hpp"
+#include <optional>
 #include <vector>
 #include <memory> // Para shared_ptr
 
@@ -17,6 +21,8 @@ struct TMotorTAG{
 
         std::vector<Nodo*> regCamaras;
         std::vector<Nodo*> regLuces;
+
+        std::optional<Window> ventana;
 
     public:
         TMotorTAG() : cantnode(0), escena(nullptr){     //Cambiar para que tome el shader ese
@@ -81,7 +87,22 @@ struct TMotorTAG{
     }
 
     void init3D();
+    void end3D();
     Shader* getShader3D();
+
+    void init2D();
+    void end2D();
+
+
+    void initWindow(int const w, int const h, char const* title);
+    Window* getWindow();
+    bool WindowIsOpen();
+    void clearBackground(float r, float g, float b, float a);
+    void initDrawing(float r = 0.1f, float g = 0.1f, float b = 0.1f, float a = 1.0f);
+    void closeDrawing();
+
+    void DrawCube(float x, float y, float z, float width, float height, float depth, glm::vec4 color, Shader *shader);
+
 };
 
 #endif

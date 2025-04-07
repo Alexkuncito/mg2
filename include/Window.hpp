@@ -49,7 +49,12 @@ class Window {
         void swapBuffers() {glfwSwapBuffers(window);}
         void pollEvents() {glfwPollEvents();}
         GLFWwindow* getNativeWindow() const {return window;}
-
+        
+        void close() {
+            if (window) {
+                glfwSetWindowShouldClose(window, GLFW_TRUE);
+            }
+        }
     private:
         GLFWwindow* window;
 

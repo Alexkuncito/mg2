@@ -95,6 +95,7 @@ void TMotorTAG::dibujarEscena() {
 
     if (escena != nullptr) {
         escena->recorrer(glm::mat4(1.0f));
+        
     }
 }
 
@@ -128,7 +129,35 @@ void TMotorTAG::init3D(){
         recursoShader =rsh.get();
         gestorRecursos.add(std::move(rsh));
     }
+
+    // Configuración de OpenGL para renderizado 3D
+    glEnable(GL_DEPTH_TEST);                         // Activar test de profundidad
+    glDepthFunc(GL_LESS);                            // Aceptar fragmentos más cercanos
+
+    glDisable(GL_CULL_FACE);
+
+    // glEnable(GL_CULL_FACE);                          // Activar el culling de caras
+    // glCullFace(GL_BACK);                             // Eliminar caras traseras
+    // glFrontFace(GL_CCW);                             // Triángulos en sentido antihorario son la cara frontal
+
+    glEnable(GL_BLEND);                              // Activar blending (mezcla de transparencia)
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // Mezcla clásica para transparencia
+
+    //glClearColor(0.1f, 0.1f, 0.1f, 1.0f);             // Color de fondo (se puede ajustar)
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Limpiar buffers de color y profundidad
+
+    recursoShader->returnShader()->use();
+
+    float fov = glm::radians(45.0f);
+    glm::mat4 projection = glm::perspective(fov, (float)ventana.value().width / (float)ventana.value().height, 0.1f, 100.0f);
+    recursoShader->returnShader()->setMat4("projection", projection);
 }
+
+void TMotorTAG::end3D(){
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_CULL_FACE);
+}
+
 
 Shader* TMotorTAG::getShader3D(){
     Recurso* recurso = gestorRecursos.getRecurso("Shader3D");
@@ -139,4 +168,48 @@ Shader* TMotorTAG::getShader3D(){
     else{
         return nullptr;
     }
+}
+
+void TMotorTAG::initWindow(int const w, int const h, char const* title){
+    ventana.emplace(w,h,title);
+    glfwSwapInterval(1);
+    //desactivar cierre por esc
+}
+
+Window* TMotorTAG::getWindow() {
+    if (ventana.has_value()) {
+        return &ventana.value();
+    } else {
+        return nullptr;
+    }
+}
+
+bool TMotorTAG::WindowIsOpen(){
+    return ventana.has_value() && !ventana->shouldClose();
+}
+
+void TMotorTAG::clearBackground(float r, float g, float b, float a){
+    glClearColor(r, g, b, a);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void TMotorTAG::initDrawing(float r, float g, float b, float a){
+    clearBackground(r,g,b,a);
+}
+
+void TMotorTAG::closeDrawing(){
+    if (ventana.has_value()) {
+        ventana->swapBuffers();
+        glfwPollEvents();
+    }
+}
+
+void TMotorTAG::DrawCube(float x, float y, float z, float width, float height, float depth, glm::vec4 color, Shader *shader) {
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(x, y, z));
+    model = glm::scale(model, glm::vec3(width, height, depth));
+
+    shader->setMat4("model", model);
+
+    Graphics3D::DrawCube(x, y, z, width, height, depth, color, shader);
 }

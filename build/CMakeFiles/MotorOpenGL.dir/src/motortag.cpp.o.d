@@ -458,4 +458,28 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/arbol.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/entidad.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Camara.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Luz.hpp
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Luz.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Window.hpp \
+ /usr/include/GLFW/glfw3.h \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Graphics2D.hpp \
+ /usr/include/c++/14.2.1/map /usr/include/c++/14.2.1/bits/stl_tree.h \
+ /usr/include/c++/14.2.1/bits/stl_map.h \
+ /usr/include/c++/14.2.1/bits/stl_multimap.h \
+ /usr/include/freetype2/ft2build.h \
+ /usr/include/freetype2/freetype/config/ftheader.h \
+ /usr/include/freetype2/freetype/freetype.h \
+ /usr/include/freetype2/ft2build.h \
+ /usr/include/freetype2/freetype/config/ftconfig.h \
+ /usr/include/freetype2/freetype/config/ftoption.h \
+ /usr/include/freetype2/freetype/config/ftstdlib.h \
+ /usr/include/c++/14.2.1/stdlib.h /usr/include/setjmp.h \
+ /usr/include/freetype2/freetype/config/integer-types.h \
+ /usr/include/freetype2/freetype/config/public-macros.h \
+ /usr/include/freetype2/freetype/config/mac-support.h \
+ /usr/include/freetype2/freetype/fttypes.h \
+ /usr/include/freetype2/freetype/ftsystem.h \
+ /usr/include/freetype2/freetype/ftimage.h \
+ /usr/include/freetype2/freetype/fterrors.h \
+ /usr/include/freetype2/freetype/ftmoderr.h \
+ /usr/include/freetype2/freetype/fterrdef.h \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Graphics3D.hpp

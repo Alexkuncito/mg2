@@ -494,6 +494,9 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/motortag.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/gestorrecursos.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/arbol.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Window.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Graphics2D.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Graphics3D.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/string_cast.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/../gtc/type_precision.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtx/../gtc/type_precision.inl \
