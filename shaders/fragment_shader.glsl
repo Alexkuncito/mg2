@@ -39,19 +39,19 @@ void main() {
     Material mat = material.ambient != vec3(0.0) ? material : defaultMaterial;
 
     // Componente ambiental
-    vec3 ambient = luzColor * mat.ambient;
+    vec3 ambient = luzColor * mat.ambient * 0.1;
 
     // Componente difusa
     vec3 norm = normalize(Normal);
     vec3 lightDir = normalize(luzPos - FragPos);
     float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = luzColor * (diff * mat.diffuse);
+    vec3 diffuse = luzColor * (diff * mat.diffuse * 3);
 
     // Componente especular
     vec3 viewDir = normalize(viewPos - FragPos);
     vec3 reflectDir = reflect(-lightDir, norm);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), mat.shininess);
-    vec3 specular = luzColor * (spec * mat.specular);
+    vec3 specular = luzColor * (spec * mat.specular * 2);
 
     // Si el objeto no tiene textura, aplicar el color como aditivo con la iluminación
     vec3 finalColor = texColor.rgb;

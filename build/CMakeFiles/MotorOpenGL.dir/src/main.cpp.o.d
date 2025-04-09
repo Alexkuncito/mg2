@@ -411,7 +411,6 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/assimp/camera.h /usr/include/assimp/material.h \
  /usr/include/assimp/material.inl /usr/include/assimp/anim.h \
  /usr/include/assimp/metadata.h /usr/include/assimp/postprocess.h \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Textura.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Material.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glad.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Shader.hpp \
@@ -428,6 +427,7 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/type_ptr.inl \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Textura.hpp \
  /usr/include/c++/14.2.1/optional \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Camara.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Luz.hpp \
@@ -461,7 +461,6 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/freetype2/freetype/fterrdef.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Graphics3D.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Mesh.hpp \
- /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Material.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/recurso.hpp \
  /usr/include/c++/14.2.1/filesystem /usr/include/c++/14.2.1/bits/fs_fwd.h \
  /usr/include/c++/14.2.1/bits/chrono.h /usr/include/c++/14.2.1/ratio \
@@ -481,6 +480,7 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/fs_ops.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MaterialRecurso.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/recurso.hpp \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Material.hpp \
  /usr/include/c++/14.2.1/fstream \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++io.h \

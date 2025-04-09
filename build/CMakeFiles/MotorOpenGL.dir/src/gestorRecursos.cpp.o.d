@@ -364,6 +364,24 @@ CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/detail/type_half.inl \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/integer.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/detail/func_integer.inl \
+ /usr/include/assimp/material.h /usr/include/assimp/types.h \
+ /usr/include/string.h /usr/include/strings.h /usr/include/assimp/defs.h \
+ /usr/include/assimp/config.h /usr/include/assimp/vector2.h \
+ /usr/include/assimp/vector3.h /usr/include/assimp/color4.h \
+ /usr/include/assimp/matrix3x3.h /usr/include/assimp/matrix4x4.h \
+ /usr/include/assimp/quaternion.h /usr/include/c++/14.2.1/cstring \
+ /usr/include/assimp/vector2.inl /usr/include/assimp/vector3.inl \
+ /usr/include/assimp/color4.inl /usr/include/assimp/matrix3x3.inl \
+ /usr/include/c++/14.2.1/algorithm \
+ /usr/include/c++/14.2.1/bits/stl_algo.h \
+ /usr/include/c++/14.2.1/bits/algorithmfwd.h \
+ /usr/include/c++/14.2.1/bits/stl_heap.h \
+ /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
+ /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
+ /usr/include/assimp/matrix4x4.inl /usr/include/assimp/MathFunctions.h \
+ /usr/include/assimp/quaternion.inl \
+ /usr/include/assimp/Compiler/pushpack1.h \
+ /usr/include/assimp/Compiler/poppack1.h /usr/include/assimp/material.inl \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glad.h \
  /usr/include/KHR/khrplatform.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Shader.hpp \
@@ -418,8 +436,6 @@ CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/../gtc/../ext/vector_int1_sized.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
- /usr/include/c++/14.2.1/cstring /usr/include/string.h \
- /usr/include/strings.h \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/glm/gtc/type_ptr.inl \
  /usr/include/c++/14.2.1/fstream \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
@@ -427,28 +443,13 @@ CMakeFiles/MotorOpenGL.dir/src/gestorRecursos.cpp.o: \
  /usr/include/c++/14.2.1/bits/fstream.tcc \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/MallaRecurso.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Fichero.hpp \
- /usr/include/assimp/Importer.hpp /usr/include/assimp/types.h \
- /usr/include/assimp/defs.h /usr/include/assimp/config.h \
- /usr/include/assimp/vector2.h /usr/include/assimp/vector3.h \
- /usr/include/assimp/color4.h /usr/include/assimp/matrix3x3.h \
- /usr/include/assimp/matrix4x4.h /usr/include/assimp/quaternion.h \
- /usr/include/assimp/vector2.inl /usr/include/assimp/vector3.inl \
- /usr/include/assimp/color4.inl /usr/include/assimp/matrix3x3.inl \
- /usr/include/c++/14.2.1/algorithm \
- /usr/include/c++/14.2.1/bits/stl_algo.h \
- /usr/include/c++/14.2.1/bits/algorithmfwd.h \
- /usr/include/c++/14.2.1/bits/stl_heap.h \
- /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
- /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
- /usr/include/assimp/matrix4x4.inl /usr/include/assimp/MathFunctions.h \
- /usr/include/assimp/quaternion.inl /usr/include/assimp/scene.h \
- /usr/include/assimp/texture.h /usr/include/assimp/Compiler/pushpack1.h \
- /usr/include/assimp/Compiler/poppack1.h /usr/include/assimp/mesh.h \
+ /usr/include/assimp/Importer.hpp /usr/include/assimp/scene.h \
+ /usr/include/assimp/texture.h /usr/include/assimp/mesh.h \
  /usr/include/assimp/aabb.h /usr/include/c++/14.2.1/unordered_set \
  /usr/include/c++/14.2.1/bits/unordered_set.h /usr/include/assimp/light.h \
- /usr/include/assimp/camera.h /usr/include/assimp/material.h \
- /usr/include/assimp/material.inl /usr/include/assimp/anim.h \
+ /usr/include/assimp/camera.h /usr/include/assimp/anim.h \
  /usr/include/assimp/metadata.h /usr/include/assimp/postprocess.h \
+ /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Material.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Mesh.hpp \
  /home/cpc/Escritorio/Carpeta\ nueva/mg2/include/Textura.hpp \
  /usr/include/c++/14.2.1/optional \

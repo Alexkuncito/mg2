@@ -18,6 +18,7 @@ private:
 public:
     // Método para obtener un recurso
     Recurso* getRecurso(const std::string& ruta);
+    Recurso* getRecurso(const std::string& ruta, int val);
 
     // En gestorrecursos.hpp
     void add(std::unique_ptr<Recurso> recurso);

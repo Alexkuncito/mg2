@@ -4,7 +4,7 @@
 MGEntity::MGEntity(Shader* shader) : shader(shader) {}
 
 void MGEntity::draw(glm::mat4 mat) {
-    // Implementación vacía en la clase base
+    // Implementación vacía 2en la clase base
 }
 
 // Definición de la clase MGMesh
@@ -13,8 +13,7 @@ MGMesh::MGMesh(Shader* shader, Mesh* malla) : MGEntity(shader), malla(malla) {}
 void MGMesh::draw(glm::mat4 mat) {
 
     shader->setMat4("model", mat);
-    malla->setMat(shader);
-    malla->draw();
+    malla->draw(shader);
 }
 
 // Definición de la clase MGCamara
@@ -29,5 +28,6 @@ void MGCamara::draw(glm::mat4 mat) {
 MGLuz::MGLuz(Shader* shader, Luz* luz) : MGEntity(shader), luz(luz) {}
 
 void MGLuz::draw(glm::mat4 mat) {
+    luz->aplicarTransformacion(mat);
     luz->aplicar(*shader);
 }

@@ -1,7 +1,9 @@
 #include "motortag.hpp"
 
 Nodo* TMotorTAG::crearNodo(Nodo* padre, MGEntity* ent, glm::vec3 traslacion, glm::vec3 escalado, glm::vec3 rotacion) {
+    
     gnodos[cantnode] = make_unique<Nodo>(ent);
+
     Nodo* nuevoNodo = gnodos[cantnode].get();
     cantnode += 1;
 
@@ -18,6 +20,7 @@ Nodo* TMotorTAG::crearNodo(Nodo* padre, MGEntity* ent, glm::vec3 traslacion, glm
     // Retornar el nuevo nodo creado
     return nuevoNodo;
 }
+
 
 MGCamara TMotorTAG::crearCamara(Shader* shader, Camara* camara){
     MGCamara nuevaCamara(shader, camara);
@@ -101,14 +104,13 @@ void TMotorTAG::dibujarEscena() {
 
 
 MGMesh TMotorTAG::crearMalla(Shader* shader, const Fichero& fichero, 
-                                              std::optional<std::reference_wrapper<const Textura>> textura, 
-                                              std::optional<TMaterial> material) {
+                                              std::optional<std::reference_wrapper<const Textura>> textura, int val) {
     
-    Recurso* recurso = gestorRecursos.getRecurso(fichero.getRuta());
+    Recurso* recurso = gestorRecursos.getRecurso(fichero.getRuta(), val);
     RecursoMalla* recursoMalla = dynamic_cast<RecursoMalla*>(recurso);
 
     if (!recursoMalla) {
-        std::unique_ptr<RecursoMalla> rcm = std::make_unique<RecursoMalla>(fichero, textura, material);
+        std::unique_ptr<RecursoMalla> rcm = std::make_unique<RecursoMalla>(fichero, textura, val);
         recursoMalla = rcm.get();
         gestorRecursos.add(std::move(rcm));
     }
@@ -119,6 +121,20 @@ MGMesh TMotorTAG::crearMalla(Shader* shader, const Fichero& fichero,
 
     return malla;
 }
+
+std::vector<MGMesh> TMotorTAG::crearModeloComp(Shader* shader, const Fichero& fichero, std::optional<std::reference_wrapper<const Textura>> textura) {
+    int total = fichero.numeroMeshes();  // Get the total number of meshes in the file.
+    std::vector<MGMesh> mallas;  // Vector to hold the MGMesh objects.
+
+    for(int i = 0; i < total; i++) {
+        // Create a mesh for each mesh in the file.
+        MGMesh malla = crearMalla(shader, fichero, textura, i);  // Assuming `i` is used as `val`.
+        mallas.push_back(malla);  // Add the created mesh to the vector.
+    }
+
+    return mallas;  // Return the vector of MGMesh objects.
+}
+
 
 void TMotorTAG::init3D(){
     Recurso* recurso = gestorRecursos.getRecurso("Shader3D");
@@ -134,7 +150,6 @@ void TMotorTAG::init3D(){
     glEnable(GL_DEPTH_TEST);                         // Activar test de profundidad
     glDepthFunc(GL_LESS);                            // Aceptar fragmentos más cercanos
 
-    glDisable(GL_CULL_FACE);
 
     // glEnable(GL_CULL_FACE);                          // Activar el culling de caras
     // glCullFace(GL_BACK);                             // Eliminar caras traseras

@@ -12,8 +12,9 @@ private:
 public:
     Recurso() : nombre("") {}
 
-    Recurso(const std::string& ruta) {
-        crearNombre(ruta);
+    Recurso(const std::string& ruta, int val = 0) {
+        std::cout << "Recurso TIPO 2" << std::endl;
+        crearNombre(ruta, val);
     }
 
     virtual ~Recurso() = default;
@@ -26,17 +27,17 @@ public:
         nombre = nuevoNombre;
     }
 
-    std::string crearNombre(const std::string& ruta) {
+    std::string crearNombre(const std::string& ruta, int val = 0) {
         fs::path pathObj(ruta);
         std::string carpetaContenedora = pathObj.parent_path().filename().string();
 
         std::string nombreArchivo = pathObj.stem().string();
-        std::string nuevoNombre = "Recurso_" + carpetaContenedora + "_" + nombreArchivo;
+        std::string nuevoNombre = "Recurso_" + carpetaContenedora + "_" + nombreArchivo + "_" + std::to_string(val);
 
-        std::cout << "Ruta completa: " << ruta << std::endl;
-        std::cout << "Carpeta contenedora: " << carpetaContenedora << std::endl;
-        std::cout << "Nombre del archivo sin extensión: " << nombreArchivo << std::endl;
-        std::cout << "Nombre generado: " << nuevoNombre << std::endl;
+        // std::cout << "Ruta completa: " << ruta << std::endl;
+        // std::cout << "Carpeta contenedora: " << carpetaContenedora << std::endl;
+        // std::cout << "Nombre del archivo sin extensión: " << nombreArchivo << std::endl;
+        // std::cout << "Nombre generado: " << nuevoNombre << std::endl;
 
         SetNombre(nuevoNombre);
         return nuevoNombre;

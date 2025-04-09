@@ -34,11 +34,14 @@ struct TMotorTAG{
 
         // Cambiar los parámetros para que usen shared_ptr
         Nodo* crearNodo(Nodo* padre, MGEntity* ent, glm::vec3 traslacion, glm::vec3 escalado, glm::vec3  rotacion);
+        Nodo* crearNodoModelo(Nodo* padre, std::vector<MGMesh> ent, glm::vec3 traslacion, glm::vec3 escalado, glm::vec3  rotacion);
         MGCamara crearCamara(Shader* shader, Camara* camara);
         MGLuz crearLuz(Shader* shader, Luz* luz);
         MGMesh crearMalla(Shader* shader, const Fichero& fichero, 
-        std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, 
-        std::optional<TMaterial> material = std::nullopt);
+        std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, int val = 0);
+
+        std::vector<MGMesh> crearModeloComp(Shader* shader, const Fichero& fichero, 
+        std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt);
 
         void deleteCamara(MGCamara* cam);
         void deleteLuz(MGLuz* luz);
@@ -60,7 +63,7 @@ struct TMotorTAG{
             if (escena) {
                 imprimirArbol(escena, 0);
             } else {
-                std::cout << "Error: escena es nullptr" << std::endl;
+                //std::cout << "Error: escena es nullptr" << std::endl;
             }
         }
 
@@ -77,11 +80,11 @@ struct TMotorTAG{
             if (mgCamara) {
                 return mgCamara->getCamera();
             } else {
-                std::cout << "No se pudo convertir la entidad a MGCamara" << std::endl;
+                //std::cout << "No se pudo convertir la entidad a MGCamara" << std::endl;
                 return nullptr;
             }
         } else {
-            std::cout << "No detecta cámaras" << std::endl;
+            //std::cout << "No detecta cámaras" << std::endl;
             return nullptr;
         }
     }

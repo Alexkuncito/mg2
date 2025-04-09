@@ -8,6 +8,13 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <glm/glm.hpp>
+#include <Material.hpp>
+
+struct subMesh{
+    std::vector<float> vertices;       
+    std::vector<unsigned int> indices;
+    TMaterial material;
+};
 
 class Fichero {
 public:
@@ -16,11 +23,21 @@ public:
         cargarMallasAssimp(rutad);
     }
 
-    bool obtenerDatos(std::vector<float>& outVertices, std::vector<unsigned int>& outIndices) const {
-        if (vertices.empty() || indices.empty()) return false;
-        outVertices = vertices;
-        outIndices = indices;
+
+    bool obtenerDatos(std::vector<float>& outVertices, std::vector<unsigned int>& outIndices, TMaterial& outMaterial, int vk) const {
+        if (vk < 0 || vk >= static_cast<int>(val.size()) || val[vk].vertices.empty() || val[vk].indices.empty()) {
+            return false;
+        }
+
+        outVertices = val[vk].vertices;
+        outIndices = val[vk].indices;
+        outMaterial = val[vk].material;
         return true;
+    }
+
+
+    int numeroMeshes() const{
+        return val.size();
     }
 
     const std::string& getRuta() const {
@@ -29,8 +46,9 @@ public:
 
 private:
     std::string ruta;
-    std::vector<float> vertices;       
-    std::vector<unsigned int> indices;
+    // std::vector<float> vertices;       
+    // std::vector<unsigned int> indices;
+    std::vector<subMesh> val;
     unsigned int indexOffset = 0; 
 
     void cargarMallasAssimp(const std::string& ruta) {
@@ -42,45 +60,53 @@ private:
             std::cerr << "Error al cargar modelo con Assimp: " << importer.GetErrorString() << std::endl;
             return;
         }
-
+        
         for (unsigned int m = 0; m < scene->mNumMeshes; m++) {
             aiMesh* mesh = scene->mMeshes[m];
+            subMesh vf;
+            std::cout << "NUMERO DE MESHES: " << scene->mNumMeshes << std::endl;
+            std::cout << "MESH " << m << std::endl;
+
+            aiMaterial* aiMat = scene->mMaterials[mesh->mMaterialIndex];
+            vf.material = TMaterial(aiMat);
 
             for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
                 // Posición
-                vertices.push_back(mesh->mVertices[i].x);
-                vertices.push_back(mesh->mVertices[i].y);
-                vertices.push_back(mesh->mVertices[i].z);
+                vf.vertices.push_back(mesh->mVertices[i].x);
+                vf.vertices.push_back(mesh->mVertices[i].y);
+                vf.vertices.push_back(mesh->mVertices[i].z);
 
                 // UVs
                 if (mesh->mTextureCoords[0]) {
-                    vertices.push_back(mesh->mTextureCoords[0][i].x);
-                    vertices.push_back(mesh->mTextureCoords[0][i].y);
+                    vf.vertices.push_back(mesh->mTextureCoords[0][i].x);
+                    vf.vertices.push_back(mesh->mTextureCoords[0][i].y);
                 } else {
-                    vertices.push_back(0.0f);
-                    vertices.push_back(0.0f);
+                    vf.vertices.push_back(0.0f);
+                    vf.vertices.push_back(0.0f);
                 }
 
                 // Normales
                 if (mesh->HasNormals()) {
-                    vertices.push_back(mesh->mNormals[i].x);
-                    vertices.push_back(mesh->mNormals[i].y);
-                    vertices.push_back(mesh->mNormals[i].z);
+                    vf.vertices.push_back(mesh->mNormals[i].x);
+                    vf.vertices.push_back(mesh->mNormals[i].y);
+                    vf.vertices.push_back(mesh->mNormals[i].z);
                 } else {
-                    vertices.push_back(0.0f);
-                    vertices.push_back(0.0f);
-                    vertices.push_back(0.0f);
+                    vf.vertices.push_back(0.0f);
+                    vf.vertices.push_back(0.0f);
+                    vf.vertices.push_back(0.0f);
                 }
             }
 
             for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
                 aiFace face = mesh->mFaces[i];
                 for (unsigned int j = 0; j < face.mNumIndices; j++) {
-                    indices.push_back(face.mIndices[j] + indexOffset);
+                    vf.indices.push_back(face.mIndices[j]);
                 }
             }
 
+
             indexOffset += mesh->mNumVertices;
+            val.push_back(vf);
         }
     }
 

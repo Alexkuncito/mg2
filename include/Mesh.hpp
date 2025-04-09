@@ -5,22 +5,47 @@
 #include <glad.h>
 #include "Fichero.hpp"
 #include "Textura.hpp"
-#include "Material.hpp"
 #include <optional>
 #include <iostream> // Asegura que std::cerr esté disponible
 
 class Mesh {
 public:
-    Mesh(const Fichero& fichero, std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, std::optional<TMaterial> material = std::nullopt)
-        : textura(textura), material(material) {  // Copiamos el fichero
+    Mesh(const Fichero& fichero, std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, int val = 0)
+        : textura(textura) {  // Copiamos el fichero
 
         std::vector<float> vertices;
         std::vector<unsigned int> indices;
+        TMaterial mat;
 
-        if (!fichero.obtenerDatos(vertices, indices)) { 
+        std::cout << "Valor de Malla: " << val << std::endl;
+
+        if (!fichero.obtenerDatos(vertices, indices,mat, val)) { 
             std::cerr << "Error: No se pudieron obtener los datos del fichero." << std::endl;
             return;
         }
+        std::cout << "==============================" << std::endl;
+        std::cout << "MATERIAL" << std::endl;
+        std::cout << "Ambient: " 
+          << std::to_string(mat.getAmbient().x) << ", " 
+          << std::to_string(mat.getAmbient().y) << ", " 
+          << std::to_string(mat.getAmbient().z) << std::endl;
+
+        std::cout << "Diffuse: " 
+          << std::to_string(mat.getDiffuse().x) << ", " 
+          << std::to_string(mat.getDiffuse().y) << ", " 
+          << std::to_string(mat.getDiffuse().z) << std::endl;
+
+        std::cout << "Specular: " 
+          << std::to_string(mat.getSpecular().x) << ", " 
+          << std::to_string(mat.getSpecular().y) << ", " 
+          << std::to_string(mat.getSpecular().z) << std::endl;         
+          
+        std::cout << "Shininess: " << mat.getShininess() << std::endl;
+
+        std::cout << "==============================" << std::endl;
+
+        material = mat;
+
 
         indexCount = indices.size();
 
@@ -54,28 +79,32 @@ public:
         glDeleteBuffers(1, &EBO);
     }
 
-    void setMat(Shader* s) {
-        if (material) {
-            material->SetMaterial(s);
+    void draw(Shader* shader) const {
+        if (!shader) {
+            std::cerr << "Error: No se ha proporcionado un shader válido a la función draw()." << std::endl;
+            return;
         }
-    }
 
-    void draw() const {
+        shader->use();
+
+        material.SetMaterial(shader);
+        
         if (textura) {
-            textura->get().bind();
+            textura->get().bind(); // Vincula la textura si está presente
         } else {
             glBindTexture(GL_TEXTURE_2D, 0); // Desactiva cualquier textura activa
         }
 
-        glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(VAO); // Vincula el VAO de la malla
+        glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0); // Dibuja los elementos
 
         if (textura) {
-            textura->get().unbind();
+            textura->get().unbind(); // Desvincula la textura si estaba activa
         } else {
-            glBindTexture(GL_TEXTURE_2D, 0); // Asegurar que ninguna textura quede activa
+            glBindTexture(GL_TEXTURE_2D, 0); // Asegura que ninguna textura quede activa
         }
 
+        // Verifica errores de OpenGL
         GLenum error = glGetError();
         if (error != GL_NO_ERROR) {
             std::cerr << "OpenGL Error: " << error << std::endl;
@@ -87,7 +116,7 @@ private:
     unsigned int VAO, VBO, EBO;
     size_t indexCount;
     std::optional<std::reference_wrapper<const Textura>> textura;
-    std::optional<TMaterial> material;
+    TMaterial material;
 };
 
 #endif
