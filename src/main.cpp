@@ -21,13 +21,13 @@
 #include <memory>
 
 Camara camara(
-    glm::vec3(5.0f, 5.0f, 0.0f),
+    glm::vec3(10.0f, 10.0f, 20.0f),
     glm::vec3(0.0f, 0.0f, -1.0f),
     glm::vec3(0.0f, 1.0f, 0.0f),
     5.0f, 50.0f);
 
 Luz luz(
-    glm::vec3(0.0f, 1.0f, 0.0f),
+    glm::vec3(10.0f, 10.0f, 20.0f),
     glm::vec3(1.0f, 1.0f, 1.0f),
     1.0f);
 
@@ -97,15 +97,11 @@ int main() {
     Textura textura2D("../textures/enemigo.png");
     Fichero fichero("../models/prota.obj");
     Textura textura("../textures/prota.png");
+    Textura textura2("../models/"+fichero.getTextureRuta(0));
     Fichero fichero2("../models/cubo.obj");
     
-    MGMesh entMALLA1 = mtg.crearMalla(mtg.getShader3D(), fichero, nullopt, 0);
-    MGMesh entMALLA12 = mtg.crearMalla(mtg.getShader3D(), fichero, nullopt, 1);
-    MGMesh entMALLA13 = mtg.crearMalla(mtg.getShader3D(), fichero, nullopt, 2);
-    MGMesh entMALLA14 = mtg.crearMalla(mtg.getShader3D(), fichero, nullopt, 3);
-    MGMesh entMALLA15 = mtg.crearMalla(mtg.getShader3D(), fichero, nullopt, 4);
-
-
+    MGMesh entMALLA1 = mtg.crearMalla(mtg.getShader3D(), fichero, textura2, 0);
+    
     std::vector<MGMesh> entMALLAScomp = mtg.crearModeloComp(mtg.getShader3D(), fichero);
     MGMesh entMALLA2 = mtg.crearMalla(mtg.getShader3D(), fichero2);
 
@@ -120,29 +116,9 @@ int main() {
 
 
     Nodo* nodomalla1 = mtg.crearNodo(mtg.getRaiz(),&entMALLA1,tras,esc,rot);
-    nodomalla1->setEscalado(glm::vec3(5.0f));
+    nodomalla1->setEscalado(glm::vec3(1.0f));
     nodomalla1->setTraslacion(glm::vec3(0.0f, 0.0f,0.0f));
     nodomalla1->setRotacion(glm::vec3(0.0f, 90.0f,0.0f));
-
-    Nodo* nodomalla12 = mtg.crearNodo(mtg.getRaiz(),&entMALLA12,tras,esc,rot);
-    nodomalla12->setEscalado(glm::vec3(5.0f));
-    nodomalla12->setTraslacion(glm::vec3(0.0f, 0.0f,0.0f));
-    nodomalla12->setRotacion(glm::vec3(0.0f, 90.0f,0.0f));
-
-    Nodo* nodomalla13 = mtg.crearNodo(mtg.getRaiz(),&entMALLA13,tras,esc,rot);
-    nodomalla13->setEscalado(glm::vec3(5.0f));
-    nodomalla13->setTraslacion(glm::vec3(0.0f, 0.0f,0.0f));
-    nodomalla13->setRotacion(glm::vec3(0.0f, 90.0f,0.0f));
-
-    Nodo* nodomalla14 = mtg.crearNodo(mtg.getRaiz(),&entMALLA14,tras,esc,rot);
-    nodomalla14->setEscalado(glm::vec3(5.0f));
-    nodomalla14->setTraslacion(glm::vec3(0.0f, 0.0f,0.0f));
-    nodomalla14->setRotacion(glm::vec3(0.0f, 90.0f,0.0f));
-
-    Nodo* nodomalla15 = mtg.crearNodo(mtg.getRaiz(),&entMALLA15,tras,esc,rot);
-    nodomalla15->setEscalado(glm::vec3(5.0f));
-    nodomalla15->setTraslacion(glm::vec3(0.0f, 0.0f,0.0f));
-    nodomalla15->setRotacion(glm::vec3(0.0f, 90.0f,0.0f));
 
     Nodo* nodomalla2 = mtg.crearNodo(mtg.getRaiz(),&entMALLA2,tras,esc,rot);
     nodomalla2->setEscalado(glm::vec3(0.01f));
@@ -152,7 +128,7 @@ int main() {
     for(int i = 0; i<entMALLAScomp.size();i++){
         mtg.crearNodo(nodoModeloPrueba,&entMALLAScomp[i],tras,esc,rot);
     }
-    nodoModeloPrueba->setEscalado(glm::vec3(6.0f));
+    nodoModeloPrueba->setEscalado(glm::vec3(1.5f));
     nodoModeloPrueba->setTraslacion(glm::vec3(20.0f, 0.0f,0.0f));
     nodoModeloPrueba->setRotacion(glm::vec3(0.0f, -90.0f,0.0f));
 

@@ -14,6 +14,7 @@ struct subMesh{
     std::vector<float> vertices;       
     std::vector<unsigned int> indices;
     TMaterial material;
+    std::string rutaTextura;
 };
 
 class Fichero {
@@ -44,6 +45,11 @@ public:
         return ruta;
     }
 
+    const std::string& getTextureRuta(int vl) const {
+        std::cout << "Textura: " << val[vl].rutaTextura << std::endl;
+        return val[vl].rutaTextura;
+    }
+
 private:
     std::string ruta;
     // std::vector<float> vertices;       
@@ -69,6 +75,13 @@ private:
 
             aiMaterial* aiMat = scene->mMaterials[mesh->mMaterialIndex];
             vf.material = TMaterial(aiMat);
+
+            // Obtener la ruta de la textura asociada con este mesh
+            if (aiMat->GetTextureCount(aiTextureType_DIFFUSE) > 0) {
+                aiString texturePath;
+                aiMat->GetTexture(aiTextureType_DIFFUSE, 0, &texturePath);  // Solo la primera textura de tipo difusa
+                vf.rutaTextura = texturePath.C_Str();  // Guardar la ruta de la textura
+            }
 
             for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
                 // Posición
