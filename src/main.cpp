@@ -90,8 +90,8 @@ int main() {
     TMotorTAG mtg;
     mtg.initWindow(800, 600, "Motor OpenGL 3D");
 
-    Graphics2D::init2D();
-    Graphics2D::LoadFont("../fonts/jack-of-gears.regular.ttf", 48);
+    mtg.init2D();
+    mtg.LoadFont("../fonts/jack-of-gears.regular.ttf", 48);
     mtg.init3D();
 
     Textura textura2D("../textures/enemigo.png");
@@ -99,45 +99,46 @@ int main() {
     Textura textura("../textures/prota.png");
     Textura textura2("../models/"+fichero.getTextureRuta(0));
     Fichero fichero2("../models/cubo.obj");
+    Fichero fichero3("../models/karl_lowpoly.obj");
     
-    MGMesh entMALLA1 = mtg.crearMalla(mtg.getShader3D(), fichero, textura2, 0);
+    MGMesh* entMALLA1 = mtg.crearMalla(mtg.getShader3D(), fichero, textura2, 0);
     
-    std::vector<MGMesh> entMALLAScomp = mtg.crearModeloComp(mtg.getShader3D(), fichero);
-    MGMesh entMALLA2 = mtg.crearMalla(mtg.getShader3D(), fichero2);
+    std::vector<MGMesh*> entMALLAScomp = mtg.crearModeloComp(mtg.getShader3D(), fichero3);
+    MGMesh* entMALLA2 = mtg.crearMalla(mtg.getShader3D(), fichero2);
 
-    MGCamara entCAMARA = mtg.crearCamara(mtg.getShader3D(), &camara);
-    MGLuz entLUZ = mtg.crearLuz(mtg.getShader3D(), &luz);
+    MGCamara* entCAMARA = mtg.crearCamara(mtg.getShader3D(), &camara);
+    MGLuz* entLUZ = mtg.crearLuz(mtg.getShader3D(), &luz);
 
-    std::unique_ptr<MGEntity> entVACIA = std::make_unique<MGEntity>(mtg.getShader3D());
-
+    MGEntity* entVACIA = mtg.crearEntidadVacia(mtg.getShader3D());
     glm::vec3 tras{0.0f, 0.0f, 0.0f};
     glm::vec3 esc{1.0f, 1.0f, 1.0f};
     glm::vec3 rot{0.0f, 0.0f, 0.0f};
 
 
-    Nodo* nodomalla1 = mtg.crearNodo(mtg.getRaiz(),&entMALLA1,tras,esc,rot);
+    Nodo* nodomalla1 = mtg.crearNodo(mtg.getRaiz(),entMALLA1,tras,esc,rot);
     nodomalla1->setEscalado(glm::vec3(1.0f));
     nodomalla1->setTraslacion(glm::vec3(0.0f, 0.0f,0.0f));
     nodomalla1->setRotacion(glm::vec3(0.0f, 90.0f,0.0f));
 
-    Nodo* nodomalla2 = mtg.crearNodo(mtg.getRaiz(),&entMALLA2,tras,esc,rot);
+    Nodo* nodomalla2 = mtg.crearNodo(mtg.getRaiz(),entMALLA2,tras,esc,rot);
     nodomalla2->setEscalado(glm::vec3(0.01f));
     nodomalla2->setTraslacion(glm::vec3(10.0f, 0.0f,0.0f));
 
-    Nodo* nodoModeloPrueba = mtg.crearNodo(mtg.getRaiz(),entVACIA.get(),tras,esc,rot);
-    for(int i = 0; i<entMALLAScomp.size();i++){
-        mtg.crearNodo(nodoModeloPrueba,&entMALLAScomp[i],tras,esc,rot);
+    Nodo* nodoModeloPrueba = mtg.crearNodo(mtg.getRaiz(),entVACIA,tras,esc,rot);
+    for(size_t i = 0; i<entMALLAScomp.size();i++){
+        mtg.crearNodo(nodoModeloPrueba,entMALLAScomp[i],tras,esc,rot);
     }
+    
     nodoModeloPrueba->setEscalado(glm::vec3(1.5f));
     nodoModeloPrueba->setTraslacion(glm::vec3(20.0f, 0.0f,0.0f));
     nodoModeloPrueba->setRotacion(glm::vec3(0.0f, -90.0f,0.0f));
 
-    Nodo* nodocamara = mtg.crearNodo(mtg.getRaiz(),&entCAMARA,tras,esc,rot);
-    Nodo* nodoluz = mtg.crearNodo(mtg.getRaiz(),&entLUZ,tras,esc,rot);
+    Nodo* nodocamara = mtg.crearNodo(mtg.getRaiz(),entCAMARA,tras,esc,rot);
+    Nodo* nodoluz = mtg.crearNodo(mtg.getRaiz(),entLUZ,tras,esc,rot);
 
-    int nCamara = mtg.registrarCamara(nodocamara);
+    mtg.registrarCamara(nodocamara);
 
-    int nLuz = mtg.registrarLuz(nodoluz);
+    mtg.registrarLuz(nodoluz);
 
     float lastTime = glfwGetTime();
 
@@ -155,18 +156,20 @@ int main() {
 
 
         moverNodo(mtg.getWindow(),deltaTime, nodoluz);
+
         processInput(mtg.getWindow(), deltaTime, mtg);
+
         mtg.init3D();
         mtg.dibujarEscena();
         
         mtg.DrawCube(nodoluz->getTraslacion().x, nodoluz->getTraslacion().y, nodoluz->getTraslacion().z, 1.0f, 1.0f, 1.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), mtg.getShader3D());
         mtg.end3D();
 
-        // Graphics2D::DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-        // Graphics2D::DrawRectangle(0.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
-        // Graphics2D::DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-        // Graphics2D::DrawText("Hola Alex", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
-        // Graphics2D::DrawTexture(400.0f, 200.0f, 100.0f, 100.0f, textura2D);
+        mtg.DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+        mtg.DrawRectangle(0.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+        mtg.DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+        mtg.DrawText("Hola Alex", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+        mtg.DrawTexture(400.0f, 200.0f, 100.0f, 100.0f, textura2D);
     }
 
     return 0;

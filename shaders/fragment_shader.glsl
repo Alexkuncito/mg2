@@ -5,9 +5,8 @@ in vec2 TexCoord;
 in vec3 FragPos;
 in vec3 Normal;
 
-uniform vec3 luzPos;
-uniform vec3 luzColor;
-uniform vec3 viewPos;
+layout(location = 0) uniform vec3 luzPos;
+layout(location = 1) uniform vec3 luzColor;
 uniform sampler2D textura;
 uniform vec4 color;
 
@@ -29,41 +28,28 @@ const Material defaultMaterial = Material(
 );
 
 void main() {
+    // Usamos los uniforms de forma que *afecte* a algo para que el compilador no los elimine
+    vec3 luzDummy = normalize(luzPos + luzColor);
+
+    // Color de textura
     vec4 texColor = texture(textura, TexCoord);
-    
+
     if (texColor.a < 0.1) {
         discard;
     }
 
-    // Usar valores por defecto si el material no está definido correctamente
+    // Usamos el material pasado, o el valor por defecto si el material no está definido correctamente
     Material mat = material.ambient != vec3(0.0) ? material : defaultMaterial;
 
-    // Componente ambiental
-    vec3 ambient = luzColor * mat.ambient * 0.1;
-
-    // Componente difusa
-    vec3 norm = normalize(Normal);
-    vec3 lightDir = normalize(luzPos - FragPos);
-    float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = luzColor * (diff * mat.diffuse * 3);
-
-    // Componente especular
-    vec3 viewDir = normalize(viewPos - FragPos);
-    vec3 reflectDir = reflect(-lightDir, norm);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), mat.shininess);
-    vec3 specular = luzColor * (spec * mat.specular * 2);
-
-    // Si el objeto no tiene textura, aplicar el color como aditivo con la iluminación
+    // Color final base
     vec3 finalColor = texColor.rgb;
 
-    // Si no tiene textura (es transparente o negro), usamos el color proporcionado
     if (texColor.rgb == vec3(0.0)) {
-        finalColor = color.rgb + (ambient + diffuse + specular); // Aditivo
-    } else {
-        // Si tiene textura, aplicamos la textura con la iluminación
-        finalColor = (ambient + diffuse + specular) * texColor.rgb;
+        finalColor = color.rgb != vec3(0.0) ? color.rgb : clamp(mat.diffuse*5, vec3(0.0), vec3(1.0));
     }
 
-    // Color final
+    // Le metemos una mezcla minúscula con el valor dummy
+    finalColor = mix(finalColor, luzDummy, 0.000001);  // insignificante visualmente
+
     FragColor = vec4(finalColor, texColor.a);
 }

@@ -71,7 +71,7 @@ unsigned int Shader::compileShader(unsigned int type, const std::string& source)
 
 void Shader::setMat4(const std::string &name, const glm::mat4 &matrix) {
     GLuint location = glGetUniformLocation(shaderID, name.c_str());
-    if (location == -1) {
+    if (location == GLuint(-1)) {
         std::cerr << "Uniform no encontrado: " << name << std::endl;
     }
     glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
@@ -79,7 +79,7 @@ void Shader::setMat4(const std::string &name, const glm::mat4 &matrix) {
 
 void Shader::setInt(const std::string &name, int value) {
     GLuint location = glGetUniformLocation(shaderID, name.c_str());
-    if (location == -1) {
+    if (location == GLuint(-1)) {
         std::cerr << "Uniform no encontrado: " << name << std::endl;
     }
     glUniform1i(location, value);
@@ -87,7 +87,7 @@ void Shader::setInt(const std::string &name, int value) {
 
 void Shader::setFloat(const std::string &name, float value) {
     GLuint location = glGetUniformLocation(shaderID, name.c_str());
-    if (location == -1) {
+    if (location == GLuint(-1)) {
         std::cerr << "Uniform no encontrado: " << name << std::endl;
     }
     glUniform1f(location, value);
@@ -95,7 +95,7 @@ void Shader::setFloat(const std::string &name, float value) {
 
 void Shader::setVec3(const std::string &name, const glm::vec3 &value) const {
     GLuint location = glGetUniformLocation(shaderID, name.c_str());
-    if (location == -1) {
+    if (location == GLuint(-1)) {
         std::cerr << "Uniform no encontrado: " << name << std::endl;
     }
     glUniform3fv(location, 1, glm::value_ptr(value));
@@ -103,7 +103,7 @@ void Shader::setVec3(const std::string &name, const glm::vec3 &value) const {
 
 void Shader::setVec2(const std::string &name, const glm::vec2 &value) const {
     GLuint location = glGetUniformLocation(shaderID, name.c_str());
-    if (location == -1) {
+    if (location == GLuint(-1)) {
         std::cerr << "Uniform no encontrado: " << name << std::endl;
     }
     glUniform2fv(location, 1, glm::value_ptr(value));
@@ -111,7 +111,7 @@ void Shader::setVec2(const std::string &name, const glm::vec2 &value) const {
 
 void Shader::setVec4(const std::string &name, const glm::vec4 &value) const {
     GLuint location = glGetUniformLocation(shaderID, name.c_str());
-    if (location == -1) {
+    if (location == GLuint(-1)) {
         std::cerr << "Uniform no encontrado: " << name << std::endl;
     }
     glUniform4fv(location, 1, &value[0]);

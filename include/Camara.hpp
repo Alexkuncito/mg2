@@ -14,60 +14,21 @@ public:
     float yaw;
     float pitch;
 
-    Camara(glm::vec3 startPos, glm::vec3 startFront, glm::vec3 startUp, float startSpeed, float startSensitivity)
-        : position(startPos), front(startFront), up(startUp), speed(startSpeed), sensitivity(startSensitivity), yaw(-90.0f), pitch(-45.0f) {updateCamaraVectors();}
+    Camara(glm::vec3 startPos, glm::vec3 startFront, glm::vec3 startUp, float startSpeed, float startSensitivity);
 
-    glm::mat4 getViewMatrix() const {
-        return glm::lookAt(position, position + front, up);
-    }
+    glm::mat4 getViewMatrix() const;
 
-    // Mueve la cámara hacia adelante/atrás en el plano horizontal
-    void moveForward(float deltaTime) {
-        glm::vec3 flatFront = glm::normalize(glm::vec3(front.x, 0.0f, front.z));
-        position += speed * flatFront * deltaTime;
-    }
-
-    void moveBackward(float deltaTime) {
-        glm::vec3 flatFront = glm::normalize(glm::vec3(front.x, 0.0f, front.z));
-        position -= speed * flatFront * deltaTime;
-    }
-
-    void moveLeft(float deltaTime) {
-        position -= glm::normalize(glm::cross(front, up)) * speed * deltaTime;
-    }
-
-    void moveRight(float deltaTime) {
-        position += glm::normalize(glm::cross(front, up)) * speed * deltaTime;
-    }
-
-    // Zoom con flechas arriba/abajo (mueve la cámara en la dirección de la vista)
-    void zoomIn(float deltaTime) {
-        position += speed * front * deltaTime;
-    }
-
-    void zoomOut(float deltaTime) {
-        position -= speed * front * deltaTime;
-    }
-
-    // Rotar la cámara con flechas izquierda/derecha
-    void rotateLeft(float deltaTime) {
-        yaw -= sensitivity * deltaTime;
-        updateCamaraVectors();
-    }
-
-    void rotateRight(float deltaTime) {
-        yaw += sensitivity * deltaTime;
-        updateCamaraVectors();
-    }
+    void moveForward(float deltaTime);
+    void moveBackward(float deltaTime);
+    void moveLeft(float deltaTime);
+    void moveRight(float deltaTime);
+    void zoomIn(float deltaTime);
+    void zoomOut(float deltaTime);
+    void rotateLeft(float deltaTime);
+    void rotateRight(float deltaTime);
 
 private:
-    void updateCamaraVectors() {
-        glm::vec3 newFront;
-        newFront.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-        newFront.y = sin(glm::radians(pitch));
-        newFront.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-        front = glm::normalize(newFront);
-    }
+    void updateCamaraVectors();
 };
 
 #endif

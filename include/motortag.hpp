@@ -10,85 +10,78 @@
 #include <vector>
 #include <memory> // Para shared_ptr
 
-struct TMotorTAG{
-    private:
-        TGestorRecursos gestorRecursos;
+//==================================================
+// Definición del motor principal TMotorTAG
+//==================================================
+struct TMotorTAG {
+private:
+    //==================================================
+    // Recursos internos del motor
+    //==================================================
+    TGestorRecursos gestorRecursos;
 
-        std::unordered_map<int, std::unique_ptr<Nodo>> gnodos;
+    std::unordered_map<int, std::unique_ptr<Nodo>> gnodos;
+    std::unordered_map<int, std::unique_ptr<MGEntity>> entidades;
 
-        Nodo* escena;
-        int cantnode;
+    Nodo* escena;
+    int cantnode;
 
-        std::vector<Nodo*> regCamaras;
-        std::vector<Nodo*> regLuces;
+    std::vector<Nodo*> regCamaras;
+    std::vector<Nodo*> regLuces;
 
-        std::optional<Window> ventana;
+    std::optional<Window> ventana;
 
-    public:
-        TMotorTAG() : cantnode(0), escena(nullptr){     //Cambiar para que tome el shader ese
-            gnodos[cantnode] = make_unique<Nodo>();
-            escena = gnodos[cantnode].get();
-            cantnode+=1;
-        }
+public:
+    //==================================================
+    // Constructor y Destructor
+    //==================================================
+    TMotorTAG();
+    ~TMotorTAG() = default;
 
+    //==================================================
+    // Creación de Nodos y Entidades
+    //==================================================
+    Nodo* crearNodo(Nodo* padre, MGEntity* ent, glm::vec3 traslacion, glm::vec3 escalado, glm::vec3 rotacion);
+    Nodo* crearNodoModelo(Nodo* padre, std::vector<MGMesh> ent, glm::vec3 traslacion, glm::vec3 escalado, glm::vec3 rotacion);
 
-        // Cambiar los parámetros para que usen shared_ptr
-        Nodo* crearNodo(Nodo* padre, MGEntity* ent, glm::vec3 traslacion, glm::vec3 escalado, glm::vec3  rotacion);
-        Nodo* crearNodoModelo(Nodo* padre, std::vector<MGMesh> ent, glm::vec3 traslacion, glm::vec3 escalado, glm::vec3  rotacion);
-        MGCamara crearCamara(Shader* shader, Camara* camara);
-        MGLuz crearLuz(Shader* shader, Luz* luz);
-        MGMesh crearMalla(Shader* shader, const Fichero& fichero, 
-        std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, int val = 0);
+    MGEntity* crearEntidadVacia(Shader* shader);
+    MGMesh* crearMalla(Shader* shader, const Fichero& fichero, 
+                       std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt, int val = 0);
+    std::vector<MGMesh*> crearModeloComp(Shader* shader, const Fichero& fichero, 
+                                         std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt);
 
-        std::vector<MGMesh> crearModeloComp(Shader* shader, const Fichero& fichero, 
-        std::optional<std::reference_wrapper<const Textura>> textura = std::nullopt);
+    MGCamara* crearCamara(Shader* shader, Camara* camara);
+    MGLuz* crearLuz(Shader* shader, Luz* luz);
 
-        void deleteCamara(MGCamara* cam);
-        void deleteLuz(MGLuz* luz);
-        void deleteMalla(MGMesh* mall);
+    void deleteCamara(MGCamara* cam);
+    void deleteLuz(MGLuz* luz);
+    void deleteMalla(MGMesh* mall);
 
-        int registrarCamara(Nodo* cam);
-        int registrarLuz(Nodo* luz);
+    //==================================================
+    // Gestión de Cámaras y Luces
+    //==================================================
+    int registrarCamara(Nodo* cam);
+    int registrarLuz(Nodo* luz);
 
-        void activarCamara(int v);
-        void activarLuz(int v);
+    void activarCamara(int v);
+    void activarLuz(int v);
 
-        void desActivarCamara(int v);
-        void desActivarLuz(int v);
+    void desActivarCamara(int v);
+    void desActivarLuz(int v);
 
-        void dibujarEscena();
+    Camara* getCamaraActiva();
 
-        void pinta(){
-            gestorRecursos.ImprimirRecursos();
-            if (escena) {
-                imprimirArbol(escena, 0);
-            } else {
-                //std::cout << "Error: escena es nullptr" << std::endl;
-            }
-        }
+    //==================================================
+    // Renderizado de Escena
+    //==================================================
+    void dibujarEscena();
+    void pinta();
 
+    Nodo* getRaiz() { return escena; }
 
-        Nodo* getRaiz(){return escena;};
-
-    Camara* getCamaraActiva() {
-        if (!regCamaras.empty()) {
-            Nodo* nodoCamara = regCamaras[0];
-            MGEntity* entidad = nodoCamara->getEntidad();
-            
-            MGCamara* mgCamara = dynamic_cast<MGCamara*>(entidad);
-            
-            if (mgCamara) {
-                return mgCamara->getCamera();
-            } else {
-                //std::cout << "No se pudo convertir la entidad a MGCamara" << std::endl;
-                return nullptr;
-            }
-        } else {
-            //std::cout << "No detecta cámaras" << std::endl;
-            return nullptr;
-        }
-    }
-
+    //==================================================
+    // Inicialización y Finalización de Contextos
+    //==================================================
     void init3D();
     void end3D();
     Shader* getShader3D();
@@ -96,16 +89,34 @@ struct TMotorTAG{
     void init2D();
     void end2D();
 
-
+    //==================================================
+    // Gestión de Ventana
+    //==================================================
     void initWindow(int const w, int const h, char const* title);
+    void closeWindow();
     Window* getWindow();
     bool WindowIsOpen();
+
+    //==================================================
+    // Ciclo de Dibujo General
+    //==================================================
     void clearBackground(float r, float g, float b, float a);
     void initDrawing(float r = 0.1f, float g = 0.1f, float b = 0.1f, float a = 1.0f);
     void closeDrawing();
 
-    void DrawCube(float x, float y, float z, float width, float height, float depth, glm::vec4 color, Shader *shader);
+    //==================================================
+    // Funciones de Dibujo 3D
+    //==================================================
+    void DrawCube(float x, float y, float z, float width, float height, float depth, glm::vec4 color, Shader* shader);
 
+    //==================================================
+    // Funciones de Dibujo 2D
+    //==================================================
+    void DrawRectangle(float x, float y, float width, float height, glm::vec4 color);
+    void DrawCircle(float x, float y, float radius, glm::vec4 color);
+    void LoadFont(const std::string& fontPath, unsigned int fontSize);
+    void DrawText(std::string text, float x, float y, float scale, glm::vec3 color);
+    void DrawTexture(float x, float y, float width, float height, const Textura& texture);
 };
 
 #endif

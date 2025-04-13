@@ -19,7 +19,7 @@ public:
     TMaterial()
         : ambient(0.2f), diffuse(0.8f), specular(1.0f), shininess(32.0f) {}
 
-    // ✅ Constructor con parámetros
+    // Constructor con parámetros
     TMaterial(const glm::vec3& amb, const glm::vec3& diff, const glm::vec3& spec, float shin)
         : ambient(amb), diffuse(diff), specular(spec), shininess(shin) {}
 
