@@ -22,24 +22,8 @@ class Shader {
         void setVec3(const std::string &name, const glm::vec3 &value) const;
         void setVec2(const std::string &name, const glm::vec2 &value) const;
         void setVec4(const std::string &name, const glm::vec4 &value) const;
+        void setBool(const std::string &name, bool value);
 
-        // Shader(const Shader&) = delete;
-
-        // Shader& operator=(const Shader&) = delete;
-
-        // Shader(Shader&& other) noexcept
-        //     : shaderID(other.shaderID) {
-        //     other.shaderID = 0;
-        // }
-
-        // Shader& operator=(Shader&& other) noexcept {
-        //     if (this != &other) {
-        //         glDeleteProgram(shaderID);
-        //         shaderID = other.shaderID;
-        //         other.shaderID = 0;
-        //     }
-        //     return *this;
-        // }
         int getID();
 
     private:

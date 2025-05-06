@@ -93,6 +93,15 @@ void Shader::setFloat(const std::string &name, float value) {
     glUniform1f(location, value);
 }
 
+
+void Shader::setBool(const std::string &name, bool value) {
+    GLuint location = glGetUniformLocation(shaderID, name.c_str());
+    if (location == GLuint(-1)) {
+        std::cerr << "Uniform no encontrado: " << name << std::endl;
+    }
+    glUniform1f(location, value);
+}
+
 void Shader::setVec3(const std::string &name, const glm::vec3 &value) const {
     GLuint location = glGetUniformLocation(shaderID, name.c_str());
     if (location == GLuint(-1)) {

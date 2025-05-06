@@ -282,6 +282,34 @@ CMakeFiles/MotorOpenGL.dir/src/Window.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MotorOpenGL.dir/src/Window.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexkuncito/Escritorio/GITHUB/mg2/src/Window.cpp -o CMakeFiles/MotorOpenGL.dir/src/Window.cpp.s
 
+CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.o: CMakeFiles/MotorOpenGL.dir/flags.make
+CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.o: /home/alexkuncito/Escritorio/GITHUB/mg2/src/ParticleGenerator.cpp
+CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexkuncito/Escritorio/GITHUB/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.o -c /home/alexkuncito/Escritorio/GITHUB/mg2/src/ParticleGenerator.cpp
+
+CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexkuncito/Escritorio/GITHUB/mg2/src/ParticleGenerator.cpp > CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.i
+
+CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexkuncito/Escritorio/GITHUB/mg2/src/ParticleGenerator.cpp -o CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.s
+
+CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.o: CMakeFiles/MotorOpenGL.dir/flags.make
+CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.o: /home/alexkuncito/Escritorio/GITHUB/mg2/src/ParticleGenerator3D.cpp
+CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.o: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexkuncito/Escritorio/GITHUB/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.o -MF CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.o.d -o CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.o -c /home/alexkuncito/Escritorio/GITHUB/mg2/src/ParticleGenerator3D.cpp
+
+CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexkuncito/Escritorio/GITHUB/mg2/src/ParticleGenerator3D.cpp > CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.i
+
+CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexkuncito/Escritorio/GITHUB/mg2/src/ParticleGenerator3D.cpp -o CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.s
+
 # Object files for target MotorOpenGL
 MotorOpenGL_OBJECTS = \
 "CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o" \
@@ -298,7 +326,9 @@ MotorOpenGL_OBJECTS = \
 "CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o" \
 "CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o" \
 "CMakeFiles/MotorOpenGL.dir/src/Textura.cpp.o" \
-"CMakeFiles/MotorOpenGL.dir/src/Window.cpp.o"
+"CMakeFiles/MotorOpenGL.dir/src/Window.cpp.o" \
+"CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.o" \
+"CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.o"
 
 # External object files for target MotorOpenGL
 MotorOpenGL_EXTERNAL_OBJECTS =
@@ -318,6 +348,8 @@ MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/Shader.cpp.o
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/Textura.cpp.o
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/Window.cpp.o
+MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator.cpp.o
+MotorOpenGL: CMakeFiles/MotorOpenGL.dir/src/ParticleGenerator3D.cpp.o
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/build.make
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/compiler_depend.ts
 MotorOpenGL: /usr/lib/libglfw.so.3.4
@@ -325,7 +357,7 @@ MotorOpenGL: /usr/lib/libfreetype.so
 MotorOpenGL: /usr/lib/libGLX.so
 MotorOpenGL: /usr/lib/libOpenGL.so
 MotorOpenGL: CMakeFiles/MotorOpenGL.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/alexkuncito/Escritorio/GITHUB/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable MotorOpenGL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/alexkuncito/Escritorio/GITHUB/mg2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable MotorOpenGL"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MotorOpenGL.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

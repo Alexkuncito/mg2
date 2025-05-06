@@ -27,6 +27,10 @@ public:
     Textura* returnTextura() {
         return &textura;
     }
+
+    std::reference_wrapper<const Textura> returnTexturaRefW() {
+        return std::cref(textura);
+    }
 };
 
 #endif

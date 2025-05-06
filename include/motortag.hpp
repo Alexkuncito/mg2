@@ -31,6 +31,17 @@ private:
 
     std::optional<Window> ventana;
 
+
+    Camara camaraP = Camara(
+        glm::vec3(10.0f, 10.0f, 20.0f),
+        glm::vec3(0.0f, 0.0f, -1.0f),
+        glm::vec3(0.0f, 1.0f, 0.0f),
+        5.0f, 50.0f);
+    
+    Luz luzP = Luz(
+        glm::vec3(10.0f, 10.0f, 20.0f),
+        glm::vec3(1.0f, 1.0f, 1.0f),
+        1.0f);
 public:
     //==================================================
     // Constructor y Destructor
@@ -117,6 +128,27 @@ public:
     void LoadFont(const std::string& fontPath, unsigned int fontSize);
     void DrawText(std::string text, float x, float y, float scale, glm::vec3 color);
     void DrawTexture(float x, float y, float width, float height, const Textura& texture);
+
+    //==================================================
+    // Pruebas de MotorTAG
+    //==================================================
+    void testMotorTAG(){
+        init3D();
+        std::cout << "Prueba de MotorTAG" << std::endl;
+        MGCamara* entCAMARA = crearCamara(getShader3D(), &camaraP);
+        MGLuz* entLUZ = crearLuz(getShader3D(), &luzP);
+
+        glm::vec3 tras{0.0f, 0.0f, 0.0f};
+        glm::vec3 esc{1.0f, 1.0f, 1.0f};
+        glm::vec3 rot{0.0f, 0.0f, 0.0f};
+
+        Nodo* nodocamara = crearNodo(getRaiz(),entCAMARA,tras,esc,rot);
+        Nodo* nodoluz = crearNodo(getRaiz(),entLUZ,tras,esc,rot);
+
+        registrarCamara(nodocamara);
+        registrarLuz(nodoluz);
+    }
+
 };
 
 #endif

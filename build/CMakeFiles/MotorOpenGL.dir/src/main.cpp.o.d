@@ -527,4 +527,8 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtx/../gtx/dual_quaternion.hpp \
  /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtx/../gtx/dual_quaternion.inl \
  /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtx/string_cast.inl \
- /usr/include/c++/14.2.1/cstdarg
+ /usr/include/c++/14.2.1/cstdarg \
+ /home/alexkuncito/Escritorio/GITHUB/mg2/include/ParticleGenerator.hpp \
+ /home/alexkuncito/Escritorio/GITHUB/mg2/include/Particle.hpp \
+ /home/alexkuncito/Escritorio/GITHUB/mg2/include/ParticleGenerator3D.hpp \
+ /home/alexkuncito/Escritorio/GITHUB/mg2/include/Particle3D.hpp

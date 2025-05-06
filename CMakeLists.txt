@@ -36,8 +36,9 @@ link_directories(${FREETYPE_LIBRARY_DIRS})
 
 # Agregar las opciones de depuración (si se está compilando en modo Debug)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_compile_options(-g -O0)
-    set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -DDEBUG")
+    add_compile_options(-g -O0)  # Añadir opciones de depuración
+    set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -DDEBUG")  # Asegurar que se agregue la bandera de depuración
+    set(CMAKE_C_FLAGS_DEBUG "-g -O0 -DDEBUG")  # Asegurar que se agregue la bandera de depuración para C
 endif()
 
 # Definir las optimizaciones y flags adicionales para C++
@@ -60,6 +61,9 @@ add_executable(MotorOpenGL
     src/Shader.cpp
     src/Textura.cpp
     src/Window.cpp
+    src/ParticleGenerator.cpp
+    src/ParticleGenerator3D.cpp
+
 )
 
 # Incluir directorios
@@ -92,3 +96,4 @@ endif()
 
 # Asegurarse de que solo C++ tenga la opción -std=c++23
 target_compile_options(MotorOpenGL PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-std=c++23>)
+

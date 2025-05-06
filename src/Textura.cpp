@@ -1,6 +1,8 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "../extern/stb_image.h"
 #include "Textura.hpp"
+#include <filesystem>
+
 
 Textura::Textura(const std::string& path) {
     glGenTextures(1, &ID);
@@ -23,6 +25,7 @@ Textura::Textura(const std::string& path) {
         std::cout << "Textura cargada correctamente: " << path
                   << " (" << width << "x" << height << ", " << nrChannels << " canales)\n";
     } else {
+        std::cout << "Directorio actual: " << std::filesystem::current_path() << std::endl;
         std::cerr << "Error: No se pudo cargar la textura en " << path << std::endl;
     }
 
