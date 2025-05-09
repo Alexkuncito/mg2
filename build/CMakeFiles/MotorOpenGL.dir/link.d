@@ -7,9 +7,9 @@ MotorOpenGL: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libc.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libgcc_s.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libgcc_s.so \
-  /tmp/ccnvRWzD.ltrans0.ltrans.o \
-  /tmp/ccnvRWzD.ltrans1.ltrans.o \
-  /tmp/ccnvRWzD.ltrans2.ltrans.o \
+  /tmp/cc1c30Ag.ltrans0.ltrans.o \
+  /tmp/cc1c30Ag.ltrans1.ltrans.o \
+  /tmp/cc1c30Ag.ltrans2.ltrans.o \
   /usr/lib32/libz.so.1 \
   /usr/lib/libz.so.1 \
   /usr/lib/ld-linux-x86-64.so.2 \
@@ -55,11 +55,11 @@ MotorOpenGL: \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libgcc_s.so:
 
-/tmp/ccnvRWzD.ltrans0.ltrans.o:
+/tmp/cc1c30Ag.ltrans0.ltrans.o:
 
-/tmp/ccnvRWzD.ltrans1.ltrans.o:
+/tmp/cc1c30Ag.ltrans1.ltrans.o:
 
-/tmp/ccnvRWzD.ltrans2.ltrans.o:
+/tmp/cc1c30Ag.ltrans2.ltrans.o:
 
 /usr/lib32/libz.so.1:
 

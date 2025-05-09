@@ -138,6 +138,8 @@ void ParticleGenerator3D::init(std::string particleForm)
         }
 }
 
+
+
 void ParticleGenerator3D::Update(float dt, glm::vec3 position, glm::vec3 velocity, unsigned int newParticles, glm::vec3 offset)
 {
     for (unsigned int i = 0; i < newParticles; ++i) {
@@ -147,13 +149,22 @@ void ParticleGenerator3D::Update(float dt, glm::vec3 position, glm::vec3 velocit
 
     for (unsigned int i = 0; i < this->amount; ++i) {
         Particle3D& p = this->particles[i];
-        p.Life -= dt;
+
+        // Reducir la vida de la partícula con base en el tiempo delta
+        p.Life -= dt;  // Descontar tiempo según el delta time
         if (p.Life > 0.0f) {
-            p.Position -= p.Velocity * dt;
-            p.Color.a = glm::max(p.Color.a - dt * 2.5f, 0.0f);
+            
+            p.Position.x += velocity.x * dt + (rand() % 2 == 0 ? -1.0f : 1.0f) * 0.1f;
+            p.Position.y += velocity.y * dt + (rand() % 2 == 0 ? -1.0f : 1.0f) * 0.1f;
+            p.Position.z += velocity.z * dt + (rand() % 2 == 0 ? -1.0f : 1.0f) * 0.1f;
+
+            // Calcular el color basado en la vida restante
+            float lifeRatio = p.Life / pLIFE3D;  // Ratio de vida para calcular transparencia
+            p.Color.a = lifeRatio;
         }
     }
 }
+
 
 void ParticleGenerator3D::Draw(const glm::mat4& view)
 {
@@ -286,16 +297,14 @@ else if (form == "cone") {
     particle.Position = position + glm::vec3(x, y, z) + offset;
 }
 
-
-    
-    
     // Generar color aleatorio
     float rColor = 0.5f + static_cast<float>(rand() % 100) / 100.0f; // Aleatorio entre 0.5 y 1.0
     particle.Color = glm::vec4(rColor, rColor, rColor, 0.7f);
 
+
     // Configuración de vida y velocidad
-    particle.Life = 1.0f;
-    particle.Velocity = velocity * 0.1f; // Ajuste de velocidad si es necesario
+    particle.Life = pLIFE3D;
+    particle.Velocity = velocity; // Ajuste de velocidad si es necesario
 }
 
 

@@ -3,6 +3,8 @@
 
 #include "glm/glm.hpp"
 
+#define pLIFE3D 1.0f;
+
 struct Particle3D {
     glm::vec3 Position, Velocity;
     glm::vec4 Color;

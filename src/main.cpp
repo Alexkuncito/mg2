@@ -114,7 +114,7 @@ int main() {
     
 
     ParticleGenerator particleGenerator(&shaderPart, &niebla, 10000);
-    ParticleGenerator3D particleGenerator3D(&shaderPart3D, &niebla, 10000000, 0.2f, 1.f, 1.f, 1.f, "cube", "cube");
+    ParticleGenerator3D particleGenerator3D(&shaderPart3D, &niebla, 100000, 0.2f, 1.f, 1.f, 1.f, "sphere", "cube");
 
 
     // MGMesh* entMALLA1 = mtg.crearMalla(mtg.getShader3D(), fichero, textura2, 0);
@@ -180,39 +180,39 @@ int main() {
 
         // 2. Desactivar depth test para que las partículas 2D se vean encima
 
-        // glEnable(GL_DEPTH_TEST);
-        // glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_DEPTH_TEST);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        // particleGenerator3D.Update(deltaTime, pos3D, {1.f,1.f,1.f}, 100, glm::vec3(10.0f));
-        // particleGenerator3D.Draw(mtg.getCamaraActiva()->getViewMatrix());
-        // glDisable(GL_DEPTH_TEST);
+        particleGenerator3D.Update(deltaTime, pos3D, {1.f,1.f,1.f}, 100, glm::vec3(10.0f));
+        particleGenerator3D.Draw(mtg.getCamaraActiva()->getViewMatrix());
+        glDisable(GL_DEPTH_TEST);
 
-        // pos3D.y += 0.1f * aceleratioy;
-        // pos3D.x += 0.1f * aceleratio;
+        pos3D.y += 0.1f * aceleratioy;
+        pos3D.x += 0.1f * aceleratio;
 
-        // if(pos3D.y <= -3.0f || pos3D.y >= 3.0f){
-        //     aceleratioy *= -1.f;
-        // }
+        if(pos3D.y <= -3.0f || pos3D.y >= 3.0f){
+            aceleratioy *= -1.f;
+        }
 
-        // if(pos3D.x <= -15.0f || pos3D.x >= 15.0f){
-        //     aceleratio *= -1.f;
-        // }
+        if(pos3D.x <= -15.0f || pos3D.x >= 15.0f){
+            aceleratio *= -1.f;
+        }
 
-        mtg.DrawTexture(0.f, mtg.getWindow()->height, 800.0f, 600.0f, textura2D);
-        mtg.DrawRectangle(0.0f, mtg.getWindow()->height, 400.0f, 600.0f, glm::vec4(1.0f, 1.0f, 1.0f, 0.5f));
+        //mtg.DrawTexture(0.f, mtg.getWindow()->height, 800.0f, 600.0f, textura2D);
+        //mtg.DrawRectangle(0.0f, mtg.getWindow()->height, 400.0f, 600.0f, glm::vec4(1.0f, 1.0f, 1.0f, 0.5f));
         //particleGenerator.Draw2({200.f, mtg.getWindow()->height-300}, glm::vec4(1.0f, 1.0f, 1.0f, 1.f));
         // shaderPart.use();
 
-        if(contador > 5.f)
-        {           
-            particleGenerator.Update(deltaTime, pos, {1.f,1.f}, 1, glm::vec2(10.0f));        
-            contador = 0.f;
-        } else{
-            particleGenerator.Update(deltaTime, pos, {1.f,1.f}, 0, glm::vec2(10.0f));        
-            contador += 1.f;
-        }
+        // if(contador > 5.f)
+        // {           
+        //     particleGenerator.Update(deltaTime, pos, {1.f,1.f}, 1, glm::vec2(10.0f));        
+        //     contador = 0.f;
+        // } else{
+        //     particleGenerator.Update(deltaTime, pos, {1.f,1.f}, 0, glm::vec2(10.0f));        
+        //     contador += 1.f;
+        // }
         
-        particleGenerator.Draw();
+        // particleGenerator.Draw();
 
         // 4. (opcional) Volver a activar depth test si lo necesitas después
         glEnable(GL_DEPTH_TEST);

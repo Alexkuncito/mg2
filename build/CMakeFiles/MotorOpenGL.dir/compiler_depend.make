@@ -7805,9 +7805,9 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: /home/cpc/Escritorio/asd/mg2/src/
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
 
-MotorOpenGL: /tmp/cc4FyvDq.ltrans0.ltrans.o \
-  /tmp/cc4FyvDq.ltrans1.ltrans.o \
-  /tmp/cc4FyvDq.ltrans2.ltrans.o \
+MotorOpenGL: /tmp/ccJpCntp.ltrans0.ltrans.o \
+  /tmp/ccJpCntp.ltrans1.ltrans.o \
+  /tmp/ccJpCntp.ltrans2.ltrans.o \
   /usr/lib/libc.so \
   /usr/lib/libgcc_s.so \
   /usr/lib/libm.so \
@@ -7890,10 +7890,6 @@ MotorOpenGL: /tmp/cc4FyvDq.ltrans0.ltrans.o \
 /usr/lib/libgcc_s.so:
 
 /usr/lib/libc.so:
-
-/tmp/cc4FyvDq.ltrans1.ltrans.o:
-
-/tmp/cc4FyvDq.ltrans0.ltrans.o:
 
 /home/cpc/Escritorio/asd/mg2/include/motortag.hpp:
 
@@ -8108,8 +8104,6 @@ MotorOpenGL: /tmp/cc4FyvDq.ltrans0.ltrans.o \
 /home/cpc/Escritorio/asd/mg2/include/glm/ext/matrix_double2x2_precision.hpp:
 
 /home/cpc/Escritorio/asd/mg2/include/glm/ext/vector_float1_precision.hpp:
-
-/tmp/cc4FyvDq.ltrans2.ltrans.o:
 
 /usr/include/bits/types.h:
 
@@ -8344,6 +8338,8 @@ MotorOpenGL: /tmp/cc4FyvDq.ltrans0.ltrans.o \
 /home/cpc/Escritorio/asd/mg2/include/glm/ext/vector_float2.hpp:
 
 /home/cpc/Escritorio/asd/mg2/include/glm/ext/vector_uint2_sized.hpp:
+
+/tmp/ccJpCntp.ltrans1.ltrans.o:
 
 /usr/include/sys/cdefs.h:
 
@@ -8799,6 +8795,8 @@ MotorOpenGL: /tmp/cc4FyvDq.ltrans0.ltrans.o \
 
 /usr/include/stdlib.h:
 
+/tmp/ccJpCntp.ltrans2.ltrans.o:
+
 /usr/include/sys/select.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h:
@@ -9020,6 +9018,8 @@ MotorOpenGL: /tmp/cc4FyvDq.ltrans0.ltrans.o \
 /home/cpc/Escritorio/asd/mg2/include/Graphics2D.hpp:
 
 /usr/include/c++/14.2.1/bits/istream.tcc:
+
+/tmp/ccJpCntp.ltrans0.ltrans.o:
 
 /usr/include/c++/14.2.1/bits/locale_classes.h:
 
