@@ -1,7 +1,6 @@
 CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
- /home/alexkuncito/Escritorio/GITHUB/mg2/src/main.cpp \
- /usr/include/stdc-predef.h \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/arbol.hpp \
+ /home/cpc/Escritorio/asd/mg2/src/main.cpp /usr/include/stdc-predef.h \
+ /home/cpc/Escritorio/asd/mg2/include/arbol.hpp \
  /usr/include/c++/14.2.1/vector \
  /usr/include/c++/14.2.1/bits/requires_hosted.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -16,11 +15,12 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/functexcept.h \
  /usr/include/c++/14.2.1/bits/exception_defines.h \
  /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
- /usr/include/c++/14.2.1/bits/version.h \
  /usr/include/c++/14.2.1/ext/type_traits.h \
  /usr/include/c++/14.2.1/ext/numeric_traits.h \
  /usr/include/c++/14.2.1/bits/stl_pair.h \
- /usr/include/c++/14.2.1/type_traits /usr/include/c++/14.2.1/bits/move.h \
+ /usr/include/c++/14.2.1/type_traits \
+ /usr/include/c++/14.2.1/bits/version.h \
+ /usr/include/c++/14.2.1/bits/move.h \
  /usr/include/c++/14.2.1/bits/utility.h /usr/include/c++/14.2.1/compare \
  /usr/include/c++/14.2.1/concepts \
  /usr/include/c++/14.2.1/bits/stl_iterator_base_types.h \
@@ -99,12 +99,6 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/bits/types/time_t.h \
  /usr/include/bits/types/struct_timespec.h /usr/include/bits/sched.h \
- /usr/include/linux/sched/types.h /usr/include/linux/types.h \
- /usr/include/asm/types.h /usr/include/asm-generic/types.h \
- /usr/include/asm-generic/int-ll64.h /usr/include/asm/bitsperlong.h \
- /usr/include/asm-generic/bitsperlong.h /usr/include/linux/posix_types.h \
- /usr/include/linux/stddef.h /usr/include/asm/posix_types.h \
- /usr/include/asm/posix_types_64.h /usr/include/asm-generic/posix_types.h \
  /usr/include/bits/types/struct_sched_param.h /usr/include/bits/cpu-set.h \
  /usr/include/time.h /usr/include/bits/time.h /usr/include/bits/timex.h \
  /usr/include/bits/types/struct_timeval.h \
@@ -211,12 +205,12 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/out_ptr.h \
  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/glm.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/detail/_fixes.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/glm.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/detail/_fixes.hpp \
  /usr/include/c++/14.2.1/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
- /usr/include/bits/fp-fast.h /usr/include/bits/mathcalls-macros.h \
+ /usr/include/bits/fp-fast.h \
  /usr/include/bits/mathcalls-helper-functions.h \
  /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
  /usr/include/bits/iscanonical.h /usr/include/c++/14.2.1/bits/specfun.h \
@@ -232,37 +226,37 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/tr1/poly_hermite.tcc \
  /usr/include/c++/14.2.1/tr1/poly_laguerre.tcc \
  /usr/include/c++/14.2.1/tr1/riemann_zeta.tcc \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/detail/setup.hpp \
  /usr/include/c++/14.2.1/cassert /usr/include/assert.h \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/detail/../simd/platform.h \
+ /home/cpc/Escritorio/asd/mg2/include/glm/detail/../simd/platform.h \
  /usr/include/c++/14.2.1/cfloat \
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/fwd.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/detail/qualifier.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/detail/setup.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/vec2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_bool2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/type_vec2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/type_vec2.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/./compute_vector_relational.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/./setup.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_bool2_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_float2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_float2_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_double2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_double2_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_int2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_int2_sized.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../ext/scalar_int_sized.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../ext/../detail/setup.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_uint2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_uint2_sized.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../ext/scalar_uint_sized.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/vec3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_bool3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/type_vec3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/type_vec3.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/compute_vector_decl.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/fwd.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/detail/qualifier.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/vec2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_bool2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/type_vec2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/type_vec2.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/./compute_vector_relational.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/./setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_bool2_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_float2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_float2_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_double2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_double2_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_int2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_int2_sized.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../ext/scalar_int_sized.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../ext/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_uint2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_uint2_sized.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../ext/scalar_uint_sized.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/vec3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_bool3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/type_vec3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/type_vec3.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/compute_vector_decl.hpp \
  /usr/include/c++/14.2.1/functional \
  /usr/include/c++/14.2.1/bits/std_function.h \
  /usr/include/c++/14.2.1/unordered_map \
@@ -273,162 +267,162 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/erase_if.h \
  /usr/include/c++/14.2.1/bits/move_only_function.h \
  /usr/include/c++/14.2.1/bits/mofunc_impl.h \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/_vectorize.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_bool3_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_float3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_float3_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_double3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_double3_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_int3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_int3_sized.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_uint3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_uint3_sized.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/vec4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_bool4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/type_vec4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/type_vec4.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_bool4_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_float4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_float4_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_double4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_double4_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/setup.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_int4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_int4_sized.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_uint4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/vector_uint4_sized.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/mat2x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/matrix_double2x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/type_mat2x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/type_mat2x2.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../matrix.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../detail/setup.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../mat2x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double2x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double2x3_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float2x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float2x3_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../mat2x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double2x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double2x4_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float2x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float2x4_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../mat3x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x2_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../mat3x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../common.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/_fixes.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/func_common.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/../vector_relational.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/../detail/setup.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/../detail/func_vector_relational.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/compute_common.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/setup.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/type_vec1.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/type_vec1.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../mat3x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x4_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x4_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../mat4x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x2_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x2_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../mat4x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x3_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x3.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x3_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../mat4x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../geometric.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/func_geometric.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/../exponential.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/../detail/func_exponential.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x4_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x4.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x4_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/../detail/../detail/func_matrix.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/matrix_double2x2_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/matrix_float2x2.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/./ext/matrix_float2x2_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/trigonometric.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/detail/func_trigonometric.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/packing.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/detail/func_packing.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/detail/type_half.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/detail/type_half.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/integer.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/detail/func_integer.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/matrix_transform.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/matrix_projection.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../gtc/constants.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../gtc/constants.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/matrix_projection.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/matrix_clip_space.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/matrix_clip_space.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/matrix_transform.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/matrix_transform.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/matrix_transform.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/quaternion.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/vector_relational.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/vector_relational.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../detail/type_float.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../detail/setup.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/quaternion_common.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../ext/quaternion_geometric.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../ext/quaternion_geometric.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/quaternion_common.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/quaternion_float.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../detail/type_quat.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../detail/../ext/quaternion_relational.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../detail/../ext/quaternion_relational.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/../detail/type_quat.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/quaternion_float_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/quaternion_double.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/quaternion_double_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/quaternion_trigonometric.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/quaternion_trigonometric.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/quaternion_transform.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../ext/quaternion_transform.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/quaternion.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/epsilon.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../detail/setup.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/epsilon.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/entidad.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Mesh.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glad.h \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/_vectorize.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_bool3_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_float3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_float3_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_double3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_double3_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_int3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_int3_sized.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_uint3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_uint3_sized.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/vec4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_bool4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/type_vec4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/type_vec4.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_bool4_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_float4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_float4_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_double4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_double4_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_int4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_int4_sized.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_uint4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/vector_uint4_sized.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/mat2x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/matrix_double2x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/type_mat2x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/type_mat2x2.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../matrix.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../mat2x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double2x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double2x3_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float2x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float2x3_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../mat2x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double2x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double2x4_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float2x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float2x4_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../mat3x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x2_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../mat3x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../common.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/_fixes.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/func_common.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/../vector_relational.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/../detail/func_vector_relational.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/compute_common.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/type_vec1.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/type_vec1.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../mat3x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double3x4_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float3x4_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../mat4x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x2_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x2_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../mat4x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x3_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x3.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x3_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../mat4x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../geometric.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/func_geometric.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/../exponential.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/../detail/../detail/../detail/func_exponential.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_double4x4_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x4.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/.././ext/matrix_float4x4_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/../detail/../detail/func_matrix.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/matrix_double2x2_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/matrix_float2x2.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/./ext/matrix_float2x2_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/trigonometric.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/detail/func_trigonometric.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/packing.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/detail/func_packing.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/detail/type_half.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/detail/type_half.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/integer.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/detail/func_integer.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/matrix_transform.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_projection.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/constants.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/constants.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_projection.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_clip_space.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_clip_space.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_transform.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_transform.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/matrix_transform.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/quaternion.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/vector_relational.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/vector_relational.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/type_float.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_common.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../ext/quaternion_geometric.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../ext/quaternion_geometric.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_common.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_float.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/type_quat.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/../ext/quaternion_relational.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/../ext/quaternion_relational.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/type_quat.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_float_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_double.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_double_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_trigonometric.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_trigonometric.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_transform.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_transform.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/quaternion.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/epsilon.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/epsilon.inl \
+ /home/cpc/Escritorio/asd/mg2/include/entidad.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Mesh.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glad.h \
  /usr/include/KHR/khrplatform.h \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Fichero.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Material.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Fichero.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Material.hpp \
  /usr/include/assimp/material.h /usr/include/assimp/types.h \
  /usr/include/string.h /usr/include/strings.h /usr/include/assimp/defs.h \
  /usr/include/assimp/config.h /usr/include/assimp/vector2.h \
@@ -446,32 +440,32 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/assimp/Compiler/poppack1.h /usr/include/assimp/material.inl \
  /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/istream \
  /usr/include/c++/14.2.1/bits/istream.tcc \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glad.h \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Shader.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/type_ptr.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/vec1.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/../ext/vector_bool1.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/../ext/vector_float1.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/../ext/vector_float1_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/../ext/vector_double1.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/../ext/vector_double1_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/../ext/vector_int1.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/../ext/vector_int1_sized.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtc/type_ptr.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Textura.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Camara.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Luz.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/entidad.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Window.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glad.h \
+ /home/cpc/Escritorio/asd/mg2/include/Shader.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/type_ptr.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/vec1.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_bool1.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_float1.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_float1_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_double1.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_double1_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_int1.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_int1_sized.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/type_ptr.inl \
+ /home/cpc/Escritorio/asd/mg2/include/Textura.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Camara.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Luz.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/entidad.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Window.hpp \
  /usr/include/GLFW/glfw3.h \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Shader.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Camara.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Luz.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Fichero.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Graphics2D.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Shader.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Camara.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Luz.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Fichero.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Graphics2D.hpp \
  /usr/include/c++/14.2.1/map /usr/include/c++/14.2.1/bits/stl_tree.h \
  /usr/include/c++/14.2.1/bits/stl_map.h \
  /usr/include/c++/14.2.1/bits/stl_multimap.h \
@@ -492,9 +486,9 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/freetype2/freetype/fterrors.h \
  /usr/include/freetype2/freetype/ftmoderr.h \
  /usr/include/freetype2/freetype/fterrdef.h \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Graphics3D.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Mesh.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/recurso.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Graphics3D.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Mesh.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/recurso.hpp \
  /usr/include/c++/14.2.1/filesystem /usr/include/c++/14.2.1/bits/fs_fwd.h \
  /usr/include/c++/14.2.1/bits/chrono.h /usr/include/c++/14.2.1/ratio \
  /usr/include/c++/14.2.1/bits/fs_path.h /usr/include/c++/14.2.1/iomanip \
@@ -502,33 +496,33 @@ CMakeFiles/MotorOpenGL.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/sstream /usr/include/c++/14.2.1/bits/sstream.tcc \
  /usr/include/c++/14.2.1/codecvt /usr/include/c++/14.2.1/bits/fs_dir.h \
  /usr/include/c++/14.2.1/bits/fs_ops.h \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/MaterialRecurso.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/recurso.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Material.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/MaterialRecurso.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/recurso.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Material.hpp \
  /usr/include/c++/14.2.1/fstream \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/14.2.1/bits/fstream.tcc \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/gestorrecursos.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/MaterialRecurso.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/MallaRecurso.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/ShaderRecurso.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/TexturaRecurso.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/TexturaRecurso.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/motortag.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/gestorrecursos.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/arbol.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Window.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Graphics2D.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Graphics3D.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtx/string_cast.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtx/../gtc/type_precision.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtx/../gtc/type_precision.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtx/../gtx/dual_quaternion.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtx/../gtx/dual_quaternion.inl \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/glm/gtx/string_cast.inl \
+ /home/cpc/Escritorio/asd/mg2/include/gestorrecursos.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/MaterialRecurso.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/MallaRecurso.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/ShaderRecurso.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/TexturaRecurso.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/TexturaRecurso.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/motortag.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/gestorrecursos.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/arbol.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Window.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Graphics2D.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Graphics3D.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtx/string_cast.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtx/../gtc/type_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtx/../gtc/type_precision.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtx/../gtx/dual_quaternion.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtx/../gtx/dual_quaternion.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtx/string_cast.inl \
  /usr/include/c++/14.2.1/cstdarg \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/ParticleGenerator.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Particle.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/ParticleGenerator3D.hpp \
- /home/alexkuncito/Escritorio/GITHUB/mg2/include/Particle3D.hpp
+ /home/cpc/Escritorio/asd/mg2/include/ParticleGenerator.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Particle.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/ParticleGenerator3D.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Particle3D.hpp

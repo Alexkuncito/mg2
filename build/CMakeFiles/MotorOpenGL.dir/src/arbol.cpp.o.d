@@ -1,7 +1,6 @@
-CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
- /home/cpc/Escritorio/asd/mg2/src/motortag.cpp /usr/include/stdc-predef.h \
- /home/cpc/Escritorio/asd/mg2/include/motortag.hpp \
- /home/cpc/Escritorio/asd/mg2/include/gestorrecursos.hpp \
+CMakeFiles/MotorOpenGL.dir/src/arbol.cpp.o: \
+ /home/cpc/Escritorio/asd/mg2/src/arbol.cpp /usr/include/stdc-predef.h \
+ /home/cpc/Escritorio/asd/mg2/include/arbol.hpp \
  /usr/include/c++/14.2.1/vector \
  /usr/include/c++/14.2.1/bits/requires_hosted.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -206,18 +205,6 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
  /usr/include/c++/14.2.1/bits/out_ptr.h \
  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
- /home/cpc/Escritorio/asd/mg2/include/recurso.hpp \
- /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/istream \
- /usr/include/c++/14.2.1/bits/istream.tcc \
- /usr/include/c++/14.2.1/filesystem /usr/include/c++/14.2.1/bits/fs_fwd.h \
- /usr/include/c++/14.2.1/bits/chrono.h /usr/include/c++/14.2.1/ratio \
- /usr/include/c++/14.2.1/bits/fs_path.h /usr/include/c++/14.2.1/iomanip \
- /usr/include/c++/14.2.1/bits/quoted_string.h \
- /usr/include/c++/14.2.1/sstream /usr/include/c++/14.2.1/bits/sstream.tcc \
- /usr/include/c++/14.2.1/codecvt /usr/include/c++/14.2.1/bits/fs_dir.h \
- /usr/include/c++/14.2.1/bits/fs_ops.h \
- /home/cpc/Escritorio/asd/mg2/include/MaterialRecurso.hpp \
- /home/cpc/Escritorio/asd/mg2/include/Material.hpp \
  /home/cpc/Escritorio/asd/mg2/include/glm/glm.hpp \
  /home/cpc/Escritorio/asd/mg2/include/glm/detail/_fixes.hpp \
  /usr/include/c++/14.2.1/cmath /usr/include/math.h \
@@ -392,6 +379,50 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
  /home/cpc/Escritorio/asd/mg2/include/glm/detail/type_half.inl \
  /home/cpc/Escritorio/asd/mg2/include/glm/integer.hpp \
  /home/cpc/Escritorio/asd/mg2/include/glm/detail/func_integer.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/matrix_transform.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_projection.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/constants.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/constants.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_projection.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_clip_space.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_clip_space.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_transform.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_transform.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/matrix_transform.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/quaternion.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/vector_relational.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/vector_relational.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/type_float.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_common.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../ext/quaternion_geometric.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../ext/quaternion_geometric.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_common.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_float.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/type_quat.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/../ext/quaternion_relational.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/../ext/quaternion_relational.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../detail/type_quat.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_float_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_double.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_double_precision.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_trigonometric.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_trigonometric.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_transform.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/quaternion_transform.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/quaternion.inl \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/epsilon.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../detail/setup.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glm/gtc/epsilon.inl \
+ /home/cpc/Escritorio/asd/mg2/include/entidad.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Mesh.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/glad.h \
+ /usr/include/KHR/khrplatform.h \
+ /home/cpc/Escritorio/asd/mg2/include/Fichero.hpp \
+ /home/cpc/Escritorio/asd/mg2/include/Material.hpp \
  /usr/include/assimp/material.h /usr/include/assimp/types.h \
  /usr/include/string.h /usr/include/strings.h /usr/include/assimp/defs.h \
  /usr/include/assimp/config.h /usr/include/assimp/vector2.h \
@@ -407,49 +438,11 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
  /usr/include/assimp/quaternion.inl \
  /usr/include/assimp/Compiler/pushpack1.h \
  /usr/include/assimp/Compiler/poppack1.h /usr/include/assimp/material.inl \
+ /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/istream \
+ /usr/include/c++/14.2.1/bits/istream.tcc \
  /home/cpc/Escritorio/asd/mg2/include/glad.h \
- /usr/include/KHR/khrplatform.h \
  /home/cpc/Escritorio/asd/mg2/include/Shader.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glad.h \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/matrix_transform.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_projection.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/constants.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/../gtc/constants.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_projection.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_clip_space.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_clip_space.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_transform.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../ext/matrix_transform.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/matrix_transform.inl \
  /home/cpc/Escritorio/asd/mg2/include/glm/gtc/type_ptr.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/quaternion.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_relational.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_relational.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/../detail/type_float.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/../detail/setup.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/quaternion_common.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/quaternion_common.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/quaternion_float.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/../detail/type_quat.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/../detail/type_quat.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/quaternion_float_precision.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/quaternion_double.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/quaternion_double_precision.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/quaternion_trigonometric.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/quaternion_trigonometric.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/quaternion_transform.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/quaternion_transform.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/quaternion.inl \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/epsilon.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../detail/setup.hpp \
- /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/epsilon.inl \
  /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/vec1.hpp \
  /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_bool1.hpp \
  /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
@@ -462,42 +455,9 @@ CMakeFiles/MotorOpenGL.dir/src/motortag.cpp.o: \
  /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
  /home/cpc/Escritorio/asd/mg2/include/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
  /home/cpc/Escritorio/asd/mg2/include/glm/gtc/type_ptr.inl \
- /usr/include/c++/14.2.1/fstream \
- /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
- /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
- /usr/include/c++/14.2.1/bits/fstream.tcc \
- /home/cpc/Escritorio/asd/mg2/include/MallaRecurso.hpp \
- /home/cpc/Escritorio/asd/mg2/include/Fichero.hpp \
- /home/cpc/Escritorio/asd/mg2/include/Material.hpp \
- /home/cpc/Escritorio/asd/mg2/include/Mesh.hpp \
  /home/cpc/Escritorio/asd/mg2/include/Textura.hpp \
- /home/cpc/Escritorio/asd/mg2/include/ShaderRecurso.hpp \
- /home/cpc/Escritorio/asd/mg2/include/TexturaRecurso.hpp \
- /home/cpc/Escritorio/asd/mg2/include/arbol.hpp \
- /home/cpc/Escritorio/asd/mg2/include/entidad.hpp \
  /home/cpc/Escritorio/asd/mg2/include/Camara.hpp \
  /home/cpc/Escritorio/asd/mg2/include/Luz.hpp \
- /home/cpc/Escritorio/asd/mg2/include/Window.hpp \
- /usr/include/GLFW/glfw3.h \
- /home/cpc/Escritorio/asd/mg2/include/Graphics2D.hpp \
- /usr/include/c++/14.2.1/map /usr/include/c++/14.2.1/bits/stl_tree.h \
- /usr/include/c++/14.2.1/bits/stl_map.h \
- /usr/include/c++/14.2.1/bits/stl_multimap.h \
- /usr/include/freetype2/ft2build.h \
- /usr/include/freetype2/freetype/config/ftheader.h \
- /usr/include/freetype2/freetype/freetype.h \
- /usr/include/freetype2/ft2build.h \
- /usr/include/freetype2/freetype/config/ftconfig.h \
- /usr/include/freetype2/freetype/config/ftoption.h \
- /usr/include/freetype2/freetype/config/ftstdlib.h \
- /usr/include/c++/14.2.1/stdlib.h /usr/include/setjmp.h \
- /usr/include/freetype2/freetype/config/integer-types.h \
- /usr/include/freetype2/freetype/config/public-macros.h \
- /usr/include/freetype2/freetype/config/mac-support.h \
- /usr/include/freetype2/freetype/fttypes.h \
- /usr/include/freetype2/freetype/ftsystem.h \
- /usr/include/freetype2/freetype/ftimage.h \
- /usr/include/freetype2/freetype/fterrors.h \
- /usr/include/freetype2/freetype/ftmoderr.h \
- /usr/include/freetype2/freetype/fterrdef.h \
- /home/cpc/Escritorio/asd/mg2/include/Graphics3D.hpp
+ /usr/include/c++/14.2.1/iomanip \
+ /usr/include/c++/14.2.1/bits/quoted_string.h \
+ /usr/include/c++/14.2.1/sstream /usr/include/c++/14.2.1/bits/sstream.tcc
