@@ -12,7 +12,7 @@
 
 class ParticleGenerator3D {
 public:
-    ParticleGenerator3D(Shader* shader, Textura* texture, unsigned int amount, float particleScale, float horizontal, float vertical, float profundidad, std::string form);
+    ParticleGenerator3D(Shader* shader, Textura* texture, unsigned int amount, float particleScale, float horizontal, float vertical, float profundidad, std::string form, std::string particleForm);
 
     void Update(float dt, glm::vec3 position, glm::vec3 velocity, unsigned int newParticles, glm::vec3 offset);
     void Draw(const glm::mat4& view);
@@ -38,7 +38,7 @@ private:
     std::string form = "cube";
     
 
-    void init();
+    void init(std::string particleForm="cube");
     unsigned int firstUnusedParticle();
     void respawnParticle(Particle3D& particle, glm::vec3 position, glm::vec3 velocity, glm::vec3 offset);
     unsigned int lastUsedParticle = 0;

@@ -1,13 +1,13 @@
 #include "ParticleGenerator3D.hpp"
 #include <cstdlib>
 
-ParticleGenerator3D::    ParticleGenerator3D(Shader* shader, Textura* texture, unsigned int amount, float particleScale, float horizontal, float vertical, float profundidad, std::string form)
+ParticleGenerator3D::    ParticleGenerator3D(Shader* shader, Textura* texture, unsigned int amount, float particleScale, float horizontal, float vertical, float profundidad, std::string form, std::string particleForm="star")
     : shader(shader), texture(texture), amount(amount), scale(particleScale), horizontal(horizontal), vertical(vertical), profundidad(profundidad), form(form)
 {
-    this->init();
+    this->init(particleForm);
 }
 
-void ParticleGenerator3D::init()
+void ParticleGenerator3D::init(std::string particleForm)
 {
     float quads[] = {
         // Quad XY (frontal)
@@ -37,26 +37,105 @@ void ParticleGenerator3D::init()
          0.5, 0,  0.5,   1, 1,   0, 1, 0,
          0.5, 0, -0.5,   1, 0,   0, 1, 0,
     };
+        // Coordenadas de los vértices para el "cube"
+        float cube[] = {
+            // Quad XY (frontal)
+            -0.5,  0.5, 0.5,   0, 1,   0, 0, 1,
+            0.5, -0.5, 0.5,   1, 0,   0, 0, 1,
+            -0.5, -0.5, 0.5,   0, 0,   0, 0, 1,
+
+            -0.5,  0.5, 0.5,   0, 1,   0, 0, 1,
+            0.5,  0.5, 0.5,   1, 1,   0, 0, 1,
+            0.5, -0.5, 0.5,   1, 0,   0, 0, 1,
+
+            // Quad XY (trasera)
+            -0.5,  0.5, -0.5,   1, 1,   0, 0, 1,
+            0.5, -0.5, -0.5,   0, 0,   0, 0, 1,
+            -0.5, -0.5, -0.5,   1, 0,   0, 0, 1,
+
+            -0.5,  0.5, -0.5,   1, 1,   0, 0, 1,
+            0.5,  0.5, -0.5,   0, 1,   0, 0, 1,
+            0.5, -0.5, -0.5,   0, 0,   0, 0, 1,
+
+            // Quad YZ (perfil der) 
+            0.5,  0.5, -0.5,   1, 1,   1, 0, 0,
+            0.5, -0.5,  0.5,   0, 0,   1, 0, 0,
+            0.5, -0.5, -0.5,   1, 0,   1, 0, 0,
+
+            0.5,  0.5, -0.5,   1, 1,   1, 0, 0,
+            0.5,  0.5,  0.5,   0, 1,   1, 0, 0,
+            0.5, -0.5,  0.5,   0, 0,   1, 0, 0,
+
+            // Quad YZ (perfil izq)
+            -0.5,  0.5, -0.5,   0, 1,   1, 0, 0,
+            -0.5, -0.5,  0.5,   1, 0,   1, 0, 0,
+            -0.5, -0.5, -0.5,   0, 0,   1, 0, 0,
+
+            -0.5,  0.5, -0.5,   0, 1,   1, 0, 0,
+            -0.5,  0.5,  0.5,   1, 1,   1, 0, 0,
+            -0.5, -0.5,  0.5,   1, 0,   1, 0, 0,
+
+            // Quad XZ (planta arriba)
+            -0.5, 0.5,  0.5,   0, 0,   0, 1, 0,
+            0.5, 0.5, -0.5,   1, 1,   0, 1, 0,
+            -0.5, 0.5, -0.5,   0, 1,   0, 1, 0,
+
+            -0.5, 0.5,  0.5,   0, 0,   0, 1, 0,
+            0.5, 0.5,  0.5,   1, 0,   0, 1, 0,
+            0.5, 0.5, -0.5,   1, 1,   0, 1, 0,
+
+
+            // Quad XZ (planta abajo)
+            -0.5, -0.5,  0.5,   0, 0,   0, 1, 0,
+            0.5, -0.5, -0.5,   1, 1,   0, 1, 0,
+            -0.5, -0.5, -0.5,   0, 1,   0, 1, 0,
+
+            -0.5, -0.5,  0.5,   0, 0,   0, 1, 0,
+            0.5, -0.5,  0.5,   1, 0,   0, 1, 0,
+            0.5, -0.5, -0.5,   1, 1,   0, 1, 0,
+
+        };
     
+    if(particleForm == "cube") {
+        glGenVertexArrays(1, &this->VAO);
+        glGenBuffers(1, &VBO);
+    
+        glBindVertexArray(this->VAO);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(cube), cube, GL_STATIC_DRAW);
+    
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // aPos
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float))); // aTexCoord
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float))); // aNormal
+        glEnableVertexAttribArray(2);
+    
+        glBindVertexArray(0);
+    
+        for (unsigned int i = 0; i < this->amount; ++i)
+            this->particles.push_back(Particle3D());
+    }
+    else{
+        glGenVertexArrays(1, &this->VAO);
+        glGenBuffers(1, &VBO);
 
-    glGenVertexArrays(1, &this->VAO);
-    glGenBuffers(1, &VBO);
+        glBindVertexArray(this->VAO);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(quads), quads, GL_STATIC_DRAW);
 
-    glBindVertexArray(this->VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(quads), quads, GL_STATIC_DRAW);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // aPos
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float))); // aTexCoord
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float))); // aNormal
+        glEnableVertexAttribArray(2);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // aPos
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float))); // aTexCoord
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float))); // aNormal
-    glEnableVertexAttribArray(2);
+        glBindVertexArray(0);
 
-    glBindVertexArray(0);
-
-    for (unsigned int i = 0; i < this->amount; ++i)
-        this->particles.push_back(Particle3D());
+        for (unsigned int i = 0; i < this->amount; ++i)
+            this->particles.push_back(Particle3D());
+        }
 }
 
 void ParticleGenerator3D::Update(float dt, glm::vec3 position, glm::vec3 velocity, unsigned int newParticles, glm::vec3 offset)
@@ -212,7 +291,7 @@ else if (form == "cone") {
     
     // Generar color aleatorio
     float rColor = 0.5f + static_cast<float>(rand() % 100) / 100.0f; // Aleatorio entre 0.5 y 1.0
-    particle.Color = glm::vec4(rColor, rColor, rColor, 1.0f);
+    particle.Color = glm::vec4(rColor, rColor, rColor, 0.7f);
 
     // Configuración de vida y velocidad
     particle.Life = 1.0f;

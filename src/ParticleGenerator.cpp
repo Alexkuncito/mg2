@@ -14,14 +14,15 @@ void ParticleGenerator::init()
     // Configura el quad que se usará para representar cada partícula
     unsigned int VBO;
     float particle_quad[] = {
-        0.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 0.0f, 
+        -5.0f, 5.0f, 0.0f, 1.0f,
+        5.0f, -5.0f, 1.0f, 0.0f,
+        -5.0f, -5.0f, 0.0f, 0.0f, 
 
-        0.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 1.0f, 1.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 0.0f
+        -5.0f, 5.0f, 0.0f, 1.0f,
+        5.0f, 5.0f, 1.0f, 1.0f,
+        5.0f, -5.0f, 1.0f, 0.0f
     };
+    
     glGenVertexArrays(1, &this->VAO);
     glGenBuffers(1, &VBO);
 
@@ -55,9 +56,24 @@ void ParticleGenerator::Update(float dt, glm::vec2 position, glm::vec2 velocity,
         p.Life -= dt;
         if (p.Life > 0.0f)
         {
-            p.Position -= p.Velocity * dt;
-            p.Color.a -= dt * 2.5f;
-        }
+            /// Rebote en los límites de X, teniendo en cuenta el tamaño de la partícula
+            if (p.Position.x <= 50.0f || p.Position.x >= 350.0f) {
+                p.Velocity.x *= -1.0f;
+            }
+
+            // Movimiento en el eje X
+            p.Position.x += p.Velocity.x * 25.f;
+
+            // Evitar que la partícula se salga del límite de 400, considerando su tamaño
+            if (p.Position.x < 50.0f) {
+                p.Position.x = 50.0f;  // Ajusta la posición al límite izquierdo (considerando el tamaño de la partícula)
+            }
+            if (p.Position.x > 350.0f) {
+                p.Position.x = 350.0f;  // Ajusta la posición al límite derecho (considerando el tamaño de la partícula)
+            }
+
+            float lifeRatio = p.Life / pLIFE;
+            p.Color.a = lifeRatio * lifeRatio * 0.5;        }
     }
 }
 
@@ -110,11 +126,13 @@ unsigned int ParticleGenerator::firstUnusedParticle()
 // Reinicia una partícula con nuevos valores
 void ParticleGenerator::respawnParticle(Particle &particle, glm::vec2 position, glm::vec2 velocity, glm::vec2 offset)
 {
-    float randomX = static_cast<float>(rand() % 800);
+    float randomX = (rand() % 2 == 0) ? 50.0f : 350.0f;
     float randomY = static_cast<float>(rand() % 600);
     float rColor = 0.5f + ((rand() % 100) / 100.0f);
-    particle.Position = position + glm::vec2(randomX, randomY) + offset;
-    particle.Color = glm::vec4(rColor, rColor, rColor, 1.0f);
-    particle.Life = 1.0f;
-    particle.Velocity = velocity * 0.1f;
-}
+    particle.Position = position  +glm::vec2(randomX, randomY)+ offset;
+    particle.Color = glm::vec4(rColor, rColor, rColor, 0.5f);
+    particle.Life = pLIFE;
+    float randomDir = (rand() % 2 == 0) ? 1.0f : -1.0f; // dirección aleatoria: 1 o -1
+    float randomSpeed = 0.05f + static_cast<float>(rand() % 100) / 1000.0f; // entre 0.05 y 0.15
+    particle.Velocity = glm::vec2(velocity.x * randomDir * randomSpeed, velocity.y * randomSpeed);
+    }

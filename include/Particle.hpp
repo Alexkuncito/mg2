@@ -3,6 +3,8 @@
 
 #include "glm/glm.hpp"
 
+#define pLIFE 10.0f;
+
 struct Particle {
     glm::vec2 Position, Velocity;
     glm::vec4 Color;

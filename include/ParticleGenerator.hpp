@@ -21,6 +21,24 @@ public:
     // Render all particles
     void Draw();
 
+    void Draw2(glm::vec2 fixedPosition, glm::vec4 color)
+    {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        shader->use();
+
+        glm::mat4 projection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f); // ajusta a tu viewport
+        shader->setMat4("projection", projection);
+
+        shader->setVec2("offset", fixedPosition);
+        shader->setVec4("color", color);
+        texture->bind();
+
+        glBindVertexArray(this->VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+    }
+
 private:
     // State
     std::vector<Particle> particles;
@@ -39,6 +57,9 @@ private:
 
     // Stores the index of the last used particle (for faster searching)
     unsigned int lastUsedParticle = 0;
+
+
+
 };
 
 #endif // PARTICLE_GENERATOR_HPP
