@@ -21,6 +21,8 @@
 #include <memory>
 #include "ParticleGenerator.hpp"
 #include "ParticleGenerator3D.hpp"
+#include "MeshAnimada.hpp"
+#include "ModelAnimation.hpp"
 
 // Camara camara(
 //     glm::vec3(10.0f, 10.0f, 20.0f),
@@ -33,6 +35,8 @@
 //     glm::vec3(1.0f, 1.0f, 1.0f),
 //     1.0f);
 
+bool flag = false;
+bool lastKey2State = false;
 
 void moverNodo(Window* window, float deltaTime, Nodo* nodo) {
     GLFWwindow* glfwWindow = window->getNativeWindow();
@@ -63,7 +67,13 @@ void moverNodo(Window* window, float deltaTime, Nodo* nodo) {
 //Esto en motor TAG
 void processInput(Window* window, float deltaTime, TMotorTAG& mtg) { //TMotorTAG& mtg
     GLFWwindow* glfwWindow = window->getNativeWindow();
-    
+
+    bool currentKey2State = (glfwGetKey(glfwWindow, GLFW_KEY_2) == GLFW_PRESS);
+    if(currentKey2State && !lastKey2State){
+        flag=!flag;
+    }
+    lastKey2State = currentKey2State;
+
     if (glfwGetKey(glfwWindow, GLFW_KEY_O) == GLFW_PRESS)
         window->close();
         
@@ -89,150 +99,171 @@ void processInput(Window* window, float deltaTime, TMotorTAG& mtg) { //TMotorTAG
 }
 
 int main() {
+    flag = false;
+    lastKey2State = false;
+
+
     TMotorTAG mtg;
     mtg.initWindow(800, 600, "Motor OpenGL 3D");
 
     mtg.init2D();
     mtg.LoadFont("../fonts/jack-of-gears.regular.ttf", 48);
+
     mtg.init3D();
 
 
-    Shader shaderPart("../shaders/vertex_particle.glsl", "../shaders/fragment_particle.glsl");
-    Shader shaderPart3D("../shaders/vertex_particle3d.glsl", "../shaders/fragment_particle3d.glsl");
+    Fichero ficheroModelo("../models/karl_lowpoly.obj");
+    Fichero ficheroModelo2("../models/prota.obj");
+    Fichero ficheroModelo3("../textures/karl_lowpoly.obj");
 
-    Textura textura2D("../models/nicolas-cage-original.jpg");
-    Fichero fichero("../models/prota.obj");
-    Textura textura("../textures/prota.png");
-    Textura textura2("../models/tex/hju.png");
-    Fichero fichero2("../models/cubo.obj");
-    Fichero fichero3("../models/karl_lowpoly.obj");
-
-    Textura niebla("../models/niebla2.png");
-
-    shaderPart.use();
-    shaderPart3D.use();
-    
-
-    ParticleGenerator particleGenerator(&shaderPart, &niebla, 10000);
-    ParticleGenerator3D particleGenerator3D(&shaderPart3D, &niebla, 100000, 0.2f, 1.f, 1.f, 1.f, "sphere", "cube");
-
-
-    // MGMesh* entMALLA1 = mtg.crearMalla(mtg.getShader3D(), fichero, textura2, 0);
-    
-    std::vector<MGMesh*> entMALLAScomp = mtg.crearModeloComp(mtg.getShader3D(), fichero3);
 
     MGEntity* entVACIA = mtg.crearEntidadVacia(mtg.getShader3D());
-    glm::vec3 tras{0.0f, 0.0f, 0.0f};
-    glm::vec3 esc{1.0f, 1.0f, 1.0f};
-    glm::vec3 rot{0.0f, 0.0f, 0.0f};
 
 
-    // Nodo* nodomalla1 = mtg.crearNodo(mtg.getRaiz(),entMALLA1,tras,esc,rot);
-    // nodomalla1->setEscalado(glm::vec3(1.0f));
-    // nodomalla1->setTraslacion(glm::vec3(0.0f, 0.0f,0.0f));
-    // nodomalla1->setRotacion(glm::vec3(0.0f, 90.0f,0.0f));
+    //MODELO KARL - COMPLETO - MATERIALES.
+    glm::vec3 trasModel1{0.f, 0.f, 0.f};
+    glm::vec3 escModel1{1.f, 1.f, 1.f};
+    glm::vec3 rotModel1{0.f,-90.f,0.f};
 
-    // Nodo* nodomalla2 = mtg.crearNodo(mtg.getRaiz(),entMALLA2,tras,esc,rot);
-    // nodomalla2->setEscalado(glm::vec3(0.01f));
-    // nodomalla2->setTraslacion(glm::vec3(10.0f, 0.0f,0.0f));
+    Nodo* nodoModeloPrueba = mtg.crearNodo(mtg.getRaiz(),entVACIA,trasModel1,escModel1,rotModel1);
+    //std::vector<MGMesh*> entMALLAScomp = mtg.getENTCOMP("../models/karl_lowpoly.obj");
+    std::vector<MGMesh*> entMALLAScomp = mtg.crearModeloComp(mtg.getShader3D(),ficheroModelo);
 
-    Nodo* nodoModeloPrueba = mtg.crearNodo(mtg.getRaiz(),entVACIA,tras,esc,rot);
     for(size_t i = 0; i<entMALLAScomp.size();i++){
-        mtg.crearNodo(nodoModeloPrueba,entMALLAScomp[i],tras,esc,rot);
+        mtg.crearNodo(nodoModeloPrueba,entMALLAScomp[i],{0.f,0.f,0.f},{1.f,1.f,1.f},{0.f,0.f,0.f});
     }
+
+
+    //MODELO KARL - SEPARADO POR SUBMESHES.
+    glm::vec3 trasModel2{0.f, 0.f, -5.f};
+    glm::vec3 escModel2{1.f, 1.f, 1.f};
+    glm::vec3 rotModel2{0.f,-90.f,0.f};
+
+    for(size_t i = 0; i<entMALLAScomp.size();i++){
+        mtg.crearNodo(mtg.getRaiz(),entMALLAScomp[i],trasModel2,escModel2,rotModel2);
+        trasModel2.x += 5.0f;
+    }
+
+
+    //MODELO PROTA - TEXTURA
+    glm::vec3 trasModel3{0.f, 0.f, -10.f};
+    glm::vec3 escModel3{1.f, 1.f, 1.f};
+    glm::vec3 rotModel3{0.f,-90.f,0.f};
+
+    Nodo* nodoModeloPrueba2 = mtg.crearNodo(mtg.getRaiz(),entVACIA,trasModel3,escModel3,rotModel3);
+    std::vector<MGMesh*> entMALLAScomp2 = mtg.crearModeloComp(mtg.getShader3D(),ficheroModelo2);
+
+    for(size_t i = 0; i<entMALLAScomp2.size();i++){
+        mtg.crearNodo(nodoModeloPrueba2,entMALLAScomp2[i],{0.f,0.f,0.f},{1.f,1.f,1.f},{0.f,0.f,0.f});
+    }
+
+
+    //SISTEMA DE PARTICULAS - STATIC
+    glm::vec3 trasParticle{0.f, 0.f, -15.f};
+    glm::vec3 escParticle{1.f, 1.f, 1.f};
+    glm::vec3 rotParticle{0.f,-90.f,0.f};
+
+    ParticleGenerator3D* Pg = mtg.crearGenParticulas(mtg.devTextura("../models/Nicolas_Cage_Deauville_2013.jpg"), 10000, 0.1f, 1.f,1.f,1.f,"cube","cube");
+
+    //SISTEMA DE PARTICULAS - MOV
+    glm::vec3 tras2Particle{0.f, 0.f, -20.f};
+    glm::vec3 esc2Particle{1.f, 1.f, 1.f};
+    glm::vec3 rot2Particle{0.f,-90.f,0.f};
+    float vx = 0.2f;
+    float vy = 0.2f;
+
+    ParticleGenerator3D* Pg2 = mtg.crearGenParticulas(mtg.devTextura("../models/Niebla.png"), 5000, 0.1f, 0.5f,0.5f,0.5f,"sphere","star");
+
+    //ANIMACION 3D
+    glm::vec3 trasANIMATION1{0.f, 0.f, -25.f};
+    glm::vec3 escANIMATION1{1.f, 1.f, 1.f};
+    glm::vec3 rotANIMATION1{0.f,-90.f,0.f};
+
+
+    ModelAnimation mAnim;
+    mAnim.loadFromPath("../animacion/cubos_giratorios", &mtg);
+
+    std::vector<MGMesh*> modelAni;
+
+    Nodo* nodoModeloPrueba3 = mtg.crearNodo(mtg.getRaiz(),entVACIA,trasANIMATION1,escANIMATION1,rotANIMATION1);
+
+    //RECURSO MATERIAL
+    glm::vec3 trasmatREC{-5.f, 0.f, 0.f};
+    glm::vec3 escmatREC{1.f, 1.f, 1.f};
+    glm::vec3 rotmatREC{0.f,-90.f,0.f};
+
+
+    TMaterial* prueba = mtg.devMaterial("../textures/karl_lowpoly.obj", 3);
+    prueba->printMaterial();
     
-    nodoModeloPrueba->setEscalado(glm::vec3(1.5f));
-    nodoModeloPrueba->setTraslacion(glm::vec3(20.0f, 0.0f,0.0f));
-    nodoModeloPrueba->setRotacion(glm::vec3(0.0f, -90.0f,0.0f));
+    if(prueba)
+    {
+        MGMesh* malla = mtg.crearMalla(mtg.getShader3D(), ficheroModelo3);
+        
+        malla->setMaterial(*prueba);
+        mtg.crearNodo(mtg.getRaiz(),malla,trasmatREC,escmatREC,rotmatREC);
+    }
+ 
 
-
-    mtg.testMotorTAG();
-
+    // entMALLAScomp[0]->setMaterial(prueba);
     float lastTime = glfwGetTime();
-
     glEnable(GL_DEPTH_TEST);
-
-    glm::vec2 pos(0.f, 0.f); // centro
-
-    glm::vec3 pos3D(0.f, 0.f, 0.f); // centro
-
-    float aceleratio = 5.f;
-    float aceleratioy = -2.f;
-
-
-    float contador = 0.f;
-    mtg.pinta();
     
-    while (!mtg.getWindow()->shouldClose()) {
-        mtg.getWindow()->swapBuffers();
-        mtg.getWindow()->pollEvents();
 
+    while (!mtg.getWindow()->shouldClose()) {
         float currentTime = glfwGetTime();
         float deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
-
-        // 1. Renderizar escena 3D
-        mtg.init3D();
-        mtg.dibujarEscena();
-        
-        mtg.end3D();
-
-        // 2. Desactivar depth test para que las partículas 2D se vean encima
-
-        glEnable(GL_DEPTH_TEST);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-        particleGenerator3D.Update(deltaTime, pos3D, {1.f,1.f,1.f}, 100, glm::vec3(10.0f));
-        particleGenerator3D.Draw(mtg.getCamaraActiva()->getViewMatrix());
-        glDisable(GL_DEPTH_TEST);
-
-        pos3D.y += 0.1f * aceleratioy;
-        pos3D.x += 0.1f * aceleratio;
-
-        if(pos3D.y <= -3.0f || pos3D.y >= 3.0f){
-            aceleratioy *= -1.f;
-        }
-
-        if(pos3D.x <= -15.0f || pos3D.x >= 15.0f){
-            aceleratio *= -1.f;
-        }
-
-        //mtg.DrawTexture(0.f, mtg.getWindow()->height, 800.0f, 600.0f, textura2D);
-        //mtg.DrawRectangle(0.0f, mtg.getWindow()->height, 400.0f, 600.0f, glm::vec4(1.0f, 1.0f, 1.0f, 0.5f));
-        //particleGenerator.Draw2({200.f, mtg.getWindow()->height-300}, glm::vec4(1.0f, 1.0f, 1.0f, 1.f));
-        // shaderPart.use();
-
-        // if(contador > 5.f)
-        // {           
-        //     particleGenerator.Update(deltaTime, pos, {1.f,1.f}, 1, glm::vec2(10.0f));        
-        //     contador = 0.f;
-        // } else{
-        //     particleGenerator.Update(deltaTime, pos, {1.f,1.f}, 0, glm::vec2(10.0f));        
-        //     contador += 1.f;
-        // }
-        
-        // particleGenerator.Draw();
-
-        // 4. (opcional) Volver a activar depth test si lo necesitas después
-        glEnable(GL_DEPTH_TEST);
-
-
-        // moverNodo(mtg.getWindow(),deltaTime, nodoluz);
+        mtg.getWindow()->pollEvents();
+        mtg.getWindow()->swapBuffers();
 
         processInput(mtg.getWindow(), deltaTime, mtg);
 
-        //mtg.init3D();
-       // mtg.dibujarEscena();
-        
-        // mtg.DrawCube(nodoluz->getTraslacion().x, nodoluz->getTraslacion().y, nodoluz->getTraslacion().z, 1.0f, 1.0f, 1.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f), mtg.getShader3D());
-        //mtg.end3D();
+        if(flag){
+            
+        }
 
-        //mtg.DrawRectangle(200.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-        // mtg.DrawRectangle(0.0f, 500.0f, 100.0f, 100.0f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
-        // mtg.DrawCircle(200.0f, 200.0f, 50.0f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-        // mtg.DrawText("Hola Alex", 50.0f, 500.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
-        // mtg.DrawTexture(400.0f, 200.0f, 100.0f, 100.0f, textura2D);
-    }
+        //ANIMACION --ACTUALIZAMOS... YA PINTARÁ EL DIBUJAR ESCEN
+        
+        modelAni = mAnim.getCurrentFrame().mallas;
+
+        for(size_t i = 0; i<modelAni.size();i++)
+        {
+            mtg.crearNodo(nodoModeloPrueba3,modelAni[i],{0.f,0.f,0.f},{1.f,1.f,1.f},{0.f,0.f,0.f});
+        }
+
+        //ACTUALIZAMOS SISTEMA DE PARTICULAS//
+
+        //Movimiento del SISTEMA DE PARTICULAS 2
+        tras2Particle.x += vx;
+        tras2Particle.y += vy;
+        if(tras2Particle.x >= 20.0f || tras2Particle.x <= -20.0f)
+            vx*=-1;
+        if(tras2Particle.y >= 5.0f || tras2Particle.y <= -5.0f)
+        {
+            vy*=-1;
+        }
+
+        mtg.updateParticleGen(Pg, trasParticle,{0.f,1.f,0.f}, 10, {0.f,0.f,0.f});
+        mtg.updateParticleGen(Pg2, tras2Particle,{0.f,1.f,0.f}, 5, {0.f,0.f,0.f});
+
+
+        mtg.initDrawing();
+        mtg.init3D();
+        mtg.dibujarEscena();
+        auto hijos = nodoModeloPrueba3->getHijos();
+
+        for (auto* hijo : hijos) {
+            nodoModeloPrueba3->borrarHijo(hijo);
+        }
+
+        mAnim.updateFrame();
+        mtg.end3D();
+        mtg.closeDrawing();
+
+}
+
+    mtg.closeWindow();
     return 0;
 }

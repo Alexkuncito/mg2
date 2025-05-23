@@ -1,3 +1,3 @@
-/home/cpc/Escritorio/asd/mg2/build/CMakeFiles/MotorOpenGL.dir
-/home/cpc/Escritorio/asd/mg2/build/CMakeFiles/edit_cache.dir
-/home/cpc/Escritorio/asd/mg2/build/CMakeFiles/rebuild_cache.dir
+/home/alexkuncito/Escritorio/GITHUB/mg2/build/CMakeFiles/MotorOpenGL.dir
+/home/alexkuncito/Escritorio/GITHUB/mg2/build/CMakeFiles/edit_cache.dir
+/home/alexkuncito/Escritorio/GITHUB/mg2/build/CMakeFiles/rebuild_cache.dir

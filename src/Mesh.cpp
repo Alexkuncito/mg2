@@ -14,27 +14,6 @@ Mesh::Mesh(const Fichero& fichero, std::optional<std::reference_wrapper<const Te
         return;
     }
 
-    // std::cout << "==============================" << std::endl;
-    // std::cout << "MATERIAL" << std::endl;
-    // std::cout << "Ambient: " 
-    //     << std::to_string(mat.getAmbient().x) << ", " 
-    //     << std::to_string(mat.getAmbient().y) << ", " 
-    //     << std::to_string(mat.getAmbient().z) << std::endl;
-
-    // std::cout << "Diffuse: " 
-    //     << std::to_string(mat.getDiffuse().x) << ", " 
-    //     << std::to_string(mat.getDiffuse().y) << ", " 
-    //     << std::to_string(mat.getDiffuse().z) << std::endl;
-
-    // std::cout << "Specular: " 
-    //     << std::to_string(mat.getSpecular().x) << ", " 
-    //     << std::to_string(mat.getSpecular().y) << ", " 
-    //     << std::to_string(mat.getSpecular().z) << std::endl;         
-
-    // std::cout << "Shininess: " << mat.getShininess() << std::endl;
-
-    // std::cout << "==============================" << std::endl;
-
     material = mat;
 
     indexCount = indices.size();
@@ -69,7 +48,7 @@ Mesh::~Mesh() {
     glDeleteBuffers(1, &EBO);
 }
 
-void Mesh::draw(Shader* shader) const {
+void Mesh::draw(Shader* shader, std::optional<glm::vec4> col) const {
     if (!shader) {
         std::cerr << "Error: No se ha proporcionado un shader válido a la función draw()." << std::endl;
         return;
@@ -78,6 +57,14 @@ void Mesh::draw(Shader* shader) const {
     shader->use();
 
     material.SetMaterial(shader);
+
+    bool hasTexture = textura.has_value();
+    bool hasMaterial = material.existe();
+    bool hasColor = col.has_value();    
+
+    shader->setInt("boolTEXTURE", hasTexture ? 1 : 0);
+    shader->setInt("boolMATERIAL", hasMaterial ? 1 : 0);
+    shader->setInt("boolCOLOR", hasColor ? 1 : 0);
     
     if (textura) {
         textura->get().bind(); // Vincula la textura si está presente

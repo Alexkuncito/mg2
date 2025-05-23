@@ -52,23 +52,3 @@ void TGestorRecursos::ImprimirRecursos() const {
         std::cout << "Recurso: " << par.first << std::endl;  // Imprime la clave (nombre)
     }
 }
-
-void TGestorRecursos::cargarMateriales() {
-    namespace fs = std::filesystem;
-        std::string ruta = "../material/";
-    if (!fs::exists(ruta)) {
-        std::cerr << "Error: El directorio " << ruta << " no existe." << std::endl;
-        return;
-    }
-    for (const auto& entry : fs::directory_iterator(ruta)) {
-        if (entry.is_regular_file() && entry.path().extension() == ".txt") {
-
-            auto recursoMaterial = std::make_unique<RecursoMaterial>(entry.path().string());
-            
-            if (recursoMaterial->cargarFichero(entry.path().string())) {
-                // std::cout << "Material cargado: " << recursoMaterial->GetNombre() << std::endl;
-                add(std::move(recursoMaterial));
-            }
-        }
-    }
-}

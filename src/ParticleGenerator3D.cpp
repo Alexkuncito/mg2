@@ -1,10 +1,10 @@
-#include "ParticleGenerator3D.hpp"
+#include "../include/ParticleGenerator3D.hpp"
 #include <cstdlib>
 
-ParticleGenerator3D::    ParticleGenerator3D(Shader* shader, Textura* texture, unsigned int amount, float particleScale, float horizontal, float vertical, float profundidad, std::string form, std::string particleForm="star")
+ParticleGenerator3D::ParticleGenerator3D(Shader* shader, Textura* texture, unsigned int amount, float particleScale, float horizontal, float vertical, float profundidad, std::string form, std::string particleForm)
     : shader(shader), texture(texture), amount(amount), scale(particleScale), horizontal(horizontal), vertical(vertical), profundidad(profundidad), form(form)
 {
-    this->init(particleForm);
+     init(particleForm);
 }
 
 void ParticleGenerator3D::init(std::string particleForm)
@@ -97,10 +97,10 @@ void ParticleGenerator3D::init(std::string particleForm)
         };
     
     if(particleForm == "cube") {
-        glGenVertexArrays(1, &this->VAO);
+        glGenVertexArrays(1, & VAO);
         glGenBuffers(1, &VBO);
     
-        glBindVertexArray(this->VAO);
+        glBindVertexArray( VAO);
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(cube), cube, GL_STATIC_DRAW);
     
@@ -113,14 +113,14 @@ void ParticleGenerator3D::init(std::string particleForm)
     
         glBindVertexArray(0);
     
-        for (unsigned int i = 0; i < this->amount; ++i)
-            this->particles.push_back(Particle3D());
+        for (unsigned int i = 0; i <  amount; ++i)
+             particles.push_back(Particle3D());
     }
     else{
-        glGenVertexArrays(1, &this->VAO);
+        glGenVertexArrays(1, & VAO);
         glGenBuffers(1, &VBO);
 
-        glBindVertexArray(this->VAO);
+        glBindVertexArray( VAO);
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(quads), quads, GL_STATIC_DRAW);
 
@@ -133,30 +133,32 @@ void ParticleGenerator3D::init(std::string particleForm)
 
         glBindVertexArray(0);
 
-        for (unsigned int i = 0; i < this->amount; ++i)
-            this->particles.push_back(Particle3D());
+        for (unsigned int i = 0; i <  amount; ++i)
+             particles.push_back(Particle3D());
         }
 }
 
 
 
-void ParticleGenerator3D::Update(float dt, glm::vec3 position, glm::vec3 velocity, unsigned int newParticles, glm::vec3 offset)
+void ParticleGenerator3D::Update(glm::vec3 position, glm::vec3 velocity, unsigned int newParticles, glm::vec3 offset)
 {
+    
+    
     for (unsigned int i = 0; i < newParticles; ++i) {
-        int unused = this->firstUnusedParticle();
-        this->respawnParticle(this->particles[unused], position, velocity, offset);
+        int unused = firstUnusedParticle();
+        respawnParticle(particles[unused], position, velocity, offset);
     }
 
-    for (unsigned int i = 0; i < this->amount; ++i) {
-        Particle3D& p = this->particles[i];
+    for (unsigned int i = 0; i <  amount; ++i) {
+        Particle3D& p =  particles[i];
 
         // Reducir la vida de la partícula con base en el tiempo delta
-        p.Life -= dt;  // Descontar tiempo según el delta time
+        p.Life -= 0.01;  // Descontar tiempo según el delta time
         if (p.Life > 0.0f) {
             
-            p.Position.x += velocity.x * dt + (rand() % 2 == 0 ? -1.0f : 1.0f) * 0.1f;
-            p.Position.y += velocity.y * dt + (rand() % 2 == 0 ? -1.0f : 1.0f) * 0.1f;
-            p.Position.z += velocity.z * dt + (rand() % 2 == 0 ? -1.0f : 1.0f) * 0.1f;
+            p.Position.x += velocity.x * 0.01 + (rand() % 2 == 0 ? -1.0f : 1.0f) * 0.1f;
+            p.Position.y += velocity.y * 0.01 + (rand() % 2 == 0 ? -1.0f : 1.0f) * 0.1f;
+            p.Position.z += velocity.z * 0.01 + (rand() % 2 == 0 ? -1.0f : 1.0f) * 0.1f;
 
             // Calcular el color basado en la vida restante
             float lifeRatio = p.Life / pLIFE3D;  // Ratio de vida para calcular transparencia
@@ -176,7 +178,7 @@ void ParticleGenerator3D::Draw(const glm::mat4& view)
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f); // ajusta a tu viewport
     shader->setMat4("projection", projection);
 
-    for (Particle3D& particle : this->particles)
+    for (Particle3D& particle :  particles)
     {
         if (particle.Life > 0.0f)
         {
@@ -188,7 +190,7 @@ void ParticleGenerator3D::Draw(const glm::mat4& view)
             shader->setVec4("color", particle.Color);
             texture->bind();
 
-            glBindVertexArray(this->VAO);
+            glBindVertexArray( VAO);
             glDrawArrays(GL_TRIANGLES, 0, 54);
             glBindVertexArray(0);
         }
@@ -197,7 +199,7 @@ void ParticleGenerator3D::Draw(const glm::mat4& view)
 
 unsigned int ParticleGenerator3D::firstUnusedParticle()
 {
-    for (unsigned int i = lastUsedParticle; i < this->amount; ++i) {
+    for (unsigned int i = lastUsedParticle; i <  amount; ++i) {
         if (particles[i].Life <= 0.0f) {
             lastUsedParticle = i;
             return i;
@@ -323,14 +325,14 @@ void ParticleGenerator3D::Draw2(const glm::mat4& view)
 
     // Creamos una sola partícula manualmente en el centro (0,0,0)
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+    model = glm::translate(model, glm::vec3(0.0f, 2.0f, 0.0f));
     model = glm::scale(model, glm::vec3(1.0f)); // Escala de la partícula
 
     shader->setMat4("model", model);
     shader->setVec4("color", glm::vec4(1.0f)); // Color blanco, completamente opaco
     texture->bind();
 
-    glBindVertexArray(this->VAO);
+    glBindVertexArray( VAO);
     glDrawArrays(GL_TRIANGLES, 0, 54); // 3 quads * 2 triángulos * 3 vértices = 54
     glBindVertexArray(0);
     

@@ -6,70 +6,46 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <assimp/material.h>
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
 struct RecursoMaterial : public Recurso {
-private:
-    TMaterial mat;
-
-public:
-    // Constructor con valores por defecto
-    RecursoMaterial() : Recurso(""), mat(glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(0.0f), 0.0f) {}
-
-    // Constructor con valores
-    RecursoMaterial(const glm::vec3& a, const glm::vec3& d, const glm::vec3& sp, float sh) 
-        : Recurso(""), mat(a, d, sp, sh) {}
-
-    // Constructor con ruta de fichero
-    RecursoMaterial(const std::string& rutaFichero) : Recurso(rutaFichero), mat(glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(0.0f), 0.0f) {
-        cargarFichero(rutaFichero);
-    }
-
-    // Retorna una copia del material
-    TMaterial returnMaterial() const {
-        return mat;
-    }
-
-    // Cargar material desde archivo
-    bool cargarFichero(const std::string& rutaFichero) {
-        std::ifstream archivo(rutaFichero);
-        if (!archivo.is_open()) {
-            std::cerr << "Error: No se pudo abrir el archivo " << rutaFichero << std::endl;
-            return false;
-        }
-
-        crearNombre(rutaFichero);
-
-        // Leer propiedades del material
-        glm::vec3 ambient, diffuse, specular;
-        float shininess = 0.0f;
-
-        std::string linea;
-        while (std::getline(archivo, linea)) {
-            std::istringstream ss(linea);
-            std::string clave;
-            ss >> clave;
-
-            if (clave == "ambient") {
-                ss >> ambient.x >> ambient.y >> ambient.z;
-            } else if (clave == "diffuse") {
-                ss >> diffuse.x >> diffuse.y >> diffuse.z;
-            } else if (clave == "specular") {
-                ss >> specular.x >> specular.y >> specular.z;
-            } else if (clave == "shininess") {
-                ss >> shininess;
+    private:
+        TMaterial mat;
+        Assimp::Importer importer;  // mantener el importer vivo
+        const aiScene* scene = nullptr;
+    
+    public:
+        RecursoMaterial(const std::string& rutaFichero, int val) : Recurso(rutaFichero, val) {
+            scene = importer.ReadFile(rutaFichero,
+                aiProcess_Triangulate | aiProcess_GenNormals | aiProcess_FlipUVs);
+    
+            if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
+                std::cerr << "Error al cargar el archivo: " << importer.GetErrorString() << std::endl;
+                mat = TMaterial(); // material por defecto
+                return;
             }
+    
+            if (val < 0 || val >= static_cast<int>(scene->mNumMaterials)) {
+                std::cerr << "Índice de material fuera de rango." << std::endl;
+                mat = TMaterial(); // material por defecto
+                return;
+            }
+    
+            aiMaterial* material = scene->mMaterials[val];
+            mat = TMaterial(material);
+        }
+    
+        TMaterial returnMaterial2() const {
+            return mat;
         }
 
-        archivo.close();
-
-        // Asignar los valores leídos al material
-        mat = TMaterial(ambient, diffuse, specular, shininess);
-        return true;
-    }
-
-    TMaterial* returnMaterial() {
-        return &mat;
-    }
-};
+        TMaterial* returnMaterial() {
+            return &mat;
+        }
+    };
+    
 
 #endif

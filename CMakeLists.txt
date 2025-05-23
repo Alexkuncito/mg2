@@ -63,7 +63,9 @@ add_executable(MotorOpenGL
     src/Window.cpp
     src/ParticleGenerator.cpp
     src/ParticleGenerator3D.cpp
-
+    src/MeshAnimada.cpp
+    src/ModelAnimation.cpp
+    src/gestorEntidades.cpp
 )
 
 # Incluir directorios

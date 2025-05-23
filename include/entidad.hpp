@@ -9,6 +9,10 @@
 #include "Luz.hpp"
 #include "Shader.hpp"
 #include <memory>  // Necesario para std::shared_ptr
+#include <filesystem>
+
+namespace fs = std::filesystem;
+
 
 // Clase base para todas las entidades
 struct MGEntity
@@ -16,12 +20,36 @@ struct MGEntity
 public:
     MGEntity() {};
     MGEntity(Shader* shader);  // Declaración del constructor
-    virtual void draw(glm::mat4 mat);
+    virtual void draw(glm::mat4 mat, std::optional<glm::vec4> color=std::nullopt);
+    virtual ~MGEntity() = default;
     MGEntity(const MGEntity& other) : shader(other.shader) {}
     virtual std::string getTipo() const { return "ESTANDAR"; }
 
+    void setNombre(const std::string& nombre) { this->nombre = nombre; }
+    
+    std::string GetNombre() const { return nombre; }
+
+    std::string crearNombre(const std::string& ruta, int val = 0) {
+        fs::path pathObj(ruta);
+        std::string carpetaContenedora = pathObj.parent_path().filename().string();
+
+        std::string nombreArchivo = pathObj.stem().string();
+        std::string nuevoNombre = "Entidad_" + carpetaContenedora + "_" + nombreArchivo + "_" + std::to_string(val);
+
+        // //std::cout << "Ruta completa: " << ruta << std::endl;
+        // //std::cout << "Carpeta contenedora: " << carpetaContenedora << std::endl;
+        // //std::cout << "Nombre del archivo sin extensión: " << nombreArchivo << std::endl;
+        // //std::cout << "Nombre generado: " << nuevoNombre << std::endl;
+
+        setNombre(nuevoNombre);
+        return nuevoNombre;
+    }
+
+    Shader* getShader() { return shader; }  
+
 protected:
-    Shader* shader; // Cambio a shared_ptr
+    Shader* shader;
+    std::string nombre;
 };
 
 // Clase derivada para representar una malla
@@ -29,7 +57,8 @@ struct MGMesh : public MGEntity
 {
 public:
     MGMesh(Shader* shader, Mesh* malla); // Cambio a shared_ptr
-    void draw(glm::mat4 mat) override;
+    void draw(glm::mat4 mat, std::optional<glm::vec4> color=std::nullopt) override;
+    void setMaterial(TMaterial mat){malla->setMaterial(mat);}
     virtual std::string getTipo() const { return "MESH"; }
 
 private:
@@ -41,7 +70,7 @@ struct MGCamara : public MGEntity
 {
 public:
     MGCamara(Shader* shader, Camara* camara); // Cambio a shared_ptr
-    void draw(glm::mat4 mat) override;
+    void draw(glm::mat4 mat, std::optional<glm::vec4> color=std::nullopt) override;
     void activar() { activa = true; }
     void desactivar() { activa = false; }
     bool esActiva() {return activa; }
@@ -58,7 +87,7 @@ struct MGLuz : public MGEntity
 {
 public:
     MGLuz(Shader* shader, Luz* luz);
-    void draw(glm::mat4 mat) override;
+    void draw(glm::mat4 mat,std::optional<glm::vec4> color=std::nullopt) override;
     void activar() { activa = true; }
     void desactivar() { activa = false; }
     bool esActiva() {return activa; }

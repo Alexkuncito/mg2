@@ -14,9 +14,14 @@ class ParticleGenerator3D {
 public:
     ParticleGenerator3D(Shader* shader, Textura* texture, unsigned int amount, float particleScale, float horizontal, float vertical, float profundidad, std::string form, std::string particleForm);
 
-    void Update(float dt, glm::vec3 position, glm::vec3 velocity, unsigned int newParticles, glm::vec3 offset);
+    void Update(glm::vec3 position, glm::vec3 velocity, unsigned int newParticles, glm::vec3 offset);
     void Draw(const glm::mat4& view);
     void Draw2(const glm::mat4& view);
+    void KillAllParticles(){
+        for (auto& particle : particles) {
+            particle.Life = 0.0f;
+        }
+    }
 
 
 
